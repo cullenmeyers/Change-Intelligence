@@ -6,6 +6,7 @@
   <title>What Just Changed — Evidence-Backed Change Decisions</title>
   <meta name="description" content="Evidence-backed change records that explain what changed, who is affected, and the smallest justified action. WordPress plugins are the first wedge.">
   <link rel="canonical" href="https://whatjustchanged.com/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:title" content="What Just Changed — Evidence-Backed Change Decisions">
   <meta property="og:description" content="What changed, who is affected, and the smallest justified action. WordPress plugins are the first wedge.">
@@ -45,11 +46,19 @@
         <p>Merchants actively using Payconiq should prepare and test another checkout method before updating from 8.1.2 or earlier.</p>
         <a class="button" href="./changes/mollie-payconiq-removed-woocommerce/">Read the migration decision</a>
       </article>
+
+      <article class="article home-card">
+        <div class="status">Confirmed default change</div>
+        <h2>WooCommerce PayPal enabled Pay with Crypto by default for eligible merchants</h2>
+        <p><strong>Confirmed change:</strong> version 4.0.1 enabled Pay with Crypto by default for eligible merchants. Later changelogs through 4.0.4 do not state that the default was reversed.</p>
+        <p>Eligible stores should inspect settings and the customer-facing checkout, then intentionally keep or disable the method rather than assuming the update preserved the prior payment-method mix.</p>
+        <a class="button" href="./changes/woocommerce-paypal-pay-with-crypto-enabled-by-default/">Read the configuration decision</a>
+      </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, or Payconiq.</div>
+    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, or PayPal.</div>
   </footer>
 </body>
 </html>
