@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WooCommerce Stripe 10.8.x Payments Stuck Pending: What to Do</title>
+  <meta name="description" content="WooCommerce Stripe 10.8.1 payments may succeed in Stripe while orders remain Pending Payment. See the confirmed 10.8.2 fixes, affected users, reconciliation steps, and safest update path.">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WooCommerce Stripe 10.8.x payments stuck in Pending Payment: what changed and what to do",
+    "description": "An evidence-backed change record for WooCommerce Stripe 10.8.x payment-status problems and the 10.8.2 fixes.",
+    "datePublished": "2026-06-16",
+    "dateModified": "2026-06-16",
+    "author": {"@type": "Organization", "name": "Change Intelligence"},
+    "about": ["WooCommerce", "Stripe", "WordPress plugins", "payment status"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What changed in WooCommerce Stripe 10.8.x?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Version 10.8.0 enabled Optimized Checkout Suite and Adaptive Pricing by default for eligible stores. Version 10.8.2 added fixes for pending orders after successful payment, dropped webhook payments, and related checkout problems."}
+      },
+      {
+        "@type": "Question",
+        "name": "Should I update to WooCommerce Stripe 10.8.2?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Affected stores should first reconcile paid-but-pending orders, back up the site, test 10.8.2 in staging, and verify checkout, webhooks, order status, refunds, and alternative payment methods before production deployment."}
+      },
+      {
+        "@type": "Question",
+        "name": "What if orders remain pending after updating or rolling back?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Reconfigure Stripe webhooks, enable Stripe logging, inspect WooCommerce logs, reconcile Stripe charges against WooCommerce orders, and open a private support ticket rather than posting sensitive logs publicly."}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../">Change Intelligence</a>
+      <a class="nav-link" href="#sources">Official sources</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>WooCommerce Stripe 10.8.x payments stuck in Pending Payment</h1>
+        <div class="meta">
+          <span>Reviewed June 16, 2026</span>
+          <span>Evidence confidence: Confirmed change; incident outcome still being monitored</span>
+          <span>Primary domain: Reliability / support</span>
+        </div>
+
+        <div class="notice good">
+          <strong>Current decision</strong>
+          Stores affected by 10.8.x payment-status problems should reconcile orders first, then test and deploy version 10.8.2 rather than treating the problem as a normal webhook delay.
+        </div>
+
+        <p>Merchants reported payments succeeding in Stripe while the corresponding WooCommerce orders remained <strong>Pending Payment</strong> or were later cancelled. During the incident, plugin support temporarily treated version 10.7.0 as the stable release. Version 10.8.2 was then published with explicit fixes for Adaptive Pricing orders remaining pending after successful payment and for some webhook payments being dropped.</p>
+
+        <div class="notice warn">
+          <strong>Do not blindly mark every pending order as paid.</strong>
+          Compare each WooCommerce order with the matching Stripe payment, amount, customer, currency, and transaction ID before changing order status or fulfillment.
+        </div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>10.8.0:</strong> Optimized Checkout Suite and Adaptive Pricing were enabled by default for eligible stores.</li>
+          <li><strong>10.8.1:</strong> merchants reported successful Stripe charges that did not advance WooCommerce order status.</li>
+          <li><strong>10.8.2:</strong> the official changelog says it prevents Adaptive Pricing orders from being stuck pending after successful payment and fixes webhook classification that could drop payments.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This record is most relevant when all or part of the following is true:</p>
+        <ul>
+          <li>You installed WooCommerce Stripe 10.8.0 or 10.8.1.</li>
+          <li>Adaptive Pricing or Optimized Checkout is enabled.</li>
+          <li>Stripe shows a successful charge, but WooCommerce remains Pending Payment, Failed, or Cancelled.</li>
+          <li>You see missing, pending, duplicated, or stale webhook behavior.</li>
+          <li>An order might have been paid but not fulfilled because WooCommerce did not receive or process the final status correctly.</li>
+        </ul>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>Running 10.8.0 or 10.8.1 and seeing paid-but-pending orders</td><td><strong>Update / patch</strong> to 10.8.2 after reconciliation and staging</td><td>Back up, test checkout and webhooks, then monitor live orders</td></tr>
+            <tr><td>Rolled back to 10.7.0 and the store is stable</td><td><strong>Configure / test</strong> 10.8.2 in staging before production</td><td>Do not update during a high-volume sales period</td></tr>
+            <tr><td>Still seeing the issue on 10.7.0 or 10.8.2</td><td><strong>Investigate</strong> webhooks, logs, conflicts, and individual orders</td><td>Open a private support ticket with logs; do not post secrets publicly</td></tr>
+            <tr><td>Stripe charged the customer but WooCommerce cancelled the order</td><td><strong>Investigate and reconcile</strong> before fulfillment or refund</td><td>Confirm the charge, amount, currency, customer, and transaction ID</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest response sequence</h2>
+        <ol class="steps">
+          <li><strong>Pause automatic updates for this plugin temporarily.</strong> Do not let production move between versions while you are reconciling orders.</li>
+          <li><strong>Reconcile recent orders.</strong> Export or review Stripe payments and compare them with WooCommerce orders marked Pending, Failed, or Cancelled.</li>
+          <li><strong>Back up the database and site.</strong> Payment reconciliation and plugin updates both touch business-critical records.</li>
+          <li><strong>Test 10.8.2 in staging.</strong> Run card and any important local payment methods. Confirm order status, emails, stock reduction, refunds, and webhook delivery.</li>
+          <li><strong>Check the Stripe connection and webhooks.</strong> In WooCommerce, open Stripe account details and reconfigure webhooks if they are pending, stale, or the problem continues.</li>
+          <li><strong>Deploy during a low-volume window.</strong> Monitor Stripe and WooCommerce side by side for the first live orders.</li>
+          <li><strong>Escalate privately if unresolved.</strong> Enable Stripe logging, gather the System Status Report and relevant logs, and send them through official support—not a public forum.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The 10.8.2 changelog directly addresses several mechanisms behind paid orders remaining pending. That does not prove every payment-status problem has the same cause. A store can still have stale webhooks, caching or security interference, theme/plugin conflicts, environment problems, or a different Stripe integration issue.</p>
+
+        <div class="notice danger">
+          <strong>Escalate immediately when:</strong>
+          customers were charged twice, paid orders were fulfilled twice, order amounts differ from Stripe, refunds fail, or you cannot determine whether an order was paid.
+        </div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-06-08">June 8, 2026</time><p>Version 10.8.0 published with Optimized Checkout Suite and Adaptive Pricing enabled by default for eligible stores.</p></div>
+          <div class="update"><time datetime="2026-06-11">June 11, 2026</time><p>Version 10.8.1 published; subsequent reports described successful Stripe payments not advancing WooCommerce order status.</p></div>
+          <div class="update"><time datetime="2026-06-15">June 15, 2026</time><p>Version 10.8.2 published with fixes for pending orders after successful payment and dropped payments in webhook handling.</p></div>
+          <div class="update"><time datetime="2026-06-16">June 16, 2026</time><p>This decision record was created from the official changelog and active support discussion.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/plugins/woocommerce-gateway-stripe/" rel="nofollow">WooCommerce Stripe Payment Gateway listing and changelog</a></li>
+          <li><a href="https://github.com/woocommerce/woocommerce-gateway-stripe/releases" rel="nofollow">Official GitHub releases</a></li>
+          <li><a href="https://wordpress.org/support/topic/10-8-1-update-and-stripe-not-updating-successful-payment-status/" rel="nofollow">Active WordPress.org support thread</a></li>
+          <li><a href="https://woocommerce.com/document/stripe/" rel="nofollow">Official WooCommerce Stripe documentation</a></li>
+        </ul>
+
+        <p><small>This is independent technical research, not official WooCommerce support. Store owners should verify the current plugin release and their own environment before changing a production payment system.</small></p>
+      </article>
+
+      <aside class="sidebar">
+        <section class="card">
+          <h2>At a glance</h2>
+          <p><span class="status">Update / patch</span></p>
+          <p><strong>Affected:</strong> primarily stores using 10.8.0–10.8.1, especially Adaptive Pricing flows.</p>
+          <p><strong>Latest reviewed:</strong> 10.8.2</p>
+          <p><strong>Confidence:</strong> confirmed release changes; individual root cause may vary.</p>
+        </section>
+        <section class="card">
+          <h2>On this page</h2>
+          <ul class="toc">
+            <li><a href="#what-changed">What changed?</a></li>
+            <li><a href="#affected">Who is affected?</a></li>
+            <li><a href="#decision">What should you do?</a></li>
+            <li><a href="#steps">Safest response</a></li>
+            <li><a href="#not-proven">What is not proven?</a></li>
+            <li><a href="#updates">Update log</a></li>
+            <li><a href="#sources">Official sources</a></li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, or Stripe.</div>
+  </footer>
+</body>
+</html>
