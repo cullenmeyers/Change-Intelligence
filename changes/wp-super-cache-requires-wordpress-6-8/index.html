@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WP Super Cache 3.1 Requires WordPress 6.8: What to Do</title>
+  <meta name="description" content="WP Super Cache 3.1.0 raised its minimum WordPress version to 6.8. See who is blocked, whether to defer the plugin update, and the safest upgrade order.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/wp-super-cache-requires-wordpress-6-8/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="WP Super Cache 3.1 Requires WordPress 6.8: What to Do">
+  <meta property="og:description" content="Who is blocked by the WordPress 6.8 requirement and the safest order for upgrading WordPress and WP Super Cache.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/wp-super-cache-requires-wordpress-6-8/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"WP Super Cache 3.1 requires WordPress 6.8: who is affected and what to do",
+    "description":"An evidence-backed change record for the WordPress 6.8 minimum requirement introduced in WP Super Cache 3.1.0.",
+    "datePublished":"2026-06-18",
+    "dateModified":"2026-06-18",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/wp-super-cache-requires-wordpress-6-8/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WP Super Cache","WordPress 6.8","WordPress plugins","minimum requirements","plugin updates"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What changed in WP Super Cache 3.1.0?",
+        "acceptedAnswer":{"@type":"Answer","text":"WP Super Cache 3.1.0 raised the plugin's minimum supported WordPress version to 6.8."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can a site below WordPress 6.8 update to WP Super Cache 3.1.x?",
+        "acceptedAnswer":{"@type":"Answer","text":"The current plugin release declares WordPress 6.8 or newer as a requirement. Sites below that version should upgrade WordPress first or temporarily remain on an older plugin release rather than forcing the update."}
+      },
+      {
+        "@type":"Question",
+        "name":"What is the safest upgrade order?",
+        "acceptedAnswer":{"@type":"Answer","text":"Back up the site, clone it to staging, test the WordPress 6.8 or newer core upgrade with the full theme and plugin stack, then install WP Super Cache 3.1.1 and verify cached pages, administration, APIs, and any ecommerce flows before production deployment."}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>WP Super Cache 3.1 requires WordPress 6.8 or newer</h1>
+        <div class="meta"><span>Reviewed June 18, 2026</span><span>Evidence confidence: Confirmed requirement change; individual site compatibility varies</span><span>Primary domain: Availability / continuity</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>Sites below WordPress 6.8 should not force WP Super Cache 3.1.x. Test and complete the WordPress core upgrade first, then update the cache plugin. If the core upgrade is not yet safe, defer the plugin update temporarily and treat the resulting maintenance gap as something to resolve—not a permanent setup.</div>
+
+        <p>The official WP Super Cache changelog says version <strong>3.1.0</strong>, released April 14, 2026, raised the minimum WordPress version to <strong>6.8</strong>. The current release, <strong>3.1.1</strong>, still lists WordPress 6.8 or higher and PHP 7.4 or higher. Version 3.1.1 also adds security hardening and fixes a PHP 8+ fatal error in supercache-only mode.</p>
+
+        <div class="notice warn"><strong>A minimum-version change is not the same as an immediate outage.</strong>An older WP Super Cache release may continue running on an older WordPress site, but that site cannot safely treat the old plugin line as a permanent destination because it will miss newer fixes and hardening.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>2.0.0 — January 10, 2025:</strong> the minimum WordPress version moved to 6.6 and the minimum PHP version moved to 7.2.</li>
+          <li><strong>3.0.0 — June 10, 2025:</strong> the minimum WordPress version moved to 6.7.</li>
+          <li><strong>3.1.0 — April 14, 2026:</strong> the minimum WordPress version moved to 6.8.</li>
+          <li><strong>3.1.1 — May 27, 2026:</strong> the current release retained the requirement and added security and reliability fixes.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This record matters most when your site runs WordPress 6.7 or earlier and uses WP Super Cache, especially when a theme, custom integration, managed host, or another plugin is delaying the WordPress core upgrade. Sites already on WordPress 6.8 or newer are not blocked by this particular requirement, though they should still test the cache-plugin update.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>WordPress 6.8+ and WP Super Cache is behind</td><td><strong>Update / patch</strong> to the current plugin release after staging</td><td>Back up, test cached and uncached pages, then monitor errors and cache generation</td></tr>
+            <tr><td>WordPress 6.7 or earlier and the site can be upgraded</td><td><strong>Upgrade WordPress first</strong>, then update WP Super Cache</td><td>Test the full theme and plugin stack before changing production</td></tr>
+            <tr><td>WordPress 6.7 or earlier and the core upgrade is currently blocked</td><td><strong>Defer the plugin update temporarily</strong> and prepare the compatibility work</td><td>Document the older plugin version, restrict the delay, and schedule the core upgrade rather than forcing 3.1.x</td></tr>
+            <tr><td>You do not know the current WordPress, PHP, or plugin version</td><td><strong>Inventory first</strong></td><td>Record versions, hosting constraints, cache mode, custom cache plugins, and recent backups before changing anything</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest upgrade sequence</h2>
+        <ol class="steps">
+          <li><strong>Record the current environment.</strong> Note the WordPress, PHP, WP Super Cache, theme, and business-critical plugin versions.</li>
+          <li><strong>Create a fresh backup.</strong> Include both files and the database.</li>
+          <li><strong>Clone production to staging.</strong> Use the same PHP version and important server configuration where possible.</li>
+          <li><strong>Test the WordPress core upgrade first.</strong> Confirm administration, publishing, login, forms, scheduled tasks, ecommerce, and custom integrations.</li>
+          <li><strong>Update WP Super Cache to 3.1.1 in staging.</strong> Preserve a copy of the previous cache configuration and any custom WP Super Cache plugins.</li>
+          <li><strong>Verify caching behavior.</strong> Test logged-out pages, logged-in behavior, cache clearing, preload, REST API, Ajax, JSON, and WooCommerce endpoints where used.</li>
+          <li><strong>Deploy during a low-traffic window.</strong> Clear and regenerate caches, then monitor PHP errors, page output, API responses, and server load.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The requirement change does not prove that an existing older WP Super Cache release instantly stops working below WordPress 6.8. It also does not prove that every site can upgrade WordPress without theme or plugin conflicts. The evidence supports an upgrade-order decision: validate WordPress compatibility first, then move the cache plugin to the current supported line.</p>
+
+        <div class="notice danger"><strong>Escalate the platform work when:</strong> the site cannot upgrade WordPress because of an unsupported theme, abandoned plugin, obsolete PHP environment, or hosting restriction while a public production site remains dependent on an older cache-plugin release.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2025-01-10">January 10, 2025</time><p>WP Super Cache 2.0.0 raised its minimum requirements to WordPress 6.6 and PHP 7.2.</p></div>
+          <div class="update"><time datetime="2025-06-10">June 10, 2025</time><p>Version 3.0.0 raised the minimum WordPress version to 6.7.</p></div>
+          <div class="update"><time datetime="2026-04-14">April 14, 2026</time><p>Version 3.1.0 raised the minimum WordPress version to 6.8.</p></div>
+          <div class="update"><time datetime="2026-05-27">May 27, 2026</time><p>Version 3.1.1 retained the requirement and added security hardening and reliability fixes.</p></div>
+          <div class="update"><time datetime="2026-06-18">June 18, 2026</time><p>This decision record was created from the official plugin listing and release history.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/plugins/wp-super-cache/" rel="nofollow">WP Super Cache listing, requirements, and changelog</a></li>
+          <li><a href="https://github.com/Automattic/wp-super-cache/releases" rel="nofollow">Official WP Super Cache releases</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official WordPress or Automattic support. Verify the current release and test your own environment before changing a production cache or WordPress core installation.</small></p>
+      </article>
+
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Upgrade platform first</span></p><p><strong>Affected:</strong> WP Super Cache users on WordPress 6.7 or earlier.</p><p><strong>Latest reviewed:</strong> 3.1.1</p><p><strong>Current requirements:</strong> WordPress 6.8+ and PHP 7.4+.</p><p><strong>Confidence:</strong> requirement and releases confirmed; individual compatibility varies.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Upgrade sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WordPress, Automattic, or WP Super Cache.</div></footer>
+</body>
+</html>
