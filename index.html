@@ -16,7 +16,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="./">What Just Changed</a>
-      <a class="nav-link" href="./changes/woocommerce-stripe-10-8-payment-status-not-updating/">Latest change record</a>
+      <a class="nav-link" href="#records">Change records</a>
     </div>
   </header>
 
@@ -29,17 +29,27 @@
   </section>
 
   <main class="container">
-    <article class="article home-card">
-      <div class="status">Active incident record</div>
-      <h2>WooCommerce Stripe 10.8.x: successful payments stuck in Pending Payment</h2>
-      <p><strong>Latest confirmed status:</strong> version 10.8.2 was released on June 15, 2026 with fixes intended to prevent Adaptive Pricing orders from remaining pending after successful payment and to prevent some webhook payments from being dropped.</p>
-      <p>The decision record separates affected versions, immediate order reconciliation, webhook checks, staging, and the safest update path.</p>
-      <a class="button" href="./changes/woocommerce-stripe-10-8-payment-status-not-updating/">Read the decision record</a>
-    </article>
+    <section id="records" class="record-list" aria-label="Change records">
+      <article class="article home-card">
+        <div class="status">Active incident record</div>
+        <h2>WooCommerce Stripe 10.8.x: successful payments stuck in Pending Payment</h2>
+        <p><strong>Latest confirmed status:</strong> version 10.8.2 was released on June 15, 2026 with fixes intended to prevent Adaptive Pricing orders from remaining pending after successful payment and to prevent some webhook payments from being dropped.</p>
+        <p>The decision record separates affected versions, immediate order reconciliation, webhook checks, staging, and the safest update path.</p>
+        <a class="button" href="./changes/woocommerce-stripe-10-8-payment-status-not-updating/">Read the decision record</a>
+      </article>
+
+      <article class="article home-card">
+        <div class="status">Confirmed capability removal</div>
+        <h2>Mollie removed Payconiq from its WooCommerce plugin</h2>
+        <p><strong>Confirmed change:</strong> version 8.1.3 deleted the Payconiq payment method. The current release line has advanced to 8.1.7 without restoring it.</p>
+        <p>Merchants actively using Payconiq should prepare and test another checkout method before updating from 8.1.2 or earlier.</p>
+        <a class="button" href="./changes/mollie-payconiq-removed-woocommerce/">Read the migration decision</a>
+      </article>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, or Stripe.</div>
+    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, or Payconiq.</div>
   </footer>
 </body>
 </html>
