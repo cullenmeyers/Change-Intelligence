@@ -8,6 +8,11 @@ The product category is change intelligence. The first wedge is WordPress plugin
 
 - https://whatjustchanged.com/
 - WooCommerce Stripe 10.8.x payment-status incident
+- Mollie Payconiq removal
+- WooCommerce PayPal Pay with Crypto default change
+- WP Super Cache WordPress 6.8 requirement
+
+The initial public validation cohort is now complete at four records. See [`VALIDATION.md`](./VALIDATION.md) for the measurement plan, review cadence, and scope lock.
 
 ## Deployment
 
@@ -17,9 +22,12 @@ Current production setup includes:
 
 - permanent custom domain
 - absolute canonical URLs
-- `mainEntityOfPage` in the TechArticle schema
+- `mainEntityOfPage` in TechArticle schema
 - production sitemap
 - sitemap reference in `robots.txt`
 - permanent redirect from the former Vercel production hostname
+- favicon support
 
-Do not expand the site until the first page is live, indexed, and tested for impressions and useful referrals.
+## Current stage
+
+Do not add more public records yet. The next step is to enable page-level analytics, collect Search Console and referral evidence, test whether the recommendations help real users choose an action, and review the four-record cohort before expanding.
