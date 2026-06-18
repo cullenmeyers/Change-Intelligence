@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://whatjustchanged.com/</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-18</lastmod>
   </url>
   <url>
     <loc>https://whatjustchanged.com/changes/woocommerce-stripe-10-8-payment-status-not-updating/</loc>
@@ -11,5 +11,9 @@
   <url>
     <loc>https://whatjustchanged.com/changes/mollie-payconiq-removed-woocommerce/</loc>
     <lastmod>2026-06-17</lastmod>
+  </url>
+  <url>
+    <loc>https://whatjustchanged.com/changes/woocommerce-paypal-pay-with-crypto-enabled-by-default/</loc>
+    <lastmod>2026-06-18</lastmod>
   </url>
 </urlset>
