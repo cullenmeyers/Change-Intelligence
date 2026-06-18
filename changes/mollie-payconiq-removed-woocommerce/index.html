@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mollie Removed Payconiq from WooCommerce: What to Do</title>
+  <meta name="description" content="Mollie Payments for WooCommerce 8.1.3 removed Payconiq. See who is affected, what to do before updating, and how to prepare another checkout method.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/mollie-payconiq-removed-woocommerce/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Mollie Removed Payconiq from WooCommerce: What to Do">
+  <meta property="og:description" content="Who is affected by the Payconiq removal and how to prepare another checkout method before updating.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/mollie-payconiq-removed-woocommerce/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Mollie removed Payconiq from WooCommerce: who is affected and what to do",
+    "description":"An evidence-backed change record for the removal of Payconiq beginning with Mollie Payments for WooCommerce 8.1.3.",
+    "datePublished":"2026-06-17",
+    "dateModified":"2026-06-17",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/mollie-payconiq-removed-woocommerce/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"}
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>Mollie removed Payconiq from WooCommerce</h1>
+        <div class="meta"><span>Reviewed June 17, 2026</span><span>Evidence confidence: Confirmed removal; reason not stated</span><span>Primary domain: Availability / continuity</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>Merchants actively offering Payconiq should prepare and test another payment method before updating from version 8.1.2 or earlier to version 8.1.3 or later.</div>
+
+        <p>The official Mollie Payments for WooCommerce changelog says version <strong>8.1.3</strong>, released January 19, 2026, <strong>deleted the Payconiq payment method</strong>. Payconiq had been added in version 7.7.0. The latest listed release is 8.1.7, so the removal remains part of the current release line.</p>
+
+        <div class="notice warn"><strong>Do not rely only on the directory description.</strong>The current WordPress.org description still lists Payconiq even though its changelog says the method was deleted. Verify the actual options in your Mollie Dashboard and WooCommerce checkout.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>7.7.0 — August 12, 2024:</strong> Payconiq was added.</li>
+          <li><strong>8.1.3 — January 19, 2026:</strong> the changelog says, “Deleted – Payconiq payment method.”</li>
+          <li><strong>8.1.7 — June 15, 2026:</strong> the latest release notes do not restore Payconiq.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This matters most when your store runs 8.1.2 or earlier, Payconiq is enabled, customers actually use it, and you plan to update to 8.1.3 or later. Stores that never offered Payconiq are not directly affected by this removal.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>On 8.1.2 or earlier and actively offering Payconiq</td><td><strong>Prepare migration</strong> before updating</td><td>Measure usage, choose another available method, and test it in staging</td></tr>
+            <tr><td>On 8.1.3+ and Payconiq is gone</td><td><strong>Migrate / replace</strong> the checkout option</td><td>Test successful and failed payments before directing customers to it</td></tr>
+            <tr><td>Payconiq was never used</td><td><strong>Continue unchanged</strong></td><td>Still run a checkout smoke test after updating</td></tr>
+            <tr><td>Payconiq still appears after 8.1.3+</td><td><strong>Investigate</strong></td><td>Verify the live checkout and an actual test payment rather than trusting labels</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest migration sequence</h2>
+        <ol class="steps">
+          <li><strong>Check usage.</strong> Review recent Mollie and WooCommerce transactions.</li>
+          <li><strong>Confirm the installed version.</strong> The documented removal begins with 8.1.3.</li>
+          <li><strong>Choose an alternative available to your account and region.</strong> Check the Mollie Dashboard and WooCommerce payment settings.</li>
+          <li><strong>Test in staging.</strong> Verify visibility, successful payment, failed payment, order status, emails, refunds, and webhooks.</li>
+          <li><strong>Update during a low-volume window.</strong> Confirm the replacement appears in production.</li>
+          <li><strong>Monitor conversion and payment failures.</strong> Compare results before and after the change.</li>
+        </ol>
+
+        <h2 id="alternatives">Which replacement should you use?</h2>
+        <p>There is no universal replacement. The right method depends on the merchant's country, account, and customers. The current plugin page lists options including Bancontact, Belfius, KBC/CBC, cards, PayPal, and other local methods, but availability must be confirmed in the merchant's own account.</p>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The release notes confirm the removal but do not explain why it happened, whether plugin support will return, or why the current directory description still lists Payconiq. The evidence supports a migration decision, not a broader claim about Payconiq outside this plugin.</p>
+
+        <div class="notice danger"><strong>Escalate before updating when:</strong>Payconiq represents meaningful checkout volume, no suitable alternative is enabled, or you cannot test the replacement safely.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2024-08-12">August 12, 2024</time><p>Version 7.7.0 added Payconiq.</p></div>
+          <div class="update"><time datetime="2026-01-19">January 19, 2026</time><p>Version 8.1.3 deleted Payconiq.</p></div>
+          <div class="update"><time datetime="2026-06-15">June 15, 2026</time><p>Version 8.1.7 became the latest listed release without restoring it.</p></div>
+          <div class="update"><time datetime="2026-06-17">June 17, 2026</time><p>This record was created from the official changelog and current release history.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/plugins/mollie-payments-for-woocommerce/" rel="nofollow">Mollie Payments for WooCommerce listing and changelog</a></li>
+          <li><a href="https://github.com/mollie/WooCommerce/releases" rel="nofollow">Official Mollie WooCommerce releases</a></li>
+          <li><a href="https://github.com/mollie/WooCommerce/releases/tag/8.1.3" rel="nofollow">Official 8.1.3 release</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official Mollie support. Verify current method availability in your own account before changing checkout.</small></p>
+      </article>
+
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Prepare migration</span></p><p><strong>Affected:</strong> merchants using Payconiq and moving from 8.1.2 or earlier to 8.1.3+.</p><p><strong>Latest reviewed:</strong> 8.1.7</p><p><strong>Confidence:</strong> removal confirmed; reason and future support are not stated.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Migration sequence</a></li><li><a href="#alternatives">Replacement options</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Mollie, WooCommerce, Payconiq, or WordPress.</div></footer>
+</body>
+</html>
