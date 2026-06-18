@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WooCommerce PayPal Enabled Pay with Crypto by Default: What to Check</title>
+  <meta name="description" content="WooCommerce PayPal Payments 4.0.1 enabled Pay with Crypto by default for eligible merchants. See who is affected and what to review before or after updating.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/woocommerce-paypal-pay-with-crypto-enabled-by-default/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="WooCommerce PayPal Enabled Pay with Crypto by Default: What to Check">
+  <meta property="og:description" content="Who may be affected by the Pay with Crypto default change and how to review checkout safely.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/woocommerce-paypal-pay-with-crypto-enabled-by-default/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"WooCommerce PayPal enabled Pay with Crypto by default for eligible merchants: what to check",
+    "description":"An evidence-backed change record for the Pay with Crypto default change in WooCommerce PayPal Payments 4.0.1.",
+    "datePublished":"2026-06-18",
+    "dateModified":"2026-06-18",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/woocommerce-paypal-pay-with-crypto-enabled-by-default/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WooCommerce","PayPal Payments","Pay with Crypto","WordPress plugins","checkout configuration"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What changed in WooCommerce PayPal Payments 4.0.1?",
+        "acceptedAnswer":{"@type":"Answer","text":"The official changelog says Pay with Crypto was enabled by default for eligible merchants in version 4.0.1."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does every merchant get Pay with Crypto after updating?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. The changelog limits the change to eligible merchants, so availability can vary by merchant account, country, and PayPal eligibility."}
+      },
+      {
+        "@type":"Question",
+        "name":"What should a store owner do before or after updating?",
+        "acceptedAnswer":{"@type":"Answer","text":"Review the PayPal Payments settings and customer-facing checkout in staging, decide intentionally whether to offer the method, test payment and refund behavior, and then deploy during a low-volume window."}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>WooCommerce PayPal enabled Pay with Crypto by default for eligible merchants</h1>
+        <div class="meta"><span>Reviewed June 18, 2026</span><span>Evidence confidence: Confirmed default change; merchant eligibility varies</span><span>Primary domain: Configuration / checkout policy</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>Eligible merchants using WooCommerce PayPal Payments 4.0.1 or later should inspect both plugin settings and the customer-facing checkout, then intentionally keep or disable Pay with Crypto rather than assuming the update preserved the previous payment-method mix.</div>
+
+        <p>The official WooCommerce PayPal Payments changelog says version <strong>4.0.1</strong>, released March 31, 2026, made <strong>Pay with Crypto enabled by default for eligible merchants</strong>. The later 4.0.2, 4.0.3, and 4.0.4 changelogs do not state that this default was reversed.</p>
+
+        <div class="notice warn"><strong>Do not assume every store or shopper will see the method.</strong> The release note limits the change to eligible merchants. Availability may differ by PayPal account, country, currency, configuration, and customer context.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>4.0.1 — March 31, 2026:</strong> Pay with Crypto was enabled by default for eligible merchants.</li>
+          <li><strong>4.0.2 and 4.0.3:</strong> later release notes fixed other payment and checkout problems but did not announce a reversal of the default.</li>
+          <li><strong>4.0.4 — May 19, 2026:</strong> the latest reviewed release also does not state that Pay with Crypto returned to opt-in by default.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This record matters most when your store uses WooCommerce PayPal Payments 4.0.1 or later, the merchant account is eligible for Pay with Crypto, and your business did not previously intend to add another checkout method. Stores that are not eligible, have the method disabled, or do not display it at checkout may not experience a customer-facing change.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>Planning an update and you do not want to offer crypto</td><td><strong>Review and disable</strong> the method in staging if it becomes available or enabled</td><td>Record the current payment-method list before updating and compare it afterward</td></tr>
+            <tr><td>Updated and Pay with Crypto now appears</td><td><strong>Make an intentional keep-or-disable decision</strong></td><td>Confirm checkout labels, order status, refunds, emails, and customer support handling</td></tr>
+            <tr><td>Updated but the method does not appear</td><td><strong>Continue unchanged</strong> unless you intended to offer it</td><td>Do not treat absence as a plugin failure without checking account eligibility and settings</td></tr>
+            <tr><td>You intentionally want to offer it</td><td><strong>Configure and test</strong> before relying on it</td><td>Run a complete staging transaction and refund flow, then monitor the first live orders</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest review sequence</h2>
+        <ol class="steps">
+          <li><strong>Capture the current checkout.</strong> Note which PayPal-related methods are visible before the update.</li>
+          <li><strong>Back up and use staging.</strong> Payment-method defaults can change the live checkout without changing your products or theme.</li>
+          <li><strong>Update staging to the version you plan to deploy.</strong> The latest reviewed release is 4.0.4.</li>
+          <li><strong>Inspect PayPal Payments settings and checkout.</strong> Check desktop, mobile, classic checkout, and block checkout where relevant.</li>
+          <li><strong>Choose intentionally.</strong> Keep Pay with Crypto only when it fits the store's payment policy and support process; otherwise disable it.</li>
+          <li><strong>Test the full order lifecycle.</strong> Verify successful payment, cancellation, order status, emails, refunds, and any webhook-dependent updates.</li>
+          <li><strong>Deploy during a low-volume window.</strong> Compare the live payment-method list with staging and monitor the first orders.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The changelog confirms the default change for eligible merchants. It does not prove that every merchant became eligible, that every shopper will see the method, that all countries or currencies are supported, or that a merchant receives funds directly in cryptocurrency. Those details must be verified in the merchant's own PayPal account and checkout.</p>
+
+        <div class="notice danger"><strong>Escalate before leaving it live when:</strong> the method appears unexpectedly in production, its visibility differs from staging, order status does not update correctly, refunds fail, or your team cannot explain the customer experience.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-03-31">March 31, 2026</time><p>Version 4.0.1 enabled Pay with Crypto by default for eligible merchants.</p></div>
+          <div class="update"><time datetime="2026-04-02">April 2, 2026</time><p>Version 4.0.2 was released without stating that the default was reversed.</p></div>
+          <div class="update"><time datetime="2026-04-27">April 27, 2026</time><p>Version 4.0.3 was released with other checkout fixes and no announced reversal.</p></div>
+          <div class="update"><time datetime="2026-05-19">May 19, 2026</time><p>Version 4.0.4 became the latest reviewed release and did not announce a return to opt-in by default.</p></div>
+          <div class="update"><time datetime="2026-06-18">June 18, 2026</time><p>This decision record was created from the official changelog and current WooCommerce documentation.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/plugins/woocommerce-paypal-payments/" rel="nofollow">WooCommerce PayPal Payments listing and changelog</a></li>
+          <li><a href="https://github.com/woocommerce/woocommerce-paypal-payments/releases" rel="nofollow">Official GitHub releases</a></li>
+          <li><a href="https://woocommerce.com/document/woocommerce-paypal-payments/" rel="nofollow">Official WooCommerce PayPal Payments documentation</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official WooCommerce or PayPal support. Verify eligibility, settings, and checkout behavior in your own account before changing a production payment system.</small></p>
+      </article>
+
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Review configuration</span></p><p><strong>Affected:</strong> eligible merchants using WooCommerce PayPal Payments 4.0.1+.</p><p><strong>Latest reviewed:</strong> 4.0.4</p><p><strong>Confidence:</strong> default change confirmed; eligibility and customer visibility vary.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Review sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WooCommerce, PayPal, Automattic, or WordPress.</div></footer>
+</body>
+</html>
