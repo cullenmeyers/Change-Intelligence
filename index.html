@@ -66,11 +66,19 @@
         <p>Sites on WordPress 6.7 or earlier should test and complete the WordPress core upgrade first—or defer the cache-plugin update temporarily rather than forcing an unsupported combination.</p>
         <a class="button" href="./changes/wp-super-cache-requires-wordpress-6-8/">Read the upgrade decision</a>
       </article>
+
+      <article class="article home-card">
+        <div class="status">Revenue-impacting payment mismatch</div>
+        <h2>WooCommerce PayPal Payments 4.0.4 amount mismatches</h2>
+        <p><strong>Confirmed status:</strong> public support threads reported discount and rounding mismatches after 4.0.4, and the 4.1.0 changelog includes fixes for inclusive-tax rounding, negative-fee mismatch, gift-card calculation, and PayPal line-item mismatches.</p>
+        <p>Stores that processed discounted or tax-sensitive PayPal orders on 4.0.4 should reconcile PayPal totals against WooCommerce totals before assuming the issue was only visual.</p>
+        <a class="button" href="./changes/woocommerce-paypal-4-0-4-amount-mismatch/">Read the reconciliation decision</a>
+      </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, PayPal, or WP Super Cache.</div>
+    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, PayPal, Syde, or WP Super Cache.</div>
   </footer>
 </body>
 </html>
