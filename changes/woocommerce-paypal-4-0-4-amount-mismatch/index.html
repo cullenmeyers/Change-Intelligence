@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WooCommerce PayPal 4.0.4 Amount Mismatch: What to Check</title>
+  <meta name="description" content="WooCommerce PayPal Payments 4.0.4 had reports of order total, discount, and rounding mismatches. See who is affected, what 4.1.0 fixed, and how to audit safely.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="WooCommerce PayPal 4.0.4 Amount Mismatch: What to Check">
+  <meta property="og:description" content="Who may be affected by WooCommerce PayPal Payments 4.0.4 order-total, discount, and rounding mismatches, and how to move safely to 4.1.0.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"WooCommerce PayPal Payments 4.0.4 amount mismatch: who is affected and what to check",
+    "description":"An evidence-backed change record for WooCommerce PayPal Payments 4.0.4 order-total, discount, tax rounding, and negative-fee mismatch reports and the 4.1.0 fixes.",
+    "datePublished":"2026-06-25",
+    "dateModified":"2026-06-25",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WooCommerce","PayPal Payments","WordPress plugins","payment totals","discounts","tax rounding"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What changed around WooCommerce PayPal Payments 4.0.4?",
+        "acceptedAnswer":{"@type":"Answer","text":"Public support threads reported amount-related problems after updating from 4.0.3 to 4.0.4, including a discount being applied twice and a one-cent PayPal order-total mismatch. Version 4.1.0 later shipped fixes for inclusive-tax rounding, negative fee calculation, gift-card calculation, and PayPal/WooCommerce amount mismatches."}
+      },
+      {
+        "@type":"Question",
+        "name":"Should every store immediately update to 4.1.0?",
+        "acceptedAnswer":{"@type":"Answer","text":"Stores affected by 4.0.4 amount mismatches should test 4.1.0 in staging, reconcile affected PayPal transactions against WooCommerce orders, and then update production during a low-volume window. Stores stable on 4.0.3 can test 4.1.0 before moving."}
+      },
+      {
+        "@type":"Question",
+        "name":"What should affected merchants audit?",
+        "acceptedAnswer":{"@type":"Answer","text":"Compare WooCommerce order totals, PayPal transaction totals, discounts, gift cards, negative fees, tax rounding, refunds, and accounting exports for orders created while running 4.0.4."}
+      }
+    ]
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>WooCommerce PayPal Payments 4.0.4 amount mismatches</h1>
+        <div class="meta"><span>Reviewed June 25, 2026</span><span>Evidence confidence: Public support reports plus official 4.1.0 changelog fixes</span><span>Primary domain: Revenue / accounting accuracy</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>Stores that processed discounted, gift-card, negative-fee, subscription, or tax-sensitive PayPal orders on version 4.0.4 should audit PayPal totals against WooCommerce totals. If mismatches appear, test and move to 4.1.0; if a store is stable on 4.0.3, test 4.1.0 before updating production.</div>
+
+        <p>Two public support threads describe amount-related issues after updating WooCommerce PayPal Payments from <strong>4.0.3</strong> to <strong>4.0.4</strong>: one reported a reward-points discount being deducted twice, and another reported a one-cent PayPal settlement mismatch on inclusive-tax coupon orders. Plugin support acknowledged known 4.0.4-related amount issues and pointed users toward the next fixed release path.</p>
+
+        <p>Version <strong>4.1.0</strong>, released June 23, 2026, includes several amount-related fixes, including PayPal amount mismatch from inclusive-tax rounding, negative-fee calculation mismatch, third-party gift-card calculation, and mismatched line items not delivered to the PayPal transaction overview.</p>
+
+        <div class="notice warn"><strong>Do not treat this as only a display bug.</strong>If PayPal received or settled a different amount than WooCommerce expected, the store may need order-level reconciliation before closing accounting, refunds, or customer-support questions.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>4.0.3 — April 27, 2026:</strong> the last known stable version for the merchant who reported the double-discount issue.</li>
+          <li><strong>4.0.4 — May 19, 2026:</strong> affected users reported amount mismatches after updating from 4.0.3.</li>
+          <li><strong>4.1.0-rc4:</strong> support said the one-cent mismatch had already been addressed in a release candidate.</li>
+          <li><strong>4.1.0 — June 23, 2026:</strong> the stable changelog lists several fixes related to amount mismatch, rounding, negative fees, gift cards, and line items.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This record matters most when your store used WooCommerce PayPal Payments 4.0.4 and processed orders with coupons, reward points, third-party gift cards, negative fees, inclusive tax, subscriptions with heavy discounts, or accounting workflows that depend on exact PayPal settlement totals. Stores that skipped 4.0.4, had no discounted PayPal orders during the window, or already reconciled without mismatch may not be affected.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>Running 4.0.4 and seeing PayPal/WooCommerce total mismatches</td><td><strong>Audit and update</strong> after staging 4.1.0</td><td>Compare affected order totals, PayPal settlement totals, discounts, fees, tax, and refunds before closing the books</td></tr>
+            <tr><td>Rolled back to 4.0.3 and the store is stable</td><td><strong>Stay stable while testing</strong> 4.1.0</td><td>Do not re-enter 4.0.4; test real coupon/gift-card/tax scenarios in staging</td></tr>
+            <tr><td>Already updated to 4.1.0</td><td><strong>Verify the fix</strong> on representative orders</td><td>Test coupons, reward points, gift cards, tax-inclusive orders, refunds, and accounting exports</td></tr>
+            <tr><td>You had customer or merchant financial loss</td><td><strong>Escalate privately</strong> through support</td><td>Prepare order IDs, PayPal transaction IDs, screenshots, plugin version history, and the related support-thread URL</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest reconciliation sequence</h2>
+        <ol class="steps">
+          <li><strong>Identify the exposure window.</strong> Record when 4.0.4 was installed and when 4.1.0 or 4.0.3 replaced it.</li>
+          <li><strong>Filter affected order types.</strong> Focus first on PayPal orders with coupons, reward points, gift cards, negative fees, inclusive tax, subscriptions, and unusual discounts.</li>
+          <li><strong>Compare order-level amounts.</strong> For each suspect order, compare WooCommerce total, PayPal transaction total, discount lines, tax, fees, refunds, and payout records.</li>
+          <li><strong>Back up and test 4.1.0 in staging.</strong> Recreate the same discount/tax/payment scenarios before production deployment.</li>
+          <li><strong>Deploy during a low-volume window.</strong> Monitor the first live discounted PayPal orders and compare them immediately against PayPal.</li>
+          <li><strong>Document unresolved losses separately.</strong> Keep a list of affected transaction IDs, amounts, customer impact, and support correspondence.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The public evidence shows real amount-mismatch reports and official 4.1.0 fixes in the same area. It does not prove that every 4.0.4 store had incorrect totals, that all reward-points or gift-card plugins were affected, or that every mismatch has the same root cause. The correct action is targeted reconciliation, not assuming all 4.0.4 orders are wrong.</p>
+
+        <div class="notice danger"><strong>Escalate before closing accounting when:</strong> PayPal settled more or less than WooCommerce recorded, discounts appear twice, tax-inclusive orders differ by cents across many transactions, refunds do not match the collected amount, or management is asking about recovery for financial loss.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-05-19">May 19, 2026</time><p>Version 4.0.4 was released.</p></div>
+          <div class="update"><time datetime="2026-06-18">June 18, 2026</time><p>A public support thread reported discounts being applied twice since 4.0.4; support recommended staying on 4.0.3 until 4.0.5/next fixed release.</p></div>
+          <div class="update"><time datetime="2026-06-23">June 23, 2026</time><p>Version 4.1.0 was released with amount-related fixes including inclusive-tax rounding, negative-fee mismatch, third-party gift-card calculation, and line-item delivery to PayPal overview.</p></div>
+          <div class="update"><time datetime="2026-06-25">June 25, 2026</time><p>This decision record was created from the official changelog and public support threads.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/plugins/woocommerce-paypal-payments/" rel="nofollow">WooCommerce PayPal Payments listing and changelog</a></li>
+          <li><a href="https://wordpress.org/support/topic/order-discount-applied-twice-since-4-0-4/" rel="nofollow">Support thread: order discount applied twice since 4.0.4</a></li>
+          <li><a href="https://wordpress.org/support/topic/incorrect-paypal-order-total-since-version-4-0-4-1-cent-difference/" rel="nofollow">Support thread: incorrect PayPal order total since 4.0.4</a></li>
+          <li><a href="https://github.com/woocommerce/woocommerce-paypal-payments/releases" rel="nofollow">Official GitHub releases</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official WooCommerce, PayPal, legal, tax, or accounting advice. Verify your own order data and use official support for merchant-specific financial questions.</small></p>
+      </article>
+
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Audit and update</span></p><p><strong>Affected:</strong> stores that ran WooCommerce PayPal Payments 4.0.4 and processed discounted, gift-card, tax-sensitive, or fee-adjusted PayPal orders.</p><p><strong>Latest reviewed:</strong> 4.1.0</p><p><strong>Confidence:</strong> public reports plus official changelog fixes; individual order impact varies.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Reconciliation sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WooCommerce, PayPal, Automattic, Syde, or WordPress.</div></footer>
+</body>
+</html>
