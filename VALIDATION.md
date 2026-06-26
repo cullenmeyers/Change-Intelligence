@@ -2,21 +2,36 @@
 
 ## Scope lock
 
-The initial public validation set is complete at four decision records:
+The first public validation set launched with four decision records:
 
 1. WooCommerce Stripe 10.8.x payment status not updating
 2. Mollie Payconiq removal
 3. WooCommerce PayPal Pay with Crypto enabled by default
 4. WP Super Cache requiring WordPress 6.8
 
-Do not add more public records until the first validation review. New changes may be researched and queued privately, but the public site stays at four records so results are attributable to a small, deliberate cohort rather than volume.
+After the first review on June 25, 2026, one additional operational record was added because the strongest early search signal came from the active payment-incident pattern:
+
+5. WooCommerce PayPal Payments 4.0.4 amount mismatch
+
+The validation set is now locked at five records until the second review. New changes may be researched and queued privately, but the public site should not expand to a broad batch until there is stronger evidence about which record type earns useful search demand or human feedback.
 
 ## Validation start
 
 - Start date: June 18, 2026
-- First review: 7 days after Web Analytics is enabled
-- Second review: 14 days after Web Analytics is enabled
-- Main decision review: 30 days after Web Analytics is enabled
+- First review: June 25, 2026
+- Second review: July 2, 2026
+- Main decision review: July 18, 2026
+
+## First review notes — June 25, 2026
+
+Google Search Console showed early discovery across the site. The Stripe payment-status record produced the clearest signal with all recorded Google clicks in the first cohort. This does not prove the business, but it does justify one more test page in the same urgent operational-decision family.
+
+Decision from first review:
+
+- Continue, but do not scale volume yet.
+- Add exactly one more urgent operational record.
+- Keep tracking whether payment-incident pages outperform compatibility, default-change, or capability-removal pages.
+- Do not judge the market from Vercel visitor count alone because some visits may come from owner testing, email recipients, previews, or link checks.
 
 ## What to measure
 
@@ -49,7 +64,7 @@ From Vercel Web Analytics, capture by page:
 - referrer/source
 - country only when useful for interpreting a region-specific change
 
-The purpose is to distinguish Google discovery from direct links, support-thread referrals, and manual sharing.
+The purpose is to distinguish Google discovery from direct links, support-thread referrals, email outreach, and manual sharing.
 
 ### 4. Recommendation usefulness
 
@@ -70,12 +85,13 @@ Recheck source evidence when the underlying change is still active:
 - Mollie Payconiq: recheck if Payconiq is restored, replaced, or addressed in a later release
 - PayPal Pay with Crypto: recheck when eligibility, defaults, or documentation changes
 - WP Super Cache: recheck when requirements or the current release change
+- PayPal amount mismatch: recheck if 4.1.x follow-up releases, reopened support threads, or additional mismatch reports appear
 
 ## Decision rules
 
 ### Continue and expand carefully
 
-Continue when the pages are indexed and at least some records show relevant non-branded impressions, useful referrals, or clear user-action value. Add the next record only after identifying which page pattern produced the strongest signal.
+Continue when pages are indexed and at least some records show relevant non-branded impressions, useful referrals, or clear user-action value. Add the next record only after identifying which page pattern produced the strongest signal.
 
 ### Refine before expanding
 
@@ -85,7 +101,7 @@ Refine when pages are indexed but the queries or referrals do not match the inte
 
 Investigate when pages are not indexed, Google selects a different canonical, analytics receives no real visits after distribution, or users cannot tell what action to take.
 
-## Prohibited during the initial validation window
+## Prohibited during the second validation window
 
 - Do not expand to 10–25 public pages.
 - Do not redesign the site.
