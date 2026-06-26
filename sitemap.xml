@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://whatjustchanged.com/</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-25</lastmod>
   </url>
   <url>
     <loc>https://whatjustchanged.com/changes/woocommerce-stripe-10-8-payment-status-not-updating/</loc>
@@ -19,5 +19,9 @@
   <url>
     <loc>https://whatjustchanged.com/changes/wp-super-cache-requires-wordpress-6-8/</loc>
     <lastmod>2026-06-18</lastmod>
+  </url>
+  <url>
+    <loc>https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/</loc>
+    <lastmod>2026-06-25</lastmod>
   </url>
 </urlset>
