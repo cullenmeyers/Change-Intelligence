@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stripe Charged Order Without Shipping Cost: What to Check</title>
+  <meta name="description" content="A WooCommerce Stripe 10.7.x support case reported Stripe capturing less than the WooCommerce order total because shipping and VAT were missing. See how to audit and respond.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/stripe-shipping-cost-not-charged-10-7/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Stripe Charged Order Without Shipping Cost: What to Check">
+  <meta property="og:description" content="How to audit WooCommerce Stripe orders when Stripe captured less than WooCommerce recorded, especially shipping and VAT differences.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/stripe-shipping-cost-not-charged-10-7/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"WooCommerce Stripe charged order without shipping cost: who is affected and what to check",
+    "description":"An evidence-backed change record for a WooCommerce Stripe support case where Stripe captured less than the WooCommerce order total because shipping and VAT were missing.",
+    "datePublished":"2026-07-06",
+    "dateModified":"2026-07-06",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/stripe-shipping-cost-not-charged-10-7/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WooCommerce Stripe","shipping cost","VAT","payment total mismatch","Adaptive Pricing"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What was reported?",
+        "acceptedAnswer":{"@type":"Answer","text":"A public support thread reported a WooCommerce order total of 43.52 euros while Stripe captured 40.95 euros, with the missing 2.57 euros matching shipping plus VAT on shipping."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does this prove a universal WooCommerce Stripe bug?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. Plugin support said they could not reproduce the issue and that it may already have been resolved by recent updates or another plugin change. The correct action is targeted order-level auditing."}
+      },
+      {
+        "@type":"Question",
+        "name":"What should affected stores do first?",
+        "acceptedAnswer":{"@type":"Answer","text":"Compare WooCommerce totals to Stripe captured amounts for orders in the exposure window, focusing on shipping, VAT, Adaptive Pricing, classic checkout, and any shipping-calculator plugins."}
+      }
+    ]
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>WooCommerce Stripe charged an order without shipping cost</h1>
+        <div class="meta"><span>Reviewed July 6, 2026</span><span>Evidence confidence: Single public report plus support guidance; not a confirmed universal bug</span><span>Primary domain: Revenue / reconciliation</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>If Stripe captured less than the WooCommerce order total, do not treat the order as fully reconciled just because WooCommerce says paid. Audit the individual Stripe transaction, identify the missing amount, and handle the difference manually before closing accounting or fulfillment follow-up.</div>
+
+        <p>A public WooCommerce Stripe support thread reported an order where WooCommerce recorded <strong>43.52 €</strong> including shipping and VAT, while Stripe captured only <strong>40.95 €</strong>. The missing <strong>2.57 €</strong> matched shipping plus VAT on shipping. The store was using WooCommerce Stripe Gateway 10.7.x when the affected order occurred, and the user said the issue had not reappeared after updating.</p>
+
+        <p>Plugin support said recent Adaptive Pricing, Optimized Checkout, checkout-update, and payment/session fixes may be related, but they did not confirm a universal root cause. Support recommended checking the Stripe Dashboard for the exact amount captured and handling the outstanding balance manually for the affected order.</p>
+
+        <div class="notice warn"><strong>This is a reconciliation problem, not just a plugin-update problem.</strong>If Stripe captured less than WooCommerce recorded, the accounting reality follows the captured Stripe amount.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>10.7.x:</strong> the reported under-captured order occurred on this release line.</li>
+          <li><strong>10.8.0:</strong> Optimized Checkout Suite and Adaptive Pricing were enabled by default for eligible stores.</li>
+          <li><strong>10.8.2 / 10.8.3:</strong> recent fixes touched Adaptive Pricing, checkout sessions, and payment handling, but support did not confirm a specific fix for the reported shipping/VAT mismatch.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This record matters most for stores that used WooCommerce Stripe 10.7.x or early 10.8.x, had Adaptive Pricing enabled, used classic checkout, had shipping calculators or custom shipping/VAT logic, and saw Stripe capture less than the WooCommerce order total. It does not imply every 10.7.x store undercharged shipping.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>One order is fully paid in WooCommerce but Stripe captured less</td><td><strong>Reconcile manually</strong></td><td>Compare order total, shipping, tax, discounts, currency, Stripe captured amount, fees, and payout</td></tr>
+            <tr><td>The missing amount equals shipping or shipping tax</td><td><strong>Audit shipping logic</strong></td><td>Check shipping plugins, VAT settings, Adaptive Pricing, and checkout type before assuming Stripe is wrong</td></tr>
+            <tr><td>No new cases after updating</td><td><strong>Monitor, do not overcorrect</strong></td><td>Sample recent orders and keep a mismatch log for at least one sales cycle</td></tr>
+            <tr><td>Repeated mismatches are found</td><td><strong>Escalate privately</strong></td><td>Collect affected order IDs, Stripe transaction IDs, screenshots, system status, and Stripe logs</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest audit sequence</h2>
+        <ol class="steps">
+          <li><strong>Define the exposure window.</strong> Start with the period when 10.7.x or early 10.8.x was active.</li>
+          <li><strong>Export suspect orders.</strong> Prioritize Stripe orders with shipping, VAT on shipping, discounts, multi-currency, or Adaptive Pricing.</li>
+          <li><strong>Compare order-level totals.</strong> For each suspect order, compare WooCommerce total, Stripe captured amount, shipping, tax, discounts, currency, and payout.</li>
+          <li><strong>Handle confirmed gaps individually.</strong> Support guidance in the thread suggested a manual order/payment link for the outstanding balance when Stripe captured less.</li>
+          <li><strong>Update only after staging.</strong> Test latest Stripe Gateway with the same shipping, tax, and currency scenario before production deployment.</li>
+          <li><strong>Monitor the next real orders.</strong> Compare Stripe and WooCommerce immediately for several orders after the update.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The evidence does not prove a widespread Stripe 10.7.x shipping bug or a guaranteed fix in a specific later version. It proves a decision need: when WooCommerce and Stripe disagree on the amount captured, stores need transaction-level reconciliation before they assume the order was fully paid.</p>
+
+        <div class="notice danger"><strong>Escalate when:</strong> multiple orders are missing shipping or tax, the mismatch crosses currencies, refunds no longer match collected totals, or your accounting export assumes WooCommerce's higher amount instead of Stripe's captured amount.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-06-08">June 8, 2026</time><p>Stripe Gateway 10.8.0 enabled Optimized Checkout Suite and Adaptive Pricing for eligible stores.</p></div>
+          <div class="update"><time datetime="2026-06-15">June 15, 2026</time><p>Stripe Gateway 10.8.2 added several Adaptive Pricing and payment-status fixes.</p></div>
+          <div class="update"><time datetime="2026-06-30">Late June 2026</time><p>A public support thread reported a 10.7.x order where Stripe captured less than the WooCommerce total by the shipping-plus-VAT amount.</p></div>
+          <div class="update"><time datetime="2026-07-06">July 6, 2026</time><p>This decision record was created from the official changelog and support thread.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/plugins/woocommerce-gateway-stripe/" rel="nofollow">WooCommerce Stripe Payment Gateway listing and changelog</a></li>
+          <li><a href="https://wordpress.org/support/topic/stripe-charged-order-without-shipping-cost-in-woocommerce-stripe-gateway-10-7-x/" rel="nofollow">Support thread: Stripe charged order without shipping cost</a></li>
+          <li><a href="https://woocommerce.com/document/managing-orders/view-edit-or-add-an-order/#manually-adding-an-order" rel="nofollow">WooCommerce documentation: manually adding an order</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official WooCommerce, Stripe, tax, or accounting advice. Verify your own transactions before contacting customers or adjusting financial records.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Audit and reconcile</span></p><p><strong>Affected:</strong> stores where Stripe captured less than WooCommerce recorded, especially shipping/VAT scenarios.</p><p><strong>Latest reviewed:</strong> Stripe Gateway 10.8.3</p><p><strong>Confidence:</strong> real support case; root cause not universally confirmed.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Audit sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, or Stripe.</div></footer>
+</body>
+</html>
