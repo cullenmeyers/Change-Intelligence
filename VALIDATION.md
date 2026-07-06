@@ -13,18 +13,25 @@ After the first review on June 25, 2026, one additional operational record was a
 
 5. WooCommerce PayPal Payments 4.0.4 amount mismatch
 
-The validation set is now locked at five records until the second review. New changes may be researched and queued privately, but the public site should not expand to a broad batch until there is stronger evidence about which record type earns useful search demand or human feedback.
+After the delayed second review on July 6, 2026, the site showed enough repeated payment/revenue signal to justify one controlled batch of three more operational records:
+
+6. WooCommerce Stripe 10.8.3 checkout error after update
+7. WooCommerce Stripe shipping cost not charged
+8. Mollie cancelled payment order note loop
+
+The validation set is now locked at eight records until the next review. New changes may be researched and queued privately, but the public site should not expand to a broad batch until there is stronger evidence about which operational record type earns useful search demand or human feedback.
 
 ## Validation start
 
 - Start date: June 18, 2026
 - First review: June 25, 2026
-- Second review: July 2, 2026
+- Delayed second review: July 6, 2026
+- Next review: July 13, 2026
 - Main decision review: July 18, 2026
 
 ## First review notes — June 25, 2026
 
-Google Search Console showed early discovery across the site. The Stripe payment-status record produced the clearest signal with all recorded Google clicks in the first cohort. This does not prove the business, but it does justify one more test page in the same urgent operational-decision family.
+Google Search Console showed early discovery across the site. The Stripe payment-status record produced the clearest signal with all recorded Google clicks in the first cohort. This did not prove the business, but it justified one more test page in the same urgent operational-decision family.
 
 Decision from first review:
 
@@ -32,6 +39,18 @@ Decision from first review:
 - Add exactly one more urgent operational record.
 - Keep tracking whether payment-incident pages outperform compatibility, default-change, or capability-removal pages.
 - Do not judge the market from Vercel visitor count alone because some visits may come from owner testing, email recipients, previews, or link checks.
+
+## Delayed second review notes — July 6, 2026
+
+Google Search Console export through July 4 showed 131 impressions and 4 clicks. All clicks came from the WooCommerce Stripe payment-status incident page. The WooCommerce PayPal amount-mismatch page also generated fast impressions shortly after publication, even before clicks.
+
+Decision from delayed second review:
+
+- Continue.
+- Expand from five records to eight records with one controlled batch.
+- Keep the batch focused on operational pain: checkout failure, revenue mismatch, order/payment reconciliation, database/server load.
+- Do not add broad compatibility, general changelog, affiliate, or comparison pages yet.
+- Review again on July 13 before adding more public records.
 
 ## What to measure
 
@@ -53,7 +72,7 @@ From Google Search Console, capture by page:
 - average position
 - whether queries show decision intent rather than only plugin-name navigation
 
-Examples of useful intent include questions about whether to update, migrate, disable, reconcile, or change configuration.
+Examples of useful intent include questions about whether to update, migrate, disable, reconcile, restore checkout, audit orders, or change configuration.
 
 ### 3. Visits and referrals
 
@@ -86,6 +105,9 @@ Recheck source evidence when the underlying change is still active:
 - PayPal Pay with Crypto: recheck when eligibility, defaults, or documentation changes
 - WP Super Cache: recheck when requirements or the current release change
 - PayPal amount mismatch: recheck if 4.1.x follow-up releases, reopened support threads, or additional mismatch reports appear
+- Stripe 10.8.3 checkout error: recheck for official fix, new support responses, or changelog mentions of Stripe.js conflicts
+- Stripe shipping cost mismatch: recheck if additional reports appear or a specific release confirms a fix
+- Mollie order note loop: recheck if a release explicitly fixes repeated order notes, abandoned-payment loops, or stale pending-payment cleanup
 
 ## Decision rules
 
@@ -101,9 +123,9 @@ Refine when pages are indexed but the queries or referrals do not match the inte
 
 Investigate when pages are not indexed, Google selects a different canonical, analytics receives no real visits after distribution, or users cannot tell what action to take.
 
-## Prohibited during the second validation window
+## Prohibited during the current validation window
 
-- Do not expand to 10–25 public pages.
+- Do not expand to 15-25 public pages.
 - Do not redesign the site.
 - Do not add broad comparison or affiliate content.
 - Do not repeatedly request indexing every day.
