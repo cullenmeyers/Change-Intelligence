@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stripe 10.8.3 Checkout Error After Update: What to Check</title>
+  <meta name="description" content="WooCommerce Stripe 10.8.3 can expose checkout errors when Adaptive Pricing runs against stale or conflicting Stripe.js. See who is affected and how to restore checkout safely.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/stripe-10-8-3-checkout-error-adaptive-pricing/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Stripe 10.8.3 Checkout Error After Update: What to Check">
+  <meta property="og:description" content="A decision record for checkout errors, infinite spinners, stale Stripe.js, Adaptive Pricing, and WooPayments conflicts after WooCommerce Stripe 10.8.3.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/stripe-10-8-3-checkout-error-adaptive-pricing/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"WooCommerce Stripe 10.8.3 checkout error after update: who is affected and what to check",
+    "description":"An evidence-backed change record for WooCommerce Stripe 10.8.3 checkout errors involving Adaptive Pricing, stale Stripe.js, and Stripe/WooPayments conflicts.",
+    "datePublished":"2026-07-06",
+    "dateModified":"2026-07-06",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/stripe-10-8-3-checkout-error-adaptive-pricing/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WooCommerce Stripe","Adaptive Pricing","Stripe.js","WooPayments","checkout errors"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What changed in WooCommerce Stripe 10.8.3?",
+        "acceptedAnswer":{"@type":"Answer","text":"The official changelog says version 10.8.3 ensured Adaptive Pricing appears on checkout when enabled. A support thread says that can expose a checkout code path that requires a newer Stripe.js release."}
+      },
+      {
+        "@type":"Question",
+        "name":"What is the checkout error to look for?",
+        "acceptedAnswer":{"@type":"Answer","text":"Affected sites reported an IntegrationError saying Stripe.js must be upgraded to the Basil release or higher to use initCheckout, sometimes with a checkout spinner or non-loading Payment Methods box."}
+      },
+      {
+        "@type":"Question",
+        "name":"What is the safest immediate action?",
+        "acceptedAnswer":{"@type":"Answer","text":"Clear page, server, plugin, and CDN caches; exclude js.stripe.com from local caching; temporarily disable Adaptive Pricing if needed; and avoid running WooPayments and the standalone Stripe Gateway together unless both are intentionally configured and tested."}
+      }
+    ]
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>WooCommerce Stripe 10.8.3 checkout error after update</h1>
+        <div class="meta"><span>Reviewed July 6, 2026</span><span>Evidence confidence: Confirmed support pattern; individual site causes vary</span><span>Primary domain: Checkout availability</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>If checkout breaks after WooCommerce Stripe 10.8.3 with an initCheckout / Basil / Stripe.js error, treat it as an urgent checkout-availability issue. Clear all caches and exclude Stripe.js from local caching first. If WooPayments and the standalone Stripe Gateway are both active, test with only the gateway that actually processes card payments.</div>
+
+        <p>A public WooCommerce Stripe support thread reported a checkout error after updating to <strong>10.8.3</strong>: <code>IntegrationError: You must upgrade to the Basil release or higher to use initCheckout.</code> Plugin support explained that 10.8.3 fixed a bug that previously prevented Adaptive Pricing from loading on classic checkout, so the Adaptive Pricing code path may run for the first time on some sites and fail against stale or conflicting Stripe.js.</p>
+
+        <p>The official 10.8.3 changelog says the release fixes Adaptive Pricing appearing on the checkout page when enabled. The earlier 10.8.2 changelog also includes a fallback when Adaptive Pricing cannot initialize against a conflicting Stripe.js version.</p>
+
+        <div class="notice warn"><strong>Do not assume this is solved by refreshing the page.</strong>A cache, CDN, performance plugin, or second Stripe-based gateway can keep checkout loading the wrong script until configuration is changed.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>10.8.0:</strong> Optimized Checkout Suite and Adaptive Pricing were enabled by default for eligible stores.</li>
+          <li><strong>10.8.2:</strong> the changelog added fallback behavior for conflicting Stripe.js and several Adaptive Pricing checkout fixes.</li>
+          <li><strong>10.8.3:</strong> Adaptive Pricing was fixed to appear on checkout when enabled, which can expose sites with stale Stripe.js or conflicting gateway scripts.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This matters most when a store recently updated to Stripe Gateway 10.8.3, uses classic checkout, has Adaptive Pricing enabled, uses aggressive cache/CDN JavaScript optimization, or has both WooPayments and WooCommerce Stripe Payment Gateway installed. The support thread also described a case where disabling WooPayments restored the Payment Methods section when the standalone Stripe Gateway was the intended processor.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>Checkout shows initCheckout / Basil / Stripe.js error after 10.8.3</td><td><strong>Restore checkout first</strong></td><td>Clear plugin, server, browser, and CDN caches; exclude <code>js.stripe.com</code> from caching</td></tr>
+            <tr><td>Adaptive Pricing is enabled but not business-critical</td><td><strong>Disable temporarily</strong> while testing</td><td>Re-test card, Link, wallet, and local payment methods before leaving it off or on</td></tr>
+            <tr><td>WooPayments and Stripe Gateway are both installed</td><td><strong>Run one Stripe-based gateway</strong> unless both are intentionally needed</td><td>Deactivate the unused one in staging first, then confirm checkout scripts and payment methods</td></tr>
+            <tr><td>Error continues after cache and gateway cleanup</td><td><strong>Escalate with evidence</strong></td><td>Send system status, plugin list, console errors, Stripe logs, and checkout type to support</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest recovery sequence</h2>
+        <ol class="steps">
+          <li><strong>Stop making multiple checkout changes at once.</strong> Record the current Stripe Gateway, WooPayments, WooCommerce, cache plugin, CDN, and checkout type.</li>
+          <li><strong>Clear every cache layer.</strong> Include plugin cache, server cache, CDN/Cloudflare, browser cache, and any JavaScript optimization cache.</li>
+          <li><strong>Exclude Stripe.js from local caching or optimization.</strong> Do not combine, delay, rewrite, or locally cache Stripe-hosted JavaScript.</li>
+          <li><strong>Temporarily disable Adaptive Pricing if checkout remains down.</strong> This avoids the failing code path while you isolate the root cause.</li>
+          <li><strong>Use only one Stripe-based gateway unless intentionally configured.</strong> Decide whether WooPayments or the standalone Stripe Gateway processes cards.</li>
+          <li><strong>Re-test checkout in staging and production.</strong> Run a successful payment, a failed card, wallet/local methods, and a refund test where possible.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>This evidence does not prove every 10.8.3 store is affected or that the plugin alone causes the error. It supports a narrower decision: when the error appears after the update, first rule out stale Stripe.js, cache/CDN optimization, Adaptive Pricing, and competing Stripe gateway scripts before treating it as a general WooCommerce failure.</p>
+
+        <div class="notice danger"><strong>Escalate immediately when:</strong> customers cannot pay, the Payment Methods section never loads, failed transactions refresh without a message, or the site has both WooPayments and Stripe Gateway active and nobody can explain which one owns card checkout.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-06-15">June 15, 2026</time><p>Stripe Gateway 10.8.2 added Adaptive Pricing and Stripe.js conflict-related fixes.</p></div>
+          <div class="update"><time datetime="2026-06-22">June 22, 2026</time><p>Stripe Gateway 10.8.3 fixed Adaptive Pricing appearing on checkout when enabled.</p></div>
+          <div class="update"><time datetime="2026-06-27">Late June 2026</time><p>A support thread reported initCheckout / Basil errors after updating to 10.8.3; support recommended clearing caches, excluding Stripe.js, disabling Adaptive Pricing if not needed, and using only one Stripe-based gateway when WooPayments conflicts.</p></div>
+          <div class="update"><time datetime="2026-07-06">July 6, 2026</time><p>This decision record was created from the official changelog and active support discussion.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/plugins/woocommerce-gateway-stripe/" rel="nofollow">WooCommerce Stripe Payment Gateway listing and changelog</a></li>
+          <li><a href="https://wordpress.org/support/topic/checkout-page-error-after-plugin-update-10-8-3/" rel="nofollow">Support thread: checkout page error after plugin update 10.8.3</a></li>
+          <li><a href="https://woocommerce.com/document/stripe/" rel="nofollow">Official WooCommerce Stripe documentation</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official WooCommerce or Stripe support. Verify your own checkout and payment settings before changing a production payment system.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Restore checkout</span></p><p><strong>Affected:</strong> stores on WooCommerce Stripe 10.8.3 with Adaptive Pricing, stale Stripe.js, cache optimization, or competing WooPayments scripts.</p><p><strong>Latest reviewed:</strong> 10.8.3</p><p><strong>Confidence:</strong> support-confirmed pattern; site-specific root cause varies.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Recovery sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, or WooPayments.</div></footer>
+</body>
+</html>
