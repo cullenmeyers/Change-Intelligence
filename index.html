@@ -74,11 +74,35 @@
         <p>Stores that processed discounted or tax-sensitive PayPal orders on 4.0.4 should reconcile PayPal totals against WooCommerce totals before assuming the issue was only visual.</p>
         <a class="button" href="./changes/woocommerce-paypal-4-0-4-amount-mismatch/">Read the reconciliation decision</a>
       </article>
+
+      <article class="article home-card">
+        <div class="status">Checkout availability incident</div>
+        <h2>WooCommerce Stripe 10.8.3 checkout error after update</h2>
+        <p><strong>Confirmed pattern:</strong> a support thread connected an initCheckout / Basil / Stripe.js checkout error to Adaptive Pricing running against stale or conflicting Stripe.js after 10.8.3.</p>
+        <p>Stores should clear all cache layers, exclude Stripe.js from local caching, and avoid running WooPayments and the standalone Stripe Gateway together unless both are intentionally configured.</p>
+        <a class="button" href="./changes/stripe-10-8-3-checkout-error-adaptive-pricing/">Read the recovery decision</a>
+      </article>
+
+      <article class="article home-card">
+        <div class="status">Revenue reconciliation incident</div>
+        <h2>Stripe charged an order without shipping cost</h2>
+        <p><strong>Reported issue:</strong> one support case showed WooCommerce recording a paid order total while Stripe captured less, with the missing amount matching shipping plus VAT.</p>
+        <p>Stores should compare WooCommerce totals against Stripe captured amounts before treating affected orders as fully reconciled.</p>
+        <a class="button" href="./changes/stripe-shipping-cost-not-charged-10-7/">Read the audit decision</a>
+      </article>
+
+      <article class="article home-card">
+        <div class="status">Database / server load incident</div>
+        <h2>Mollie cancelled payment order note loop</h2>
+        <p><strong>Reported issue:</strong> abandoned Bancontact and TWINT payments caused repeated cancelled-payment order notes, database bloat, and server load in a public support report.</p>
+        <p>Affected stores should contain the loop, back up the database, preserve evidence, resolve stuck pending orders, and verify whether an update stops the repeated writes.</p>
+        <a class="button" href="./changes/mollie-cancelled-payment-order-note-loop/">Read the containment decision</a>
+      </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, PayPal, Syde, or WP Super Cache.</div>
+    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, PayPal, Syde, WooPayments, Bancontact, TWINT, or WP Super Cache.</div>
   </footer>
 </body>
 </html>
