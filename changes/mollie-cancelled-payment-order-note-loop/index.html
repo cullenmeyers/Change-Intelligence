@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mollie Cancelled Payment Order Note Loop: What to Do</title>
+  <meta name="description" content="A Mollie WooCommerce support thread reported abandoned Bancontact/TWINT payments creating repeated order notes, database bloat, and server load. See how to contain and investigate safely.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/mollie-cancelled-payment-order-note-loop/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Mollie Cancelled Payment Order Note Loop: What to Do">
+  <meta property="og:description" content="How to respond when cancelled Bancontact/TWINT payments keep generating repeated Mollie order notes and server load.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/mollie-cancelled-payment-order-note-loop/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Mollie cancelled payment order note loop: who is affected and what to do",
+    "description":"An evidence-backed change record for a Mollie Payments for WooCommerce support thread where abandoned Bancontact and TWINT payments created repeated order notes and database/server load.",
+    "datePublished":"2026-07-06",
+    "dateModified":"2026-07-06",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/mollie-cancelled-payment-order-note-loop/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["Mollie Payments for WooCommerce","Bancontact","TWINT","order notes","database bloat","WooCommerce HPOS"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What was reported?",
+        "acceptedAnswer":{"@type":"Answer","text":"A public support thread reported abandoned Bancontact and TWINT payments causing the Mollie WooCommerce plugin to repeatedly write duplicate cancelled-payment order notes, creating database bloat and server load."}
+      },
+      {
+        "@type":"Question",
+        "name":"Is this confirmed fixed in Mollie 8.1.8?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. The current reviewed changelog does not explicitly state a fix for this order-note loop. Stores should update only after staging and should verify that the repeated notes stop."}
+      },
+      {
+        "@type":"Question",
+        "name":"What should an affected store do first?",
+        "acceptedAnswer":{"@type":"Answer","text":"Contain the loop by identifying affected pending Mollie orders, pausing risky cron cleanup if necessary, backing up the database, manually resolving the stuck orders, and collecting logs before deleting evidence."}
+      }
+    ]
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>Mollie cancelled payment order note loop</h1>
+        <div class="meta"><span>Reviewed July 6, 2026</span><span>Evidence confidence: Public support report; fix status not confirmed</span><span>Primary domain: Reliability / database growth</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>If abandoned Mollie Bancontact or TWINT payments are generating repeated cancelled-payment order notes, treat it as an operational containment problem first. Stop the repeated writes, back up the database, resolve stuck pending orders, and verify whether an update actually stops the loop before deleting notes or closing the incident.</div>
+
+        <p>A public Mollie Payments for WooCommerce support thread reported an infinite loop where abandoned Bancontact and TWINT payments stayed pending while each cron run added another cancelled-payment order note. The reporter described single orders accumulating <strong>10,000 to 30,000+</strong> identical notes and writing <strong>50–80 notes per minute</strong> per stuck order.</p>
+
+        <p>The current plugin listing shows version <strong>8.1.8</strong> as the latest reviewed release. Version <strong>8.1.7</strong> includes fixes for duplicate payments, an expired webhook cancelling an order despite subsequent payment attempts, and several checkout/payment-data warnings, but the changelog does not explicitly say the abandoned-payment order-note loop is fixed.</p>
+
+        <div class="notice warn"><strong>Do not clean the database before preserving evidence.</strong>Deleting thousands of notes may reduce table size, but support will still need the affected order IDs, payment IDs, timestamps, logs, cron timing, and exact plugin version.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>Reported behavior:</strong> cancelled or open Mollie statuses on abandoned payments repeatedly added order notes without transitioning the WooCommerce order to a terminal status.</li>
+          <li><strong>8.1.7:</strong> Mollie fixed duplicate payments and stale-webhook cancellation behavior, among other payment-data issues.</li>
+          <li><strong>8.1.8:</strong> the current reviewed release adds a Mollie incentive campaign, but does not explicitly mention this order-note loop.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This matters most for WooCommerce stores using Mollie with Bancontact or TWINT, especially with HPOS enabled and system cron running due events frequently. The reported failure mode appears when a shopper starts a payment, abandons it at the bank/payment step, and the WooCommerce order remains pending while Mollie status checks keep writing duplicate notes.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>One or more pending Mollie orders has thousands of duplicate cancelled notes</td><td><strong>Contain the loop</strong></td><td>Back up first, identify affected order IDs/payment IDs, then stop repeated cron-triggered writes before cleanup</td></tr>
+            <tr><td>The notes keep growing every minute</td><td><strong>Reduce load immediately</strong></td><td>Temporarily isolate affected payment methods or cleanup jobs while preserving logs for support</td></tr>
+            <tr><td>You are below the latest Mollie version</td><td><strong>Stage the update</strong></td><td>Do not assume 8.1.8 fixes this; recreate the abandoned-payment path and verify notes stop</td></tr>
+            <tr><td>Database table already bloated</td><td><strong>Plan controlled cleanup</strong></td><td>Export evidence, clean only affected duplicate notes, and verify order history remains auditable</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest containment sequence</h2>
+        <ol class="steps">
+          <li><strong>Back up the database immediately.</strong> The evidence and the cleanup target are both in order-related tables.</li>
+          <li><strong>Identify affected orders.</strong> Search for repeated Mollie notes such as cancelled Bancontact/TWINT payment messages and orders stuck in pending.</li>
+          <li><strong>Measure the write rate.</strong> Confirm whether notes are still being added and whether cron is triggering the loop.</li>
+          <li><strong>Stop the loop before cleanup.</strong> Temporarily disable the risky payment method, pause the specific cleanup path if necessary, or manually transition stuck orders only after confirming payment status.</li>
+          <li><strong>Collect support evidence.</strong> Keep plugin version, WooCommerce version, HPOS status, Mollie payment IDs, order IDs, logs, cron configuration, and note samples.</li>
+          <li><strong>Test the latest plugin in staging.</strong> Recreate an abandoned Bancontact/TWINT payment and verify that notes do not repeat.</li>
+          <li><strong>Clean duplicate notes carefully.</strong> Remove only confirmed duplicate notes after a backup and after the loop has stopped.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The public report is detailed, but it does not prove every Mollie store is affected or that every abandoned Bancontact/TWINT payment will loop. It also does not prove the latest plugin release fixes the exact failure mode. The evidence supports containment, verification, and support escalation rather than blind cleanup or blind updating.</p>
+
+        <div class="notice danger"><strong>Escalate immediately when:</strong> duplicate notes are still growing, the database is increasing rapidly, server load is high, checkout slows down, Mollie API calls spike, or you cannot safely determine whether the abandoned payment actually captured funds.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-06-15">June 15, 2026</time><p>Mollie 8.1.7 fixed duplicate payments, expired webhook cancellation behavior, and several payment-data issues.</p></div>
+          <div class="update"><time datetime="2026-06-25">Late June 2026</time><p>A support thread reported an abandoned Bancontact/TWINT payment loop that repeatedly wrote cancelled-payment order notes and caused database/server load.</p></div>
+          <div class="update"><time datetime="2026-07-01">July 1, 2026</time><p>Mollie 8.1.8 became the latest reviewed release, but its changelog does not explicitly mention this loop.</p></div>
+          <div class="update"><time datetime="2026-07-06">July 6, 2026</time><p>This decision record was created from the plugin changelog and public support report.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/plugins/mollie-payments-for-woocommerce/" rel="nofollow">Mollie Payments for WooCommerce listing and changelog</a></li>
+          <li><a href="https://wordpress.org/support/topic/mollie-woocommerce-plugin-infinite-order-note-loop-on-cancelled-bancontact-twi/" rel="nofollow">Support thread: infinite order note loop on cancelled Bancontact/TWINT payments</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official Mollie, WooCommerce, database, legal, or accounting advice. Verify payment status and back up your database before changing production orders or deleting order notes.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Contain and verify</span></p><p><strong>Affected:</strong> stores using Mollie Bancontact/TWINT where abandoned payments keep adding duplicate order notes.</p><p><strong>Latest reviewed:</strong> 8.1.8</p><p><strong>Confidence:</strong> detailed public report; explicit fix not confirmed.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Containment sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Mollie, WooCommerce, Bancontact, TWINT, Syde, or WordPress.</div></footer>
+</body>
+</html>
