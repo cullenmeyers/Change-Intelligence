@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PayPal/Card Payments Fail Intermittently: OrderProcessor.php:109</title>
+  <meta name="description" content="A WooCommerce PayPal Payments support thread reports intermittent PayPal/card payment failures, lost sales, webhook verification failures, and OrderProcessor.php:109 errors. See what to check.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/paypal-orderprocessor-109-intermittent-failures/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="PayPal/Card Payments Fail Intermittently: OrderProcessor.php:109">
+  <meta property="og:description" content="How to respond when WooCommerce PayPal Payments intermittently fails card or PayPal orders with OrderProcessor.php:109 and webhook verification failures.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/paypal-orderprocessor-109-intermittent-failures/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"WooCommerce PayPal/card payments fail intermittently with OrderProcessor.php:109: who is affected and what to check",
+    "description":"An evidence-backed change record for a WooCommerce PayPal Payments support thread reporting intermittent payment failures, webhook verification failures, missing capture recovery, and OrderProcessor.php:109 errors.",
+    "datePublished":"2026-07-13",
+    "dateModified":"2026-07-13",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/paypal-orderprocessor-109-intermittent-failures/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WooCommerce PayPal Payments","OrderProcessor.php:109","webhook verification failed","payment capture","intermittent checkout failure"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What was reported?",
+        "acceptedAnswer":{"@type":"Answer","text":"A WooCommerce PayPal Payments support thread reported intermittent payment failures on version 4.0.4, including PayPal approval without capture, OrderProcessor.php:109 card failures, and repeated webhook verification failed logs."}
+      },
+      {
+        "@type":"Question",
+        "name":"Did support treat it as a generic cache issue?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. Plugin support replied that the intermittent nature and persistence after cache troubleshooting indicated a possible race condition or timing issue in the order-processing flow, and said it was raised internally for investigation."}
+      },
+      {
+        "@type":"Question",
+        "name":"What should affected merchants do?",
+        "acceptedAnswer":{"@type":"Answer","text":"Compare failed and successful orders, preserve logs, verify PayPal capture and webhook behavior, avoid changing several checkout variables at once, and escalate privately with order IDs, timestamps, system status, and PayPal transaction evidence."}
+      }
+    ]
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>WooCommerce PayPal/card payments fail intermittently with OrderProcessor.php:109</h1>
+        <div class="meta"><span>Reviewed July 13, 2026</span><span>Evidence confidence: Detailed public report plus support acknowledgment</span><span>Primary domain: Checkout reliability / lost sales</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>If WooCommerce PayPal Payments intermittently fails real payments while other payments still work, do not treat the gateway as healthy just because some orders complete. Preserve logs, compare successful versus failed attempts, verify PayPal capture and webhook recovery, and escalate privately before the pattern silently loses more sales.</div>
+
+        <p>A public support thread reported a live WooCommerce store where some PayPal and credit-card payments completed successfully while other valid attempts failed. The reported environment used WooCommerce PayPal Payments <strong>4.0.4</strong>, classic checkout, WPML, PHP 8.2, and a live production store.</p>
+
+        <p>The thread described one PayPal order that was approved by the customer but never captured, plus repeated card failures logged as <code>OrderProcessor.php:109</code>. It also described repeated <code>Webhook verification failed</code> logs even though real PayPal webhook events were reaching the site.</p>
+
+        <p>Plugin support replied that the intermittent behavior, especially after cache troubleshooting, indicated a possible <strong>race condition or timing issue in the order-processing flow</strong> rather than a simple configuration problem, and said the case had been raised internally for investigation.</p>
+
+        <div class="notice warn"><strong>Intermittent payment failures are easy to underestimate.</strong> A store can process some orders correctly while still losing a percentage of real checkout attempts.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>Reported version:</strong> WooCommerce PayPal Payments 4.0.4; version 4.1.0 had not yet been installed in the report.</li>
+          <li><strong>Failure pattern:</strong> PayPal approval without capture, card failures at <code>OrderProcessor.php:109</code>, and webhook verification failures.</li>
+          <li><strong>Support signal:</strong> support said the pattern may indicate a race condition or timing issue in order processing and raised it internally.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This record matters most when a store uses WooCommerce PayPal Payments, sees some successful PayPal/card payments and some unexplained failures, has <code>OrderProcessor.php:109</code> logs, sees <code>Webhook verification failed</code>, or has approved PayPal orders that do not capture and complete in WooCommerce.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>Some PayPal/card orders succeed and others fail without a clear decline</td><td><strong>Treat as intermittent incident</strong></td><td>Track failure rate and compare failed versus successful logs before changing configuration randomly</td></tr>
+            <tr><td>PayPal approved the order but WooCommerce never captured/completed it</td><td><strong>Verify capture manually</strong></td><td>Check PayPal order ID, capture status, webhook event, WooCommerce order status, and customer communication</td></tr>
+            <tr><td>Logs show <code>OrderProcessor.php:109</code></td><td><strong>Preserve evidence</strong></td><td>Save timestamps, payment method, browser return behavior, session/cookie context, and plugin versions</td></tr>
+            <tr><td>Webhook verification fails repeatedly</td><td><strong>Escalate privately</strong></td><td>Send system status, full logs, order IDs, webhook IDs, and the public thread URL to official support</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest response sequence</h2>
+        <ol class="steps">
+          <li><strong>Stop changing several variables at once.</strong> Record the current PayPal Payments, WooCommerce, WordPress, PHP, checkout, cache, and multilingual setup.</li>
+          <li><strong>Separate user declines from processing failures.</strong> Look for missing PayPal order IDs, failed captures, webhook failures, and <code>OrderProcessor.php:109</code> rather than normal card declines.</li>
+          <li><strong>Compare successful and failed attempts.</strong> Use the same production configuration and record payment method, timing, browser return, webhook events, and order notes.</li>
+          <li><strong>Verify each uncertain payment in PayPal.</strong> Confirm whether the customer was charged, whether capture occurred, and whether WooCommerce's order status matches reality.</li>
+          <li><strong>Preserve logs before updating or clearing cache.</strong> The failing timing path may disappear after changes, making support harder.</li>
+          <li><strong>Escalate privately.</strong> Include the public support-thread URL, system report, payment logs, order IDs, timestamps, and webhook evidence.</li>
+          <li><strong>Test the next release path in staging where possible.</strong> Recreate PayPal, card, failure, and webhook scenarios before deploying changes to production.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The public thread does not prove every 4.0.4 store is affected or that every <code>OrderProcessor.php:109</code> log has the same cause. It does show a high-risk failure pattern: intermittent payment loss, failed capture recovery, and webhook verification problems. The right response is evidence preservation and order-level reconciliation, not assuming the gateway is fine because some payments succeed.</p>
+
+        <div class="notice danger"><strong>Escalate immediately when:</strong> customers report repeated failed attempts, PayPal shows approval but no capture, WooCommerce failed orders may still have customer payment activity, or the store cannot tell whether a failed checkout charged the customer.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-06-26">June 26, 2026</time><p>The public report described repeated card failures around <code>OrderProcessor.php:109</code> and PayPal approval/capture problems.</p></div>
+          <div class="update"><time datetime="2026-07-01">Early July 2026</time><p>Plugin support said the intermittent behavior may indicate a race condition or timing issue in the order-processing flow and raised the case internally.</p></div>
+          <div class="update"><time datetime="2026-07-13">July 13, 2026</time><p>This decision record was created from the public support thread.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/support/topic/critical-paypal-card-payments-fail-intermittently-orderprocessor-php109/" rel="nofollow">Support thread: PayPal/card payments fail intermittently (OrderProcessor.php:109)</a></li>
+          <li><a href="https://wordpress.org/support/plugin/woocommerce-paypal-payments/" rel="nofollow">WooCommerce PayPal Payments support forum listing</a></li>
+          <li><a href="https://wordpress.org/plugins/woocommerce-paypal-payments/" rel="nofollow">WooCommerce PayPal Payments listing and changelog</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official WooCommerce or PayPal support. Verify your own orders, captures, logs, and customer payment state before changing production checkout or contacting customers.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Escalate with evidence</span></p><p><strong>Affected:</strong> WooCommerce PayPal stores with intermittent failed payments, <code>OrderProcessor.php:109</code>, webhook verification failures, or approved PayPal orders that do not capture.</p><p><strong>Reported version:</strong> 4.0.4</p><p><strong>Confidence:</strong> detailed public report plus support acknowledgment; individual root cause varies.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Response sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WooCommerce, PayPal, Automattic, Syde, or WordPress.</div></footer>
+</body>
+</html>
