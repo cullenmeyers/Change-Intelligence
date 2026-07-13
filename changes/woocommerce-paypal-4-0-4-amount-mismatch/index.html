@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WooCommerce PayPal 4.0.4 Amount Mismatch: What to Check</title>
-  <meta name="description" content="WooCommerce PayPal Payments 4.0.4 had reports of order total, discount, and rounding mismatches. See who is affected, what 4.1.0 fixed, and how to audit safely.">
+  <title>WooCommerce PayPal 4.0.4 Discount Applied Twice / Amount Mismatch</title>
+  <meta name="description" content="WooCommerce PayPal Payments 4.0.4 had reports of discounts being applied twice, order-total mismatches, and rounding issues. See what 4.1.0 fixed and how to audit safely.">
   <link rel="canonical" href="https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="WooCommerce PayPal 4.0.4 Amount Mismatch: What to Check">
-  <meta property="og:description" content="Who may be affected by WooCommerce PayPal Payments 4.0.4 order-total, discount, and rounding mismatches, and how to move safely to 4.1.0.">
+  <meta property="og:title" content="WooCommerce PayPal 4.0.4 Discount Applied Twice / Amount Mismatch">
+  <meta property="og:description" content="Who may be affected by WooCommerce PayPal Payments 4.0.4 discount, order-total, and rounding mismatches, and how to move safely to 4.1.0.">
   <meta property="og:url" content="https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/">
   <link rel="stylesheet" href="../../styles.css">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"TechArticle",
-    "headline":"WooCommerce PayPal Payments 4.0.4 amount mismatch: who is affected and what to check",
-    "description":"An evidence-backed change record for WooCommerce PayPal Payments 4.0.4 order-total, discount, tax rounding, and negative-fee mismatch reports and the 4.1.0 fixes.",
+    "headline":"WooCommerce PayPal Payments 4.0.4 discount applied twice / amount mismatch: who is affected and what to check",
+    "description":"An evidence-backed change record for WooCommerce PayPal Payments 4.0.4 discount, order-total, tax rounding, and negative-fee mismatch reports and the 4.1.0 fixes.",
     "datePublished":"2026-06-25",
-    "dateModified":"2026-06-25",
+    "dateModified":"2026-07-13",
     "mainEntityOfPage":"https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/",
     "author":{"@type":"Organization","name":"What Just Changed"},
     "publisher":{"@type":"Organization","name":"What Just Changed"},
@@ -60,8 +60,8 @@
     <div class="grid">
       <article class="article">
         <div class="eyebrow">WordPress plugin change record</div>
-        <h1>WooCommerce PayPal Payments 4.0.4 amount mismatches</h1>
-        <div class="meta"><span>Reviewed June 25, 2026</span><span>Evidence confidence: Public support reports plus official 4.1.0 changelog fixes</span><span>Primary domain: Revenue / accounting accuracy</span></div>
+        <h1>WooCommerce PayPal 4.0.4 discount applied twice / amount mismatch</h1>
+        <div class="meta"><span>Reviewed June 25, 2026</span><span>Title tested July 13, 2026</span><span>Evidence confidence: Public support reports plus official 4.1.0 changelog fixes</span><span>Primary domain: Revenue / accounting accuracy</span></div>
 
         <div class="notice good"><strong>Current decision</strong>Stores that processed discounted, gift-card, negative-fee, subscription, or tax-sensitive PayPal orders on version 4.0.4 should audit PayPal totals against WooCommerce totals. If mismatches appear, test and move to 4.1.0; if a store is stable on 4.0.3, test 4.1.0 before updating production.</div>
 
@@ -77,6 +77,7 @@
           <li><strong>4.0.4 — May 19, 2026:</strong> affected users reported amount mismatches after updating from 4.0.3.</li>
           <li><strong>4.1.0-rc4:</strong> support said the one-cent mismatch had already been addressed in a release candidate.</li>
           <li><strong>4.1.0 — June 23, 2026:</strong> the stable changelog lists several fixes related to amount mismatch, rounding, negative fees, gift cards, and line items.</li>
+          <li><strong>July 13, 2026:</strong> the page title was rewritten to surface the specific search pain: discount applied twice / amount mismatch.</li>
         </ul>
 
         <h2 id="affected">Who is affected?</h2>
@@ -114,6 +115,7 @@
           <div class="update"><time datetime="2026-06-18">June 18, 2026</time><p>A public support thread reported discounts being applied twice since 4.0.4; support recommended staying on 4.0.3 until 4.0.5/next fixed release.</p></div>
           <div class="update"><time datetime="2026-06-23">June 23, 2026</time><p>Version 4.1.0 was released with amount-related fixes including inclusive-tax rounding, negative-fee mismatch, third-party gift-card calculation, and line-item delivery to PayPal overview.</p></div>
           <div class="update"><time datetime="2026-06-25">June 25, 2026</time><p>This decision record was created from the official changelog and public support threads.</p></div>
+          <div class="update"><time datetime="2026-07-13">July 13, 2026</time><p>The title, meta title, heading, and structured-data headline were updated to emphasize the concrete pain: discounts applied twice and amount mismatch.</p></div>
         </div>
 
         <h2 id="sources">Official sources</h2>
