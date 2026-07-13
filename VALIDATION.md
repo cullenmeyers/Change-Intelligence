@@ -19,15 +19,22 @@ After the delayed second review on July 6, 2026, the site showed enough repeated
 7. WooCommerce Stripe shipping cost not charged
 8. Mollie cancelled payment order note loop
 
-The validation set is now locked at eight records until the next review. New changes may be researched and queued privately, but the public site should not expand to a broad batch until there is stronger evidence about which operational record type earns useful search demand or human feedback.
+After the July 13, 2026 review, the site again showed that operational payment, checkout, shipping, and reconciliation pages were the strongest direction. One page with impressions but no clicks was title-tested, and one more controlled batch of three operational records was added:
+
+9. WooCommerce Stripe captures 1/100 amount with WPML Multi-Currency
+10. WooCommerce PayPal total missing shipping
+11. WooCommerce PayPal/card payments fail intermittently with OrderProcessor.php:109
+
+The validation set is now locked at eleven records until the next review. New changes may be researched and queued privately, but the public site should not expand to a broad batch until there is stronger evidence about which operational record type earns useful search demand or human feedback.
 
 ## Validation start
 
 - Start date: June 18, 2026
 - First review: June 25, 2026
 - Delayed second review: July 6, 2026
-- Next review: July 13, 2026
-- Main decision review: July 18, 2026
+- Third review: July 13, 2026
+- Next review: July 20, 2026
+- Main decision review: July 20-22, 2026
 
 ## First review notes — June 25, 2026
 
@@ -51,6 +58,18 @@ Decision from delayed second review:
 - Keep the batch focused on operational pain: checkout failure, revenue mismatch, order/payment reconciliation, database/server load.
 - Do not add broad compatibility, general changelog, affiliate, or comparison pages yet.
 - Review again on July 13 before adding more public records.
+
+## Third review notes — July 13, 2026
+
+Google Search Console data through July 11 showed 311 total impressions and 6 clicks. The strongest pattern remained urgent WooCommerce/Stripe/payment/revenue incidents. The Stripe payment-status page remained the strongest page, and the new July 6 Stripe operational pages generated fast impressions and some clicks.
+
+Decision from third review:
+
+- Continue.
+- Rewrite the PayPal amount-mismatch title to emphasize the concrete pain: discount applied twice / amount mismatch.
+- Add one controlled batch of three more records in the same category: amount capture error, shipping total mismatch, and intermittent PayPal/card failure.
+- Keep the site locked at eleven records until the next review.
+- Review again around July 20 before adding more pages.
 
 ## What to measure
 
@@ -108,6 +127,9 @@ Recheck source evidence when the underlying change is still active:
 - Stripe 10.8.3 checkout error: recheck for official fix, new support responses, or changelog mentions of Stripe.js conflicts
 - Stripe shipping cost mismatch: recheck if additional reports appear or a specific release confirms a fix
 - Mollie order note loop: recheck if a release explicitly fixes repeated order notes, abandoned-payment loops, or stale pending-payment cleanup
+- Stripe WPML 1/100 amount capture: recheck if thread details, plugin responses, or confirmed fixes appear
+- PayPal shipping total mismatch: recheck if thread details, plugin responses, or confirmed fixes appear
+- PayPal OrderProcessor.php:109 intermittent failures: recheck for a confirmed fix, issue link, or new release notes mentioning order-processing timing or webhook recovery
 
 ## Decision rules
 
