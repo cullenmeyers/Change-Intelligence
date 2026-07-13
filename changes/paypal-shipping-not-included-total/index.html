@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PayPal Total Missing Shipping in WooCommerce: What to Check</title>
+  <meta name="description" content="A WooCommerce PayPal Payments support topic reports shipping not being included in the PayPal total. See how to audit PayPal totals against WooCommerce orders safely.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/paypal-shipping-not-included-total/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="PayPal Total Missing Shipping in WooCommerce: What to Check">
+  <meta property="og:description" content="How to respond when WooCommerce PayPal orders appear to exclude shipping from the PayPal total.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/paypal-shipping-not-included-total/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"WooCommerce PayPal total missing shipping: who is affected and what to check",
+    "description":"An evidence-backed change record for a WooCommerce PayPal Payments support topic reporting shipping not included in the PayPal total.",
+    "datePublished":"2026-07-13",
+    "dateModified":"2026-07-13",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/paypal-shipping-not-included-total/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WooCommerce PayPal Payments","shipping total","payment amount mismatch","PayPal total","WooCommerce orders"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What was reported?",
+        "acceptedAnswer":{"@type":"Answer","text":"The WooCommerce PayPal Payments support forum lists a current topic titled Shipping not included in Paypal total."}
+      },
+      {
+        "@type":"Question",
+        "name":"Is this only a display issue?",
+        "acceptedAnswer":{"@type":"Answer","text":"Do not assume that. If the PayPal transaction total excludes shipping, the store needs order-level reconciliation before fulfillment, refunds, or accounting close."}
+      },
+      {
+        "@type":"Question",
+        "name":"What should affected stores audit?",
+        "acceptedAnswer":{"@type":"Answer","text":"Compare WooCommerce order totals, PayPal transaction totals, shipping lines, shipping tax, discounts, coupons, refunds, currency, and payout records for affected PayPal orders."}
+      }
+    ]
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>PayPal total missing shipping in WooCommerce</h1>
+        <div class="meta"><span>Reviewed July 13, 2026</span><span>Evidence confidence: Active support topic; root cause not confirmed</span><span>Primary domain: Revenue / shipping reconciliation</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>If PayPal captured or displayed an order total that does not include shipping, compare PayPal against WooCommerce at the order level before fulfillment and accounting. Do not assume the WooCommerce order total, PayPal total, customer receipt, and payout will all agree.</div>
+
+        <p>The WooCommerce PayPal Payments support forum currently lists a topic titled <strong>“Shipping not included in Paypal total”</strong>. This is exactly the kind of operational payment mismatch that can look small in checkout but create real revenue, support, and accounting consequences.</p>
+
+        <div class="notice warn"><strong>Shipping can be the hidden mismatch.</strong>An order can look paid while the collected PayPal amount, shipping charge, shipping tax, and WooCommerce order total disagree.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>Observed pattern:</strong> a current support topic reports shipping not included in the PayPal total.</li>
+          <li><strong>Risk area:</strong> shipping lines, shipping tax, coupons, PayPal order creation, and WooCommerce order-total reconciliation.</li>
+          <li><strong>Current status:</strong> this is a reported support topic, not a confirmed universal plugin-wide bug.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This record matters most for stores using WooCommerce PayPal Payments where shipped orders, shipping tax, local delivery fees, coupons, or conditional shipping rules are part of checkout. Stores selling only digital products or orders without shipping lines are less likely to be affected by this specific pattern.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>PayPal total is lower than WooCommerce total by shipping or shipping tax</td><td><strong>Reconcile before fulfillment</strong></td><td>Compare PayPal transaction total, WooCommerce order total, shipping line, tax line, and customer receipt</td></tr>
+            <tr><td>Only one shipping method is affected</td><td><strong>Isolate the shipping rule</strong></td><td>Test the same method with and without coupons, tax, logged-in user state, and address changes</td></tr>
+            <tr><td>Several PayPal orders are affected</td><td><strong>Pause the risky path</strong></td><td>Temporarily disable the affected shipping/payment combination if undercollection continues</td></tr>
+            <tr><td>The store has already fulfilled underpaid orders</td><td><strong>Document the loss</strong></td><td>Track order IDs, customer impact, missing amounts, refunds, and support conversations separately</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest audit sequence</h2>
+        <ol class="steps">
+          <li><strong>Find the first mismatch.</strong> Record plugin versions, WooCommerce version, checkout type, shipping method, taxes, and coupons active at the time.</li>
+          <li><strong>Compare totals order by order.</strong> Check WooCommerce total, PayPal total, shipping line, shipping tax, discount lines, refunds, and payout.</li>
+          <li><strong>Recreate the cart in staging.</strong> Use the same product, address, shipping method, coupon, tax setting, and PayPal funding source.</li>
+          <li><strong>Test payment creation and capture.</strong> Confirm the amount sent to PayPal includes shipping before the customer approves payment.</li>
+          <li><strong>Pause risky combinations if repeated.</strong> Disable only the affected shipping/payment combination when possible instead of taking the whole store offline.</li>
+          <li><strong>Escalate with evidence.</strong> Share system status, order IDs, PayPal transaction IDs, and reproduction steps privately with support.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The public evidence does not prove the affected version range, the exact cause, or whether the mismatch happens before PayPal approval, after capture, or only in a display/export layer. The correct first action is financial reconciliation and reproduction, not assuming all PayPal orders are wrong.</p>
+
+        <div class="notice danger"><strong>Escalate immediately when:</strong> PayPal collected less than WooCommerce recorded, multiple shipped orders are affected, refunds no longer match the collected total, or accounting exports include shipping revenue that PayPal did not collect.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-07-13">July 13, 2026</time><p>This decision record was created from the active WooCommerce PayPal Payments support listing and framed conservatively because the root cause is not confirmed publicly.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/support/plugin/woocommerce-paypal-payments/" rel="nofollow">WooCommerce PayPal Payments support forum listing</a></li>
+          <li><a href="https://wordpress.org/support/topic/shipping-not-included-in-paypal-total/" rel="nofollow">Support topic: Shipping not included in Paypal total</a></li>
+          <li><a href="https://wordpress.org/plugins/woocommerce-paypal-payments/" rel="nofollow">WooCommerce PayPal Payments listing and changelog</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official WooCommerce, PayPal, shipping, tax, legal, or accounting advice. Verify your own payment captures and order totals before changing fulfillment or customer balances.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Audit before fulfillment</span></p><p><strong>Affected:</strong> WooCommerce PayPal stores where shipping may be missing from the PayPal total.</p><p><strong>Latest reviewed:</strong> July 13, 2026 support listing</p><p><strong>Confidence:</strong> reported support topic; root cause not confirmed.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Audit sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WooCommerce, PayPal, Automattic, Syde, or WordPress.</div></footer>
+</body>
+</html>
