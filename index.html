@@ -69,7 +69,7 @@
 
       <article class="article home-card">
         <div class="status">Revenue-impacting payment mismatch</div>
-        <h2>WooCommerce PayPal Payments 4.0.4 amount mismatches</h2>
+        <h2>WooCommerce PayPal 4.0.4 discount applied twice / amount mismatch</h2>
         <p><strong>Confirmed status:</strong> public support threads reported discount and rounding mismatches after 4.0.4, and the 4.1.0 changelog includes fixes for inclusive-tax rounding, negative-fee mismatch, gift-card calculation, and PayPal line-item mismatches.</p>
         <p>Stores that processed discounted or tax-sensitive PayPal orders on 4.0.4 should reconcile PayPal totals against WooCommerce totals before assuming the issue was only visual.</p>
         <a class="button" href="./changes/woocommerce-paypal-4-0-4-amount-mismatch/">Read the reconciliation decision</a>
@@ -98,11 +98,35 @@
         <p>Affected stores should contain the loop, back up the database, preserve evidence, resolve stuck pending orders, and verify whether an update stops the repeated writes.</p>
         <a class="button" href="./changes/mollie-cancelled-payment-order-note-loop/">Read the containment decision</a>
       </article>
+
+      <article class="article home-card">
+        <div class="status">Currency / capture mismatch</div>
+        <h2>Stripe captures only 1/100 amount with WPML Multi-Currency</h2>
+        <p><strong>Reported issue:</strong> the WooCommerce Stripe support forum lists a current topic about USD orders capturing only 1/100 of the amount when using WPML Multi-Currency.</p>
+        <p>Stores should pause the affected currency/payment path, compare WooCommerce totals against Stripe captures, and preserve order and plugin-version evidence before making customer or accounting changes.</p>
+        <a class="button" href="./changes/stripe-wpml-multi-currency-1-100-amount/">Read the currency audit decision</a>
+      </article>
+
+      <article class="article home-card">
+        <div class="status">Shipping / payment total mismatch</div>
+        <h2>PayPal total missing shipping in WooCommerce</h2>
+        <p><strong>Reported issue:</strong> the WooCommerce PayPal Payments support forum lists a current topic about shipping not being included in the PayPal total.</p>
+        <p>Stores should compare PayPal transaction totals with WooCommerce shipping, tax, discounts, and refunds before fulfillment or accounting close.</p>
+        <a class="button" href="./changes/paypal-shipping-not-included-total/">Read the shipping reconciliation decision</a>
+      </article>
+
+      <article class="article home-card">
+        <div class="status">Intermittent checkout failure</div>
+        <h2>PayPal/card payments fail intermittently: OrderProcessor.php:109</h2>
+        <p><strong>Support signal:</strong> a detailed support thread reported PayPal approval without capture, card failures at OrderProcessor.php:109, and webhook verification failures; plugin support said the pattern may indicate a race condition or timing issue.</p>
+        <p>Stores should preserve logs, compare successful and failed attempts, verify PayPal capture status, and escalate privately with order IDs and timestamps.</p>
+        <a class="button" href="./changes/paypal-orderprocessor-109-intermittent-failures/">Read the lost-sales decision</a>
+      </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, PayPal, Syde, WooPayments, Bancontact, TWINT, or WP Super Cache.</div>
+    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, PayPal, Syde, WooPayments, Bancontact, TWINT, WPML, or WP Super Cache.</div>
   </footer>
 </body>
 </html>
