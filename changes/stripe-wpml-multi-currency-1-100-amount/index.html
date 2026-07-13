@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stripe Captures 1/100 Amount with WPML Multi-Currency: What to Check</title>
+  <meta name="description" content="A WooCommerce Stripe support topic reports USD orders capturing only 1/100 of the amount when using WPML Multi-Currency. See how to contain and audit the risk.">
+  <link rel="canonical" href="https://whatjustchanged.com/changes/stripe-wpml-multi-currency-1-100-amount/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Stripe Captures 1/100 Amount with WPML Multi-Currency: What to Check">
+  <meta property="og:description" content="How to respond when WooCommerce Stripe captures only 1/100 of the intended amount for USD orders in a WPML Multi-Currency setup.">
+  <meta property="og:url" content="https://whatjustchanged.com/changes/stripe-wpml-multi-currency-1-100-amount/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"WooCommerce Stripe captures only 1/100 of the amount with WPML Multi-Currency: who is affected and what to check",
+    "description":"An evidence-backed change record for a WooCommerce Stripe support topic reporting USD orders captured at 1/100 of the intended amount when using WPML Multi-Currency.",
+    "datePublished":"2026-07-13",
+    "dateModified":"2026-07-13",
+    "mainEntityOfPage":"https://whatjustchanged.com/changes/stripe-wpml-multi-currency-1-100-amount/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WooCommerce Stripe","WPML Multi-Currency","payment amount mismatch","USD orders","currency conversion"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What was reported?",
+        "acceptedAnswer":{"@type":"Answer","text":"A WooCommerce Stripe support topic reports Stripe capturing only 1/100 of the amount for USD orders when WPML Multi-Currency is used."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does this prove every WPML Multi-Currency store is affected?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. The public evidence identifies a reported failure pattern, not a universal defect. Stores should audit their own Stripe captures against WooCommerce order totals before assuming impact."}
+      },
+      {
+        "@type":"Question",
+        "name":"What should a store owner check first?",
+        "acceptedAnswer":{"@type":"Answer","text":"Compare WooCommerce order totals, Stripe captured amounts, currency, decimal handling, WPML currency settings, checkout currency, and the exact plugin versions active during the affected orders."}
+      }
+    ]
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="#sources">Official sources</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">WordPress plugin change record</div>
+        <h1>WooCommerce Stripe captures only 1/100 of the amount with WPML Multi-Currency</h1>
+        <div class="meta"><span>Reviewed July 13, 2026</span><span>Evidence confidence: Active support topic; root cause not confirmed</span><span>Primary domain: Revenue / currency accuracy</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>If Stripe captures 1/100 of the intended WooCommerce order amount, treat it as a revenue-loss incident. Stop relying on the affected currency/payment path until you reconcile existing orders, reproduce the problem safely, and verify whether the issue comes from currency conversion, decimal handling, checkout session creation, or a plugin conflict.</div>
+
+        <p>The WooCommerce Stripe support forum currently lists a topic titled <strong>“Stripe captures only 1/100 of the amount for USD orders when using WPML Multi Currency”</strong>. That title describes a high-severity payment mismatch: WooCommerce can appear to create a normal order while Stripe captures a tiny fraction of the expected total.</p>
+
+        <div class="notice warn"><strong>Do not assume WooCommerce's paid status means the money was collected.</strong> In amount-mismatch incidents, the captured Stripe amount is the financial reality that must be reconciled.</div>
+
+        <h2 id="what-changed">What changed?</h2>
+        <ul>
+          <li><strong>Observed pattern:</strong> USD orders in a WPML Multi-Currency setup were reported as being captured at 1/100 of the amount.</li>
+          <li><strong>Risk area:</strong> decimal conversion, currency minor units, multi-currency plugins, and Stripe checkout/session amounts.</li>
+          <li><strong>Current status:</strong> this is a reported support topic, not a confirmed universal plugin-wide bug.</li>
+        </ul>
+
+        <h2 id="affected">Who is affected?</h2>
+        <p>This record matters most for stores using WooCommerce Stripe with WPML Multi-Currency, especially where customers can check out in USD while the store also uses other currencies. Stores without multi-currency, without USD checkout, or without a Stripe/WooCommerce amount mismatch may not be affected.</p>
+
+        <h2 id="decision">What should you do?</h2>
+        <table class="decision-table">
+          <thead><tr><th>Your situation</th><th>Primary decision</th><th>Safeguard</th></tr></thead>
+          <tbody>
+            <tr><td>Stripe captured 1/100 of the intended total</td><td><strong>Contain and reconcile</strong></td><td>Pause the affected USD/multi-currency path and compare every suspect WooCommerce order against Stripe</td></tr>
+            <tr><td>Only one order is affected</td><td><strong>Audit the exact scenario</strong></td><td>Check product total, shipping, tax, currency, discounts, exchange rate, and Stripe captured amount</td></tr>
+            <tr><td>You cannot reproduce it yet</td><td><strong>Do not assume it is gone</strong></td><td>Test with the same currency, cart contents, tax/shipping region, and payment method in staging</td></tr>
+            <tr><td>Multiple orders are affected</td><td><strong>Escalate privately</strong></td><td>Prepare order IDs, Stripe payment IDs, system status, plugin versions, WPML settings, and Stripe logs</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="steps">Safest audit sequence</h2>
+        <ol class="steps">
+          <li><strong>Define the exposure window.</strong> Identify when WPML Multi-Currency, WooCommerce Stripe, and any recent updates were active.</li>
+          <li><strong>Export all Stripe-paid WooCommerce orders in affected currencies.</strong> Start with USD orders if that is the reported failure path.</li>
+          <li><strong>Compare actual captured amounts.</strong> For each order, compare WooCommerce total, Stripe captured amount, currency, tax, shipping, discounts, and exchange rate.</li>
+          <li><strong>Reproduce in staging.</strong> Use the same cart, checkout currency, customer location, tax/shipping setup, and payment method.</li>
+          <li><strong>Temporarily disable the risky path if needed.</strong> Use one currency or one payment path until the mismatch is understood.</li>
+          <li><strong>Escalate with evidence.</strong> Send logs and reproduction steps to the relevant plugin support channels rather than posting private transaction data publicly.</li>
+        </ol>
+
+        <h2 id="not-proven">What is not yet proven?</h2>
+        <p>The public evidence does not prove the exact cause, the affected version range, or that every WPML Multi-Currency store is exposed. It supports a narrower decision: when a Stripe capture is 1/100 of the WooCommerce order amount, the store needs immediate financial reconciliation and a controlled reproduction test before continuing normal checkout.</p>
+
+        <div class="notice danger"><strong>Escalate immediately when:</strong> the captured amount is lower than the order total, multiple USD orders are affected, accounting exports use the higher WooCommerce total, or customers received goods after paying only a fraction of the intended price.</div>
+
+        <h2 id="updates">Update log</h2>
+        <div class="update-log">
+          <div class="update"><time datetime="2026-07-13">July 13, 2026</time><p>This decision record was created from the active WooCommerce Stripe support listing and framed conservatively because the exact root cause is not confirmed publicly.</p></div>
+        </div>
+
+        <h2 id="sources">Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://wordpress.org/support/plugin/woocommerce-gateway-stripe/" rel="nofollow">WooCommerce Stripe support forum listing</a></li>
+          <li><a href="https://wordpress.org/support/topic/stripe-captures-only-1-100-of-the-amount-for-usd-orders-when-using-wpml-multi-cu/" rel="nofollow">Support topic: Stripe captures only 1/100 of the amount for USD orders when using WPML Multi Currency</a></li>
+          <li><a href="https://wordpress.org/plugins/woocommerce-gateway-stripe/" rel="nofollow">WooCommerce Stripe Payment Gateway listing and changelog</a></li>
+        </ul>
+        <p><small>This is independent technical research, not official WooCommerce, Stripe, WPML, tax, or accounting advice. Verify your own orders and payment captures before changing customer balances or fulfillment decisions.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Contain and reconcile</span></p><p><strong>Affected:</strong> WooCommerce Stripe stores using WPML Multi-Currency where USD orders capture at 1/100 of the expected amount.</p><p><strong>Latest reviewed:</strong> July 13, 2026 support listing</p><p><strong>Confidence:</strong> reported support topic; root cause not confirmed.</p></section>
+        <section class="card"><h2>On this page</h2><ul class="toc"><li><a href="#what-changed">What changed?</a></li><li><a href="#affected">Who is affected?</a></li><li><a href="#decision">What should you do?</a></li><li><a href="#steps">Audit sequence</a></li><li><a href="#not-proven">What is not proven?</a></li><li><a href="#updates">Update log</a></li><li><a href="#sources">Official sources</a></li></ul></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, or WPML.</div></footer>
+</body>
+</html>
