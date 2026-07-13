@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://whatjustchanged.com/</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-07-13</lastmod>
   </url>
   <url>
     <loc>https://whatjustchanged.com/changes/woocommerce-stripe-10-8-payment-status-not-updating/</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-13</lastmod>
   </url>
   <url>
     <loc>https://whatjustchanged.com/changes/stripe-10-8-3-checkout-error-adaptive-pricing/</loc>
@@ -35,5 +35,17 @@
   <url>
     <loc>https://whatjustchanged.com/changes/mollie-cancelled-payment-order-note-loop/</loc>
     <lastmod>2026-07-06</lastmod>
+  </url>
+  <url>
+    <loc>https://whatjustchanged.com/changes/stripe-wpml-multi-currency-1-100-amount/</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>https://whatjustchanged.com/changes/paypal-shipping-not-included-total/</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>https://whatjustchanged.com/changes/paypal-orderprocessor-109-intermittent-failures/</loc>
+    <lastmod>2026-07-13</lastmod>
   </url>
 </urlset>
