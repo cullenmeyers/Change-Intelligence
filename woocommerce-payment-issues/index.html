@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WooCommerce Payment Issues Tracker — What Just Changed</title>
+  <meta name="description" content="Current WooCommerce payment, checkout, order-total, shipping, refund, webhook, and reconciliation issues tracked by What Just Changed.">
+  <link rel="canonical" href="https://whatjustchanged.com/woocommerce-payment-issues/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WooCommerce Payment Issues Tracker — What Just Changed">
+  <meta property="og:description" content="A focused tracker for WooCommerce payment, checkout, order-total, shipping, refund, webhook, and reconciliation issues.">
+  <meta property="og:url" content="https://whatjustchanged.com/woocommerce-payment-issues/">
+  <link rel="stylesheet" href="../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"WooCommerce Payment Issues Tracker",
+    "description":"A curated tracker of WooCommerce payment, checkout, order total, shipping, capture, webhook, and reconciliation issues.",
+    "url":"https://whatjustchanged.com/woocommerce-payment-issues/",
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "mainEntity":{
+      "@type":"ItemList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"url":"https://whatjustchanged.com/changes/woocommerce-stripe-10-8-payment-status-not-updating/","name":"WooCommerce Stripe 10.8.x successful payments stuck in Pending Payment"},
+        {"@type":"ListItem","position":2,"url":"https://whatjustchanged.com/changes/stripe-10-8-3-checkout-error-adaptive-pricing/","name":"WooCommerce Stripe 10.8.3 checkout error after update"},
+        {"@type":"ListItem","position":3,"url":"https://whatjustchanged.com/changes/woocommerce-paypal-4-0-4-amount-mismatch/","name":"WooCommerce PayPal 4.0.4 discount applied twice / amount mismatch"},
+        {"@type":"ListItem","position":4,"url":"https://whatjustchanged.com/changes/stripe-shipping-cost-not-charged-10-7/","name":"Stripe charged an order without shipping cost"},
+        {"@type":"ListItem","position":5,"url":"https://whatjustchanged.com/changes/stripe-wpml-multi-currency-1-100-amount/","name":"Stripe captures only 1/100 amount with WPML Multi-Currency"},
+        {"@type":"ListItem","position":6,"url":"https://whatjustchanged.com/changes/paypal-shipping-not-included-total/","name":"PayPal total missing shipping in WooCommerce"},
+        {"@type":"ListItem","position":7,"url":"https://whatjustchanged.com/changes/paypal-orderprocessor-109-intermittent-failures/","name":"PayPal/card payments fail intermittently with OrderProcessor.php:109"},
+        {"@type":"ListItem","position":8,"url":"https://whatjustchanged.com/changes/mollie-cancelled-payment-order-note-loop/","name":"Mollie cancelled payment order note loop"},
+        {"@type":"ListItem","position":9,"url":"https://whatjustchanged.com/changes/mollie-payconiq-removed-woocommerce/","name":"Mollie removed Payconiq from its WooCommerce plugin"},
+        {"@type":"ListItem","position":10,"url":"https://whatjustchanged.com/changes/woocommerce-paypal-pay-with-crypto-enabled-by-default/","name":"WooCommerce PayPal enabled Pay with Crypto by default for eligible merchants"}
+      ]
+    }
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">What Just Changed</a>
+      <a class="nav-link" href="#tracked-issues">Tracked issues</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">WooCommerce payment intelligence</div>
+      <h1>WooCommerce payment issues we’re tracking</h1>
+      <p>Checkout failures, payment-status bugs, order-total mismatches, shipping/tax collection problems, webhook failures, and reconciliation risks. The goal is not to summarize every plugin update. The goal is to answer: <strong>is money, checkout, or order accuracy at risk—and what should I check first?</strong></p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <h2>Current read</h2>
+        <p>The strongest early validation pattern for What Just Changed is not broad WordPress plugin news. It is urgent WooCommerce payment operations: checkout availability, payment capture, order totals, shipping/tax mismatches, payment methods, and database/server-load problems caused by payment flows.</p>
+
+        <div class="notice good"><strong>Use this page when:</strong> a WooCommerce store owner, developer, or agency needs to quickly triage whether a payment-plugin change could affect real orders, checkout, captured funds, refunds, shipping, taxes, accounting, or customer support.</div>
+
+        <h2 id="tracked-issues">Tracked payment issues</h2>
+        <table class="decision-table">
+          <thead><tr><th>Issue</th><th>Primary risk</th><th>First action</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../changes/woocommerce-stripe-10-8-payment-status-not-updating/">WooCommerce Stripe 10.8.x payments stuck in Pending Payment</a></td><td>Successful payments may not move orders correctly</td><td>Reconcile paid Stripe transactions against WooCommerce order status</td></tr>
+            <tr><td><a href="../changes/stripe-10-8-3-checkout-error-adaptive-pricing/">WooCommerce Stripe 10.8.3 checkout error after update</a></td><td>Checkout may fail or payment methods may not load</td><td>Clear cache layers, exclude Stripe.js, and check Adaptive Pricing / WooPayments conflicts</td></tr>
+            <tr><td><a href="../changes/woocommerce-paypal-4-0-4-amount-mismatch/">WooCommerce PayPal 4.0.4 discount applied twice / amount mismatch</a></td><td>PayPal and WooCommerce totals may disagree</td><td>Audit discounted, gift-card, negative-fee, and tax-sensitive PayPal orders</td></tr>
+            <tr><td><a href="../changes/stripe-shipping-cost-not-charged-10-7/">Stripe charged an order without shipping cost</a></td><td>Stripe may capture less than the WooCommerce order total</td><td>Compare captured Stripe amounts against shipping, VAT, discounts, and order totals</td></tr>
+            <tr><td><a href="../changes/stripe-wpml-multi-currency-1-100-amount/">Stripe captures only 1/100 amount with WPML Multi-Currency</a></td><td>Currency/decimal handling may undercharge orders</td><td>Pause the risky currency path and compare captured amounts order by order</td></tr>
+            <tr><td><a href="../changes/paypal-shipping-not-included-total/">PayPal total missing shipping in WooCommerce</a></td><td>Shipping may not be collected in the PayPal total</td><td>Check PayPal transaction total against shipping, shipping tax, coupons, and payouts</td></tr>
+            <tr><td><a href="../changes/paypal-orderprocessor-109-intermittent-failures/">PayPal/card payments fail intermittently with OrderProcessor.php:109</a></td><td>Some valid payment attempts may fail while others succeed</td><td>Preserve logs, compare success/failure cases, verify captures, and escalate with evidence</td></tr>
+            <tr><td><a href="../changes/mollie-cancelled-payment-order-note-loop/">Mollie cancelled payment order note loop</a></td><td>Repeated order notes can create database bloat and server load</td><td>Back up, stop the loop, preserve evidence, and clean duplicates only after containment</td></tr>
+            <tr><td><a href="../changes/mollie-payconiq-removed-woocommerce/">Mollie removed Payconiq from its WooCommerce plugin</a></td><td>A payment method may disappear after update</td><td>Prepare a tested replacement checkout method before updating affected stores</td></tr>
+            <tr><td><a href="../changes/woocommerce-paypal-pay-with-crypto-enabled-by-default/">WooCommerce PayPal enabled Pay with Crypto by default</a></td><td>Payment-method mix may change without store-owner intent</td><td>Inspect payment settings and checkout before assuming the old configuration remained unchanged</td></tr>
+          </tbody>
+        </table>
+
+        <h2>How to triage a payment issue</h2>
+        <ol class="steps">
+          <li><strong>Separate search noise from money risk.</strong> Ask whether checkout, capture, order status, refunds, shipping, tax, payouts, or accounting could be wrong.</li>
+          <li><strong>Identify the exposure window.</strong> Record the plugin version, update time, checkout type, payment method, cache/CDN state, and relevant integrations.</li>
+          <li><strong>Reconcile real orders.</strong> Compare WooCommerce totals and statuses against Stripe, PayPal, Mollie, payouts, refunds, and customer receipts.</li>
+          <li><strong>Preserve evidence before cleanup.</strong> Save system status, order IDs, payment IDs, logs, screenshots, and timestamps before clearing caches or deleting notes.</li>
+          <li><strong>Change one variable at a time.</strong> Use staging where possible. Do not update, disable plugins, change payment settings, and clear evidence all at once.</li>
+        </ol>
+
+        <div class="notice warn"><strong>What this tracker is not:</strong> It is not official support, legal advice, tax advice, or accounting advice. It is an evidence-backed triage layer that points to the smallest justified next action.</div>
+      </article>
+
+      <aside class="sidebar">
+        <section class="card">
+          <h2>Best fit</h2>
+          <p>WooCommerce store owners, WordPress developers, and agencies responsible for keeping checkout, payment capture, and order accounting reliable.</p>
+        </section>
+        <section class="card">
+          <h2>Not included here</h2>
+          <p>Generic WordPress compatibility updates, broad changelog summaries, affiliate comparisons, or low-risk feature changes without direct payment, checkout, order, or reconciliation impact.</p>
+        </section>
+        <section class="card">
+          <h2>Tracked risk types</h2>
+          <ul class="toc">
+            <li>Checkout failure</li>
+            <li>Pending-payment orders</li>
+            <li>Amount mismatch</li>
+            <li>Shipping/tax undercollection</li>
+            <li>Webhook/capture failure</li>
+            <li>Database/server load</li>
+            <li>Payment-method changes</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, PayPal, Syde, WooPayments, Bancontact, TWINT, WPML, or WP Super Cache.</div></footer>
+</body>
+</html>
