@@ -25,7 +25,11 @@ After the July 13, 2026 review, the site again showed that operational payment, 
 10. WooCommerce PayPal total missing shipping
 11. WooCommerce PayPal/card payments fail intermittently with OrderProcessor.php:109
 
-The validation set is now locked at eleven records until the next review. New changes may be researched and queued privately, but the public site should not expand to a broad batch until there is stronger evidence about which operational record type earns useful search demand or human feedback.
+After the July 20, 2026 main review, public record expansion was paused. The broad WordPress-plugin-change version looked too weak for a simple SEO content machine, but the narrower WooCommerce payment-issue direction remained the strongest signal. Instead of adding more records, a hub page was created:
+
+- WooCommerce payment issues tracker: `/woocommerce-payment-issues/`
+
+The validation set is now locked at eleven records plus one hub page until the next review. New changes may be researched and queued privately, but the public site should not expand until the hub has been indexed and the July 13 pages have had more time to settle.
 
 ## Validation start
 
@@ -33,8 +37,8 @@ The validation set is now locked at eleven records until the next review. New ch
 - First review: June 25, 2026
 - Delayed second review: July 6, 2026
 - Third review: July 13, 2026
-- Next review: July 20, 2026
-- Main decision review: July 20-22, 2026
+- Main decision review: July 20, 2026
+- Next review: July 27, 2026
 
 ## First review notes — June 25, 2026
 
@@ -71,11 +75,23 @@ Decision from third review:
 - Keep the site locked at eleven records until the next review.
 - Review again around July 20 before adding more pages.
 
+## Main review notes — July 20, 2026
+
+Google Search Console data through July 18 showed the site was not compounding like a broad SEO content engine. The strongest pages were still payment, checkout, and order-money issues, but impressions slowed after the prior peak. The interpretation changed from "publish more individual pages" to "tighten the product surface around the winning pattern."
+
+Decision from main review:
+
+- Do not add more individual records right now.
+- Keep the eleven existing records locked.
+- Create a WooCommerce payment issues hub to group the strongest category into one clearer product surface.
+- Treat the next test as whether the hub improves internal linking, product clarity, and search understanding.
+- Recheck on July 27, 2026.
+
 ## What to measure
 
 ### 1. Indexing
 
-For each record, capture:
+For each record and the hub, capture:
 
 - Google indexing status
 - first indexed date
@@ -106,12 +122,12 @@ The purpose is to distinguish Google discovery from direct links, support-thread
 
 ### 4. Recommendation usefulness
 
-For each record, ask at least one relevant WordPress user, developer, agency operator, or store owner:
+Ask at least one relevant WordPress user, developer, agency operator, or store owner to review the WooCommerce payment issues hub:
 
-- Can you identify whether the record applies to you?
-- Is the recommended action clear?
-- Is the safeguard specific enough to act on?
-- What information is still missing before you would follow it?
+- Can you tell what kind of problems this tracker is for?
+- Can you quickly find the issue closest to your situation?
+- Is the recommended first action clear?
+- What information is still missing before you would trust or use it?
 
 Record the answer, not just a yes/no score.
 
@@ -139,7 +155,7 @@ Continue when pages are indexed and at least some records show relevant non-bran
 
 ### Refine before expanding
 
-Refine when pages are indexed but the queries or referrals do not match the intended decision. Change the angle, title, summary, or decision framing before adding volume.
+Refine when pages are indexed but the queries or referrals do not match the intended decision. Change the angle, title, summary, decision framing, or hub organization before adding volume.
 
 ### Investigate distribution or technical problems
 
