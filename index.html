@@ -14,6 +14,11 @@
   <link rel="stylesheet" href="./styles.css">
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    function trackIntent(name, location) {
+      try {
+        window.va('event', { name: name, data: { location: location } });
+      } catch (error) {}
+    }
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -40,7 +45,7 @@
         <h2>WooCommerce payment issues we’re tracking</h2>
         <p><strong>Current direction:</strong> the strongest signal is not broad plugin news. It is WooCommerce payment, checkout, order-total, shipping, webhook, and reconciliation problems where money or order accuracy may be at risk.</p>
         <p>The hub groups the payment records into one triage surface so store owners and developers can quickly decide what to check first.</p>
-        <a class="button" href="./woocommerce-payment-issues/">Open the payment issues hub</a>
+        <p><a class="button" href="./woocommerce-payment-issues/" onclick="trackIntent('HubClick','home_primary')">Open the payment issues hub</a> <a class="button" href="./woocommerce-payment-alerts/" onclick="trackIntent('AlertInterestClick','home_primary')">Get payment issue alerts</a></p>
       </article>
     </section>
 
