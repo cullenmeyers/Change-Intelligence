@@ -29,7 +29,11 @@ After the July 20, 2026 main review, public record expansion was paused. The bro
 
 - WooCommerce payment issues tracker: `/woocommerce-payment-issues/`
 
-The validation set is now locked at eleven records plus one hub page until the next review. New changes may be researched and queued privately, but the public site should not expand until the hub has been indexed and the July 13 pages have had more time to settle.
+After the July 27, 2026 review, manual outreach was removed as the next validation path. Instead, a no-outreach alert-intent test was added:
+
+- WooCommerce payment issue alerts: `/woocommerce-payment-alerts/`
+
+The validation set is now locked at eleven records plus the hub and alert-intent page. New changes may be researched and queued privately, but the public site should not expand until the alert page has been indexed and the passive intent test has data.
 
 ## Validation start
 
@@ -38,7 +42,8 @@ The validation set is now locked at eleven records plus one hub page until the n
 - Delayed second review: July 6, 2026
 - Third review: July 13, 2026
 - Main decision review: July 20, 2026
-- Next review: July 27, 2026
+- No-outreach test start: July 27, 2026
+- Next review: August 3, 2026
 
 ## First review notes — June 25, 2026
 
@@ -87,11 +92,23 @@ Decision from main review:
 - Treat the next test as whether the hub improves internal linking, product clarity, and search understanding.
 - Recheck on July 27, 2026.
 
+## July 27 notes — no-outreach validation path
+
+The hub was indexed, and the missing PayPal OrderProcessor page had indexing requested. The user did not want to do manual outreach. The next test changed from human outreach to passive product-intent measurement.
+
+Decision from July 27:
+
+- Do not add more issue records.
+- Add a WooCommerce payment alerts page to test whether visitors want an alert/watchlist product.
+- Add alert-intent links from the homepage and hub.
+- Track passive signal: alert page views, custom alert click events, mailto opens/emails, and repeat visits to the hub.
+- Recheck on August 3, 2026.
+
 ## What to measure
 
 ### 1. Indexing
 
-For each record and the hub, capture:
+For each record, hub, and alert page, capture:
 
 - Google indexing status
 - first indexed date
@@ -120,16 +137,18 @@ From Vercel Web Analytics, capture by page:
 
 The purpose is to distinguish Google discovery from direct links, support-thread referrals, email outreach, and manual sharing.
 
-### 4. Recommendation usefulness
+### 4. Passive alert intent
 
-Ask at least one relevant WordPress user, developer, agency operator, or store owner to review the WooCommerce payment issues hub:
+From Vercel Web Analytics custom events and email inbox, capture:
 
-- Can you tell what kind of problems this tracker is for?
-- Can you quickly find the issue closest to your situation?
-- Is the recommended first action clear?
-- What information is still missing before you would trust or use it?
+- clicks from homepage to the alert page
+- clicks from hub to the alert page
+- Request alerts clicks
+- Report an issue clicks
+- actual emails received from mailto CTAs
+- repeat visits to the hub or alert page
 
-Record the answer, not just a yes/no score.
+This replaces manual outreach for the current validation window.
 
 ### 5. Freshness
 
@@ -151,15 +170,15 @@ Recheck source evidence when the underlying change is still active:
 
 ### Continue and expand carefully
 
-Continue when pages are indexed and at least some records show relevant non-branded impressions, useful referrals, or clear user-action value. Add the next record only after identifying which page pattern produced the strongest signal.
+Continue when pages are indexed and at least some records show relevant non-branded impressions, useful referrals, clear user-action value, or passive alert intent. Add the next record only after identifying which page pattern produced the strongest signal.
 
 ### Refine before expanding
 
-Refine when pages are indexed but the queries or referrals do not match the intended decision. Change the angle, title, summary, decision framing, or hub organization before adding volume.
+Refine when pages are indexed but the queries or referrals do not match the intended decision. Change the angle, title, summary, decision framing, CTA, or hub organization before adding volume.
 
 ### Investigate distribution or technical problems
 
-Investigate when pages are not indexed, Google selects a different canonical, analytics receives no real visits after distribution, or users cannot tell what action to take.
+Investigate when pages are not indexed, Google selects a different canonical, analytics receives no real visits after distribution, users cannot tell what action to take, or alert-intent CTAs receive no visibility.
 
 ## Prohibited during the current validation window
 
