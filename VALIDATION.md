@@ -29,21 +29,24 @@ After the July 20, 2026 main review, public record expansion was paused. The bro
 
 - WooCommerce payment issues tracker: `/woocommerce-payment-issues/`
 
-After the July 27, 2026 review, manual outreach was removed as the next validation path. Instead, a no-outreach alert-intent test was added:
+After the July 27, 2026 review, outreach was rejected as the next validation path. A passive alert-intent test was created instead:
 
-- WooCommerce payment issue alerts: `/woocommerce-payment-alerts/`
+- WooCommerce payment issue alerts page: `/woocommerce-payment-alerts/`
 
-The validation set is now locked at eleven records plus the hub and alert-intent page. New changes may be researched and queued privately, but the public site should not expand until the alert page has been indexed and the passive intent test has data.
+After the August 3, 2026 review, the site still had weak SEO momentum: 6 total Google clicks and 381 total impressions through August 1, with no Google clicks after July 10. The strongest pages remained the payment/checkout/order-money pages, so no new records were added. Instead, alert CTAs were placed inside the pages that already had the strongest impressions/clicks.
 
-## Validation start
+The validation set is now locked at eleven records plus one hub page plus one alert-intent page. New changes may be researched and queued privately, but the public site should not expand until alert intent has been measured.
+
+## Validation timeline
 
 - Start date: June 18, 2026
 - First review: June 25, 2026
 - Delayed second review: July 6, 2026
 - Third review: July 13, 2026
 - Main decision review: July 20, 2026
-- No-outreach test start: July 27, 2026
-- Next review: August 3, 2026
+- Passive alert test started: July 27, 2026
+- Alert CTA placement test started: August 3, 2026
+- Next review: August 10, 2026
 
 ## First review notes — June 25, 2026
 
@@ -66,7 +69,6 @@ Decision from delayed second review:
 - Expand from five records to eight records with one controlled batch.
 - Keep the batch focused on operational pain: checkout failure, revenue mismatch, order/payment reconciliation, database/server load.
 - Do not add broad compatibility, general changelog, affiliate, or comparison pages yet.
-- Review again on July 13 before adding more public records.
 
 ## Third review notes — July 13, 2026
 
@@ -78,7 +80,6 @@ Decision from third review:
 - Rewrite the PayPal amount-mismatch title to emphasize the concrete pain: discount applied twice / amount mismatch.
 - Add one controlled batch of three more records in the same category: amount capture error, shipping total mismatch, and intermittent PayPal/card failure.
 - Keep the site locked at eleven records until the next review.
-- Review again around July 20 before adding more pages.
 
 ## Main review notes — July 20, 2026
 
@@ -90,25 +91,38 @@ Decision from main review:
 - Keep the eleven existing records locked.
 - Create a WooCommerce payment issues hub to group the strongest category into one clearer product surface.
 - Treat the next test as whether the hub improves internal linking, product clarity, and search understanding.
-- Recheck on July 27, 2026.
 
-## July 27 notes — no-outreach validation path
+## Passive alert test notes — July 27, 2026
 
-The hub was indexed, and the missing PayPal OrderProcessor page had indexing requested. The user did not want to do manual outreach. The next test changed from human outreach to passive product-intent measurement.
+Google Search Console data through July 25 showed continued weak search momentum. The hub was indexed, but it had not yet produced visible traffic. Because manual outreach was rejected, the next test became passive onsite intent.
 
-Decision from July 27:
+Decision from July 27 review:
 
-- Do not add more issue records.
-- Add a WooCommerce payment alerts page to test whether visitors want an alert/watchlist product.
-- Add alert-intent links from the homepage and hub.
-- Track passive signal: alert page views, custom alert click events, mailto opens/emails, and repeat visits to the hub.
-- Recheck on August 3, 2026.
+- Do not add more records.
+- Create a WooCommerce payment issue alerts page.
+- Add basic request-alerts and report-issue CTAs.
+- Track alert intent using Vercel custom events and mailto clicks.
+
+## Alert CTA placement notes — August 3, 2026
+
+Google Search Console data through August 1 showed 381 total impressions and 6 total clicks. There were no Google clicks after July 10. The site did not show organic compounding, but the strongest pages remained payment/checkout/order-money pages.
+
+Decision from August 3 review:
+
+- Do not add more records.
+- Put alert CTAs directly inside the pages that already got the strongest impressions or clicks:
+  - WooCommerce Stripe 10.8.x payments stuck in Pending Payment
+  - WooCommerce Stripe 10.8.3 checkout error after update
+  - WooCommerce PayPal 4.0.4 discount applied twice / amount mismatch
+  - Stripe charged order without shipping cost
+- Measure whether future visitors click from issue records to the alert page.
+- Recheck on August 10 before adding, deleting, or redesigning anything.
 
 ## What to measure
 
 ### 1. Indexing
 
-For each record, hub, and alert page, capture:
+For each record, the hub, and the alerts page, capture:
 
 - Google indexing status
 - first indexed date
@@ -124,7 +138,7 @@ From Google Search Console, capture by page:
 - average position
 - whether queries show decision intent rather than only plugin-name navigation
 
-Examples of useful intent include questions about whether to update, migrate, disable, reconcile, restore checkout, audit orders, or change configuration.
+Useful intent includes questions about whether to update, migrate, disable, reconcile, restore checkout, audit orders, or change configuration.
 
 ### 3. Visits and referrals
 
@@ -135,20 +149,18 @@ From Vercel Web Analytics, capture by page:
 - referrer/source
 - country only when useful for interpreting a region-specific change
 
-The purpose is to distinguish Google discovery from direct links, support-thread referrals, email outreach, and manual sharing.
+The purpose is to distinguish Google discovery from direct links, support-thread referrals, owner testing, and manual sharing.
 
 ### 4. Passive alert intent
 
-From Vercel Web Analytics custom events and email inbox, capture:
+From Vercel Web Analytics and email inbox, capture:
 
-- clicks from homepage to the alert page
-- clicks from hub to the alert page
-- Request alerts clicks
-- Report an issue clicks
-- actual emails received from mailto CTAs
-- repeat visits to the hub or alert page
-
-This replaces manual outreach for the current validation window.
+- visits to `/woocommerce-payment-alerts/`
+- clicks/events for `AlertInterestClick`
+- clicks/events for `AlertSignupClick`
+- clicks/events for `ReportIssueClick`
+- actual alert-request emails or issue-report emails
+- which page sent the visitor to the alerts page
 
 ### 5. Freshness
 
@@ -170,15 +182,15 @@ Recheck source evidence when the underlying change is still active:
 
 ### Continue and expand carefully
 
-Continue when pages are indexed and at least some records show relevant non-branded impressions, useful referrals, clear user-action value, or passive alert intent. Add the next record only after identifying which page pattern produced the strongest signal.
+Continue when pages are indexed and at least some records show relevant non-branded impressions, useful referrals, clear user-action value, or alert intent. Add the next record only after identifying which page pattern produced the strongest signal.
 
 ### Refine before expanding
 
-Refine when pages are indexed but the queries or referrals do not match the intended decision. Change the angle, title, summary, decision framing, CTA, or hub organization before adding volume.
+Refine when pages are indexed but the queries, referrals, or alert clicks do not match the intended decision. Change the angle, title, summary, decision framing, hub organization, or alert offer before adding volume.
 
 ### Investigate distribution or technical problems
 
-Investigate when pages are not indexed, Google selects a different canonical, analytics receives no real visits after distribution, users cannot tell what action to take, or alert-intent CTAs receive no visibility.
+Investigate when pages are not indexed, Google selects a different canonical, analytics receives no real visits after distribution, or visitors cannot tell what action to take.
 
 ## Prohibited during the current validation window
 
@@ -186,5 +198,5 @@ Investigate when pages are not indexed, Google selects a different canonical, an
 - Do not redesign the site.
 - Do not add broad comparison or affiliate content.
 - Do not repeatedly request indexing every day.
-- Do not change several variables at once.
-- Do not judge the market from raw traffic alone; query intent and action usefulness matter more at this stage.
+- Do not change several variables at once beyond this planned CTA placement test.
+- Do not judge the market from raw traffic alone; query intent, alert intent, and action usefulness matter more at this stage.
