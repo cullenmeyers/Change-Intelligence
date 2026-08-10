@@ -3,145 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>What Just Changed — Evidence-Backed Change Decisions</title>
-  <meta name="description" content="Evidence-backed change records that explain what changed, who is affected, and the smallest justified action. WordPress plugins are the first wedge.">
+  <title>What Just Changed — API Change Explainers</title>
+  <meta name="description" content="What changed, who is affected, what breaks, and what to do next for API changes, deprecations, breaking changes, and migration deadlines.">
   <link rel="canonical" href="https://whatjustchanged.com/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="What Just Changed — Evidence-Backed Change Decisions">
-  <meta property="og:description" content="What changed, who is affected, and the smallest justified action. WordPress plugins are the first wedge.">
+  <meta property="og:title" content="What Just Changed — API Change Explainers">
+  <meta property="og:description" content="Developer/API changes translated into clear action checklists.">
   <meta property="og:url" content="https://whatjustchanged.com/">
   <link rel="stylesheet" href="./styles.css">
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    function trackIntent(name, location) {
-      try {
-        window.va('event', { name: name, data: { location: location } });
-      } catch (error) {}
-    }
+    function trackIntent(name, location) { try { window.va('event', { name: name, data: { location: location } }); } catch (error) {} }
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="./">What Just Changed</a>
-      <a class="nav-link" href="./woocommerce-payment-issues/">Payment issues hub</a>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <div class="eyebrow">Change intelligence · First wedge: WordPress plugins</div>
-      <h1>What just changed—and what should you do?</h1>
-      <p>We turn scattered changelogs, support threads, and official documentation into evidence-backed decisions. WordPress plugins are the first wedge—not the final boundary.</p>
-    </div>
-  </section>
-
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="./">What Just Changed</a><a class="nav-link" href="./api-changes/">API changes</a></div></header>
+  <section class="hero"><div class="container"><div class="eyebrow">New pivot test · Developer/API changes</div><h1>What changed in the API—and what should you do?</h1><p>We translate official changelogs, versioning docs, and migration notices into plain action records: what changed, who is affected, what can break, and the smallest safe next step.</p><p><a class="button" href="./api-changes/" onclick="trackIntent('ApiHubClick','home_hero')">Open API change hub</a></p></div></section>
   <main class="container">
-    <section aria-label="Primary tracker" style="display:grid;gap:24px;margin-bottom:24px">
-      <article class="article home-card">
-        <div class="status">Focused tracker</div>
-        <h2>WooCommerce payment issues we’re tracking</h2>
-        <p><strong>Current direction:</strong> the strongest signal is not broad plugin news. It is WooCommerce payment, checkout, order-total, shipping, webhook, and reconciliation problems where money or order accuracy may be at risk.</p>
-        <p>The hub groups the payment records into one triage surface so store owners and developers can quickly decide what to check first.</p>
-        <p><a class="button" href="./woocommerce-payment-issues/" onclick="trackIntent('HubClick','home_primary')">Open the payment issues hub</a> <a class="button" href="./woocommerce-payment-alerts/" onclick="trackIntent('AlertInterestClick','home_primary')">Get payment issue alerts</a></p>
-      </article>
+    <section aria-label="API change pivot" style="display:grid;gap:24px;margin-bottom:24px">
+      <article class="article home-card"><div class="status">Developer/API change tracker</div><h2>API changes explained</h2><p><strong>Current test:</strong> the old WooCommerce-payment wedge showed weak organic momentum. The new passive SEO test is developer/API changes: breaking changes, deprecations, version boundaries, auth changes, and migration deadlines developers already search for when integrations might break.</p><a class="button" href="./api-changes/">Read the API change records</a></article>
     </section>
-
-    <section id="records" aria-label="Change records" style="display:grid;gap:24px">
-      <article class="article home-card">
-        <div class="status">Active incident record</div>
-        <h2>WooCommerce Stripe 10.8.x: successful payments stuck in Pending Payment</h2>
-        <p><strong>Latest confirmed status:</strong> version 10.8.2 was released on June 15, 2026 with fixes intended to prevent Adaptive Pricing orders from remaining pending after successful payment and to prevent some webhook payments from being dropped.</p>
-        <p>The decision record separates affected versions, immediate order reconciliation, webhook checks, staging, and the safest update path.</p>
-        <a class="button" href="./changes/woocommerce-stripe-10-8-payment-status-not-updating/">Read the decision record</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Confirmed capability removal</div>
-        <h2>Mollie removed Payconiq from its WooCommerce plugin</h2>
-        <p><strong>Confirmed change:</strong> version 8.1.3 deleted the Payconiq payment method. The current release line has advanced to 8.1.7 without restoring it.</p>
-        <p>Merchants actively using Payconiq should prepare and test another checkout method before updating from 8.1.2 or earlier.</p>
-        <a class="button" href="./changes/mollie-payconiq-removed-woocommerce/">Read the migration decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Confirmed default change</div>
-        <h2>WooCommerce PayPal enabled Pay with Crypto by default for eligible merchants</h2>
-        <p><strong>Confirmed change:</strong> version 4.0.1 enabled Pay with Crypto by default for eligible merchants. Later changelogs through 4.0.4 do not state that the default was reversed.</p>
-        <p>Eligible stores should inspect settings and the customer-facing checkout, then intentionally keep or disable the method rather than assuming the update preserved the prior payment-method mix.</p>
-        <a class="button" href="./changes/woocommerce-paypal-pay-with-crypto-enabled-by-default/">Read the configuration decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Confirmed platform requirement</div>
-        <h2>WP Super Cache 3.1 requires WordPress 6.8 or newer</h2>
-        <p><strong>Confirmed change:</strong> version 3.1.0 raised the minimum WordPress version to 6.8. The current 3.1.1 release keeps that requirement and includes security hardening and reliability fixes.</p>
-        <p>Sites on WordPress 6.7 or earlier should test and complete the WordPress core upgrade first—or defer the cache-plugin update temporarily rather than forcing an unsupported combination.</p>
-        <a class="button" href="./changes/wp-super-cache-requires-wordpress-6-8/">Read the upgrade decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Revenue-impacting payment mismatch</div>
-        <h2>WooCommerce PayPal 4.0.4 discount applied twice / amount mismatch</h2>
-        <p><strong>Confirmed status:</strong> public support threads reported discount and rounding mismatches after 4.0.4, and the 4.1.0 changelog includes fixes for inclusive-tax rounding, negative-fee mismatch, gift-card calculation, and PayPal line-item mismatches.</p>
-        <p>Stores that processed discounted or tax-sensitive PayPal orders on 4.0.4 should reconcile PayPal totals against WooCommerce totals before assuming the issue was only visual.</p>
-        <a class="button" href="./changes/woocommerce-paypal-4-0-4-amount-mismatch/">Read the reconciliation decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Checkout availability incident</div>
-        <h2>WooCommerce Stripe 10.8.3 checkout error after update</h2>
-        <p><strong>Confirmed pattern:</strong> a support thread connected an initCheckout / Basil / Stripe.js checkout error to Adaptive Pricing running against stale or conflicting Stripe.js after 10.8.3.</p>
-        <p>Stores should clear all cache layers, exclude Stripe.js from local caching, and avoid running WooPayments and the standalone Stripe Gateway together unless both are intentionally configured.</p>
-        <a class="button" href="./changes/stripe-10-8-3-checkout-error-adaptive-pricing/">Read the recovery decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Revenue reconciliation incident</div>
-        <h2>Stripe charged an order without shipping cost</h2>
-        <p><strong>Reported issue:</strong> one support case showed WooCommerce recording a paid order total while Stripe captured less, with the missing amount matching shipping plus VAT.</p>
-        <p>Stores should compare WooCommerce totals against Stripe captured amounts before treating affected orders as fully reconciled.</p>
-        <a class="button" href="./changes/stripe-shipping-cost-not-charged-10-7/">Read the audit decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Database / server load incident</div>
-        <h2>Mollie cancelled payment order note loop</h2>
-        <p><strong>Reported issue:</strong> abandoned Bancontact and TWINT payments caused repeated cancelled-payment order notes, database bloat, and server load in a public support report.</p>
-        <p>Affected stores should contain the loop, back up the database, preserve evidence, resolve stuck pending orders, and verify whether an update stops the repeated writes.</p>
-        <a class="button" href="./changes/mollie-cancelled-payment-order-note-loop/">Read the containment decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Currency / capture mismatch</div>
-        <h2>Stripe captures only 1/100 amount with WPML Multi-Currency</h2>
-        <p><strong>Reported issue:</strong> the WooCommerce Stripe support forum lists a current topic about USD orders capturing only 1/100 of the amount when using WPML Multi-Currency.</p>
-        <p>Stores should pause the affected currency/payment path, compare WooCommerce totals against Stripe captures, and preserve order and plugin-version evidence before making customer or accounting changes.</p>
-        <a class="button" href="./changes/stripe-wpml-multi-currency-1-100-amount/">Read the currency audit decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Shipping / payment total mismatch</div>
-        <h2>PayPal total missing shipping in WooCommerce</h2>
-        <p><strong>Reported issue:</strong> the WooCommerce PayPal Payments support forum lists a current topic about shipping not being included in the PayPal total.</p>
-        <p>Stores should compare PayPal transaction totals with WooCommerce shipping, tax, discounts, and refunds before fulfillment or accounting close.</p>
-        <a class="button" href="./changes/paypal-shipping-not-included-total/">Read the shipping reconciliation decision</a>
-      </article>
-
-      <article class="article home-card">
-        <div class="status">Intermittent checkout failure</div>
-        <h2>PayPal/card payments fail intermittently: OrderProcessor.php:109</h2>
-        <p><strong>Support signal:</strong> a detailed support thread reported PayPal approval without capture, card failures at OrderProcessor.php:109, and webhook verification failures; plugin support said the pattern may indicate a race condition or timing issue.</p>
-        <p>Stores should preserve logs, compare successful and failed attempts, verify PayPal capture status, and escalate privately with order IDs and timestamps.</p>
-        <a class="button" href="./changes/paypal-orderprocessor-109-intermittent-failures/">Read the lost-sales decision</a>
-      </article>
+    <section id="records" aria-label="API records" style="display:grid;gap:24px">
+      <article class="article home-card"><div class="status">Breaking API change</div><h2>Shopify 2026-10 invalid metafield filters return errors</h2><p>GraphQL Admin API queries that filter by invalid metafields return errors in 2026-10 instead of silently ignoring bad predicates.</p><a class="button" href="./api-changes/shopify-invalid-metafield-queries-2026-10/">Read the migration record</a></article>
+      <article class="article home-card"><div class="status">Authentication deadline</div><h2>Shopify public apps must use expiring offline tokens by 2027</h2><p>Public apps using non-expiring offline Admin API tokens need to migrate before January 1, 2027 to avoid authentication errors.</p><a class="button" href="./api-changes/shopify-expiring-offline-access-tokens-2027/">Read the auth record</a></article>
+      <article class="article home-card"><div class="status">Returns API migration</div><h2>Shopify returnProcess replaces legacy return refund APIs</h2><p>Return, refund, and exchange flows should move to returnProcess and suggestedFinancialOutcome instead of deprecated return-refund APIs.</p><a class="button" href="./api-changes/shopify-return-process-api-2025-07/">Read the returns record</a></article>
+      <article class="article home-card"><div class="status">API versioning</div><h2>Stripe API version 2026-07-29.dahlia</h2><p>Stripe version changes affect account defaults, per-request versions, SDK-pinned versions, and webhook payloads.</p><a class="button" href="./api-changes/stripe-api-version-2026-07-29-dahlia/">Read the Stripe versioning record</a></article>
+      <article class="article home-card"><div class="status">REST API versioning</div><h2>GitHub REST API 2026-03-10 versioning</h2><p>GitHub REST integrations should set X-GitHub-Api-Version explicitly and check breaking changes before upgrading.</p><a class="button" href="./api-changes/github-rest-api-2026-03-10-versioning/">Read the GitHub API record</a></article>
     </section>
+    <section aria-label="Previous validation" style="display:grid;gap:24px;margin-top:24px"><article class="article home-card"><div class="status">Previous test archived</div><h2>WooCommerce payment issue tracker</h2><p>The WooCommerce payment test remains live for reference, but the current passive SEO test is now API/developer changes.</p><p><a class="button" href="./woocommerce-payment-issues/">Open WooCommerce hub</a> <a class="button" href="./woocommerce-payment-alerts/">Open alerts test</a></p></article></section>
   </main>
-
-  <footer class="site-footer">
-    <div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, Mollie, Payconiq, PayPal, Syde, WooPayments, Bancontact, TWINT, WPML, or WP Super Cache.</div>
-  </footer>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Stripe, Shopify, GitHub, WooCommerce, or WordPress.</div></footer>
 </body>
 </html>
