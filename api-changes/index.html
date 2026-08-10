@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API Changes Explained — What Just Changed</title>
+  <meta name="description" content="Developer/API breaking changes, deprecations, version deadlines, and migration risks translated into clear action checklists.">
+  <link rel="canonical" href="https://whatjustchanged.com/api-changes/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="API Changes Explained — What Just Changed">
+  <meta property="og:description" content="What changed, who is affected, what breaks, and the smallest safe migration step for API and developer-platform changes.">
+  <meta property="og:url" content="https://whatjustchanged.com/api-changes/">
+  <link rel="stylesheet" href="../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"API Changes Explained",
+    "description":"A focused tracker for API breaking changes, deprecations, version deadlines, and migration risks.",
+    "url":"https://whatjustchanged.com/api-changes/",
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "mainEntity":{"@type":"ItemList","itemListElement":[
+      {"@type":"ListItem","position":1,"url":"https://whatjustchanged.com/api-changes/shopify-invalid-metafield-queries-2026-10/","name":"Shopify 2026-10 invalid metafield filters return errors"},
+      {"@type":"ListItem","position":2,"url":"https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/","name":"Shopify public apps must use expiring offline access tokens"},
+      {"@type":"ListItem","position":3,"url":"https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/","name":"Shopify returnProcess replaces legacy return refund APIs"},
+      {"@type":"ListItem","position":4,"url":"https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/","name":"Stripe API version 2026-07-29.dahlia"},
+      {"@type":"ListItem","position":5,"url":"https://whatjustchanged.com/api-changes/github-rest-api-2026-03-10-versioning/","name":"GitHub REST API 2026-03-10 versioning and support window"}
+    ]}
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../">What Just Changed</a><a class="nav-link" href="#records">API change records</a></div></header>
+  <section class="hero"><div class="container"><div class="eyebrow">Pivot test · Developer/API changes</div><h1>API changes explained in plain action steps</h1><p>For developers and technical operators who need to know what changed, who is affected, what breaks, the deadline or version boundary, and the smallest safe migration step.</p></div></section>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <h2>Current hypothesis</h2>
+        <p>The WooCommerce payment test showed that broad passive SEO was weak. This pivot tests a better passive-search wedge: official API changes, breaking changes, deprecations, version deadlines, and migration risks that developers already search for when an integration might break.</p>
+        <div class="notice good"><strong>Use this when:</strong> an app, integration, API request, webhook, authentication flow, or dashboard automation depends on a versioned developer platform.</div>
+        <h2 id="records">API change records</h2>
+        <table class="decision-table">
+          <thead><tr><th>Change</th><th>Who is affected</th><th>First action</th></tr></thead>
+          <tbody>
+            <tr><td><a href="./shopify-invalid-metafield-queries-2026-10/">Shopify 2026-10 invalid metafield filters return errors</a></td><td>Apps filtering products, orders, or customers by metafields in GraphQL Admin API 2026-10+</td><td>Audit filters and confirm metafield definitions allow filtering before upgrading</td></tr>
+            <tr><td><a href="./shopify-expiring-offline-access-tokens-2027/">Shopify public apps must use expiring offline access tokens</a></td><td>Public apps still using non-expiring offline Admin API tokens</td><td>Migrate token exchange and storage before January 1, 2027</td></tr>
+            <tr><td><a href="./shopify-return-process-api-2025-07/">Shopify returnProcess replaces legacy return refund APIs</a></td><td>Apps creating returns, approving return requests, or handling refunds/exchanges</td><td>Move return/refund flows to returnProcess and suggestedFinancialOutcome</td></tr>
+            <tr><td><a href="./stripe-api-version-2026-07-29-dahlia/">Stripe API version 2026-07-29.dahlia</a></td><td>Teams upgrading Stripe account, SDK, webhook, or per-request API versions</td><td>Separate monthly safe updates from major version changes and pin versions deliberately</td></tr>
+            <tr><td><a href="./github-rest-api-2026-03-10-versioning/">GitHub REST API 2026-03-10 versioning and support window</a></td><td>Integrations specifying or relying on GitHub REST API versions</td><td>Send X-GitHub-Api-Version explicitly and check breaking changes before upgrading</td></tr>
+          </tbody>
+        </table>
+        <h2>Page format</h2>
+        <ol class="steps"><li><strong>What changed.</strong> The official change in one sentence.</li><li><strong>Who is affected.</strong> Exact apps, requests, APIs, versions, or flows.</li><li><strong>What breaks.</strong> The failure mode to look for.</li><li><strong>Smallest safe action.</strong> The first migration or audit step.</li><li><strong>Official sources.</strong> Direct links to the platform source.</li></ol>
+      </article>
+      <aside class="sidebar"><section class="card"><h2>Best fit</h2><p>Developers, app builders, automation operators, agencies, and technical founders managing third-party integrations.</p></section><section class="card"><h2>Not included</h2><p>Generic product news, feature hype, broad app updates, and unsupported guesses.</p></section><section class="card"><h2>Previous test</h2><p><a href="../woocommerce-payment-issues/">WooCommerce payment issue tracker</a></p></section></aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Stripe, Shopify, GitHub, or any listed platform.</div></footer>
+</body>
+</html>
