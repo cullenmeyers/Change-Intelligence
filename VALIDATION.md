@@ -1,202 +1,83 @@
-# Initial Site Validation
+# Site Validation
 
-## Scope lock
+## Current pivot — August 10, 2026
 
-The first public validation set launched with four decision records:
+The passive WooCommerce payment-issue test did not show enough SEO momentum to keep building that wedge as a content engine. The domain remains useful, but the current test is now a developer/API change wedge:
 
-1. WooCommerce Stripe 10.8.x payment status not updating
-2. Mollie Payconiq removal
-3. WooCommerce PayPal Pay with Crypto enabled by default
-4. WP Super Cache requiring WordPress 6.8
+- Hub: `/api-changes/`
+- Shopify 2026-10 invalid metafield filter errors
+- Shopify expiring offline access tokens required for public apps by January 1, 2027
+- Shopify `returnProcess` migration from legacy return refund APIs
+- Stripe API version 2026-07-29.dahlia versioning checklist
+- GitHub REST API versioning and `X-GitHub-Api-Version` checklist
 
-After the first review on June 25, 2026, one additional operational record was added because the strongest early search signal came from the active payment-incident pattern:
+The new hypothesis is that developers search for official API changes, breaking changes, deprecations, version deadlines, and migration risks more consistently than store owners search for temporary WooCommerce plugin incidents.
 
-5. WooCommerce PayPal Payments 4.0.4 amount mismatch
+## What changed in strategy
 
-After the delayed second review on July 6, 2026, the site showed enough repeated payment/revenue signal to justify one controlled batch of three more operational records:
+Previous broad idea:
 
-6. WooCommerce Stripe 10.8.3 checkout error after update
-7. WooCommerce Stripe shipping cost not charged
-8. Mollie cancelled payment order note loop
+- WordPress plugin changes and WooCommerce payment issue records.
 
-After the July 13, 2026 review, the site again showed that operational payment, checkout, shipping, and reconciliation pages were the strongest direction. One page with impressions but no clicks was title-tested, and one more controlled batch of three operational records was added:
+Problem found:
 
-9. WooCommerce Stripe captures 1/100 amount with WPML Multi-Currency
-10. WooCommerce PayPal total missing shipping
-11. WooCommerce PayPal/card payments fail intermittently with OrderProcessor.php:109
+- Google discovered pages, but impressions and clicks did not compound.
+- The site reached 6 Google clicks and 390 impressions by the August 10 review, but there were no new clicks after the early July spike.
+- Hub and alert pages did not get enough passive search exposure to prove demand.
 
-After the July 20, 2026 main review, public record expansion was paused. The broad WordPress-plugin-change version looked too weak for a simple SEO content machine, but the narrower WooCommerce payment-issue direction remained the strongest signal. Instead of adding more records, a hub page was created:
+New test:
 
-- WooCommerce payment issues tracker: `/woocommerce-payment-issues/`
-
-After the July 27, 2026 review, outreach was rejected as the next validation path. A passive alert-intent test was created instead:
-
-- WooCommerce payment issue alerts page: `/woocommerce-payment-alerts/`
-
-After the August 3, 2026 review, the site still had weak SEO momentum: 6 total Google clicks and 381 total impressions through August 1, with no Google clicks after July 10. The strongest pages remained the payment/checkout/order-money pages, so no new records were added. Instead, alert CTAs were placed inside the pages that already had the strongest impressions/clicks.
-
-The validation set is now locked at eleven records plus one hub page plus one alert-intent page. New changes may be researched and queued privately, but the public site should not expand until alert intent has been measured.
+- Developer/API change explainers.
+- More evergreen version/deprecation pages.
+- Official source-based migration checklists.
+- Initial batch locked at one hub plus five records.
 
 ## Validation timeline
 
-- Start date: June 18, 2026
-- First review: June 25, 2026
-- Delayed second review: July 6, 2026
-- Third review: July 13, 2026
-- Main decision review: July 20, 2026
-- Passive alert test started: July 27, 2026
-- Alert CTA placement test started: August 3, 2026
-- Next review: August 10, 2026
+- WooCommerce payment test start: June 18, 2026
+- WooCommerce payment test paused: August 10, 2026
+- API changes pivot launched: August 10, 2026
+- Next API pivot review: August 24, 2026
 
-## First review notes — June 25, 2026
+## API pivot decision rules
 
-Google Search Console showed early discovery across the site. The Stripe payment-status record produced the clearest signal with all recorded Google clicks in the first cohort. This did not prove the business, but it justified one more test page in the same urgent operational-decision family.
+### Continue
 
-Decision from first review:
+Continue if the API change pages show at least one of:
 
-- Continue, but do not scale volume yet.
-- Add exactly one more urgent operational record.
-- Keep tracking whether payment-incident pages outperform compatibility, default-change, or capability-removal pages.
-- Do not judge the market from Vercel visitor count alone because some visits may come from owner testing, email recipients, previews, or link checks.
+- faster indexing than the WooCommerce pages
+- relevant impressions from API/version/deprecation queries
+- clicks from developer-intent searches
+- repeat visits or alert/event interest from API pages
 
-## Delayed second review notes — July 6, 2026
+### Refine
 
-Google Search Console export through July 4 showed 131 impressions and 4 clicks. All clicks came from the WooCommerce Stripe payment-status incident page. The WooCommerce PayPal amount-mismatch page also generated fast impressions shortly after publication, even before clicks.
+Refine titles, summaries, or record format if pages index but queries are too broad, irrelevant, or not tied to migration decisions.
 
-Decision from delayed second review:
+### Stop or pivot again
 
-- Continue.
-- Expand from five records to eight records with one controlled batch.
-- Keep the batch focused on operational pain: checkout failure, revenue mismatch, order/payment reconciliation, database/server load.
-- Do not add broad compatibility, general changelog, affiliate, or comparison pages yet.
-
-## Third review notes — July 13, 2026
-
-Google Search Console data through July 11 showed 311 total impressions and 6 clicks. The strongest pattern remained urgent WooCommerce/Stripe/payment/revenue incidents. The Stripe payment-status page remained the strongest page, and the new July 6 Stripe operational pages generated fast impressions and some clicks.
-
-Decision from third review:
-
-- Continue.
-- Rewrite the PayPal amount-mismatch title to emphasize the concrete pain: discount applied twice / amount mismatch.
-- Add one controlled batch of three more records in the same category: amount capture error, shipping total mismatch, and intermittent PayPal/card failure.
-- Keep the site locked at eleven records until the next review.
-
-## Main review notes — July 20, 2026
-
-Google Search Console data through July 18 showed the site was not compounding like a broad SEO content engine. The strongest pages were still payment, checkout, and order-money issues, but impressions slowed after the prior peak. The interpretation changed from "publish more individual pages" to "tighten the product surface around the winning pattern."
-
-Decision from main review:
-
-- Do not add more individual records right now.
-- Keep the eleven existing records locked.
-- Create a WooCommerce payment issues hub to group the strongest category into one clearer product surface.
-- Treat the next test as whether the hub improves internal linking, product clarity, and search understanding.
-
-## Passive alert test notes — July 27, 2026
-
-Google Search Console data through July 25 showed continued weak search momentum. The hub was indexed, but it had not yet produced visible traffic. Because manual outreach was rejected, the next test became passive onsite intent.
-
-Decision from July 27 review:
-
-- Do not add more records.
-- Create a WooCommerce payment issue alerts page.
-- Add basic request-alerts and report-issue CTAs.
-- Track alert intent using Vercel custom events and mailto clicks.
-
-## Alert CTA placement notes — August 3, 2026
-
-Google Search Console data through August 1 showed 381 total impressions and 6 total clicks. There were no Google clicks after July 10. The site did not show organic compounding, but the strongest pages remained payment/checkout/order-money pages.
-
-Decision from August 3 review:
-
-- Do not add more records.
-- Put alert CTAs directly inside the pages that already got the strongest impressions or clicks:
-  - WooCommerce Stripe 10.8.x payments stuck in Pending Payment
-  - WooCommerce Stripe 10.8.3 checkout error after update
-  - WooCommerce PayPal 4.0.4 discount applied twice / amount mismatch
-  - Stripe charged order without shipping cost
-- Measure whether future visitors click from issue records to the alert page.
-- Recheck on August 10 before adding, deleting, or redesigning anything.
+Stop the API wedge if it gets indexed but remains at near-zero impressions/clicks after 2-3 weeks.
 
 ## What to measure
 
-### 1. Indexing
-
-For each record, the hub, and the alerts page, capture:
+For the API pivot, capture by page:
 
 - Google indexing status
-- first indexed date
-- whether the canonical selected by Google matches the permanent URL
-
-### 2. Search demand
-
-From Google Search Console, capture by page:
-
 - impressions
 - clicks
 - queries
 - average position
-- whether queries show decision intent rather than only plugin-name navigation
+- whether queries mention API version, breaking change, deprecation, migration, error, webhook, token, or SDK
+- Vercel visits to `/api-changes/` and the five API records
 
-Useful intent includes questions about whether to update, migrate, disable, reconcile, restore checkout, audit orders, or change configuration.
+## Previous test kept live
 
-### 3. Visits and referrals
+The WooCommerce payment issue records, hub, and alert page remain live as archived validation assets, but they are no longer the main build direction.
 
-From Vercel Web Analytics, capture by page:
+## Guardrails
 
-- visitors
-- views
-- referrer/source
-- country only when useful for interpreting a region-specific change
-
-The purpose is to distinguish Google discovery from direct links, support-thread referrals, owner testing, and manual sharing.
-
-### 4. Passive alert intent
-
-From Vercel Web Analytics and email inbox, capture:
-
-- visits to `/woocommerce-payment-alerts/`
-- clicks/events for `AlertInterestClick`
-- clicks/events for `AlertSignupClick`
-- clicks/events for `ReportIssueClick`
-- actual alert-request emails or issue-report emails
-- which page sent the visitor to the alerts page
-
-### 5. Freshness
-
-Recheck source evidence when the underlying change is still active:
-
-- Stripe incident: recheck official releases and support status when a new release appears
-- Mollie Payconiq: recheck if Payconiq is restored, replaced, or addressed in a later release
-- PayPal Pay with Crypto: recheck when eligibility, defaults, or documentation changes
-- WP Super Cache: recheck when requirements or the current release change
-- PayPal amount mismatch: recheck if 4.1.x follow-up releases, reopened support threads, or additional mismatch reports appear
-- Stripe 10.8.3 checkout error: recheck for official fix, new support responses, or changelog mentions of Stripe.js conflicts
-- Stripe shipping cost mismatch: recheck if additional reports appear or a specific release confirms a fix
-- Mollie order note loop: recheck if a release explicitly fixes repeated order notes, abandoned-payment loops, or stale pending-payment cleanup
-- Stripe WPML 1/100 amount capture: recheck if thread details, plugin responses, or confirmed fixes appear
-- PayPal shipping total mismatch: recheck if thread details, plugin responses, or confirmed fixes appear
-- PayPal OrderProcessor.php:109 intermittent failures: recheck for a confirmed fix, issue link, or new release notes mentioning order-processing timing or webhook recovery
-
-## Decision rules
-
-### Continue and expand carefully
-
-Continue when pages are indexed and at least some records show relevant non-branded impressions, useful referrals, clear user-action value, or alert intent. Add the next record only after identifying which page pattern produced the strongest signal.
-
-### Refine before expanding
-
-Refine when pages are indexed but the queries, referrals, or alert clicks do not match the intended decision. Change the angle, title, summary, decision framing, hub organization, or alert offer before adding volume.
-
-### Investigate distribution or technical problems
-
-Investigate when pages are not indexed, Google selects a different canonical, analytics receives no real visits after distribution, or visitors cannot tell what action to take.
-
-## Prohibited during the current validation window
-
-- Do not expand to 15-25 public pages.
-- Do not redesign the site.
-- Do not add broad comparison or affiliate content.
-- Do not repeatedly request indexing every day.
-- Do not change several variables at once beyond this planned CTA placement test.
-- Do not judge the market from raw traffic alone; query intent, alert intent, and action usefulness matter more at this stage.
+- Do not delete the WooCommerce pages yet.
+- Do not add 20 API pages immediately.
+- Do not add unsupported summaries without official sources.
+- Do not rely on broad product news or generic changelog summaries.
+- Do not judge the pivot before Google has had time to index the new hub and five records.
