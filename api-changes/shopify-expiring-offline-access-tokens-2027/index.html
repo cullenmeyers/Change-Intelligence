@@ -1,20 +1,88 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopify Public Apps Must Use Expiring Offline Tokens by 2027</title>
-  <meta name="description" content="Shopify public apps must use expiring offline access tokens for Admin API requests by January 1, 2027. See who is affected and how to migrate.">
-  <link rel="canonical" href="https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="article"><meta property="og:title" content="Shopify Public Apps Must Use Expiring Offline Tokens by 2027"><meta property="og:description" content="Who is affected, what breaks, and the safest migration path for Shopify public apps using non-expiring offline Admin API tokens."><meta property="og:url" content="https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/">
-  <link rel="stylesheet" href="../../styles.css"><script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Shopify public apps must use expiring offline access tokens by January 1, 2027","datePublished":"2026-08-10","dateModified":"2026-08-10","mainEntityOfPage":"https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/","author":{"@type":"Organization","name":"What Just Changed"},"publisher":{"@type":"Organization","name":"What Just Changed"},"about":["Shopify Admin API","offline access tokens","public apps","OAuth","January 1 2027"]}</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopify Offline Access Token Expires: Public App Migration by 2027</title>
+  <meta name="description" content="Shopify public apps must migrate to expiring offline access tokens by January 1, 2027. Understand affected apps, authentication errors, token exchange, and storage updates.">
+  <link rel="canonical" href="https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Shopify Offline Access Token Expires: Public App Migration by 2027">
+  <meta property="og:description" content="Who is affected, what breaks, and the safest migration path for Shopify public apps using non-expiring offline Admin API tokens.">
+  <meta property="og:url" content="https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Shopify offline access token expires: public app migration by January 1, 2027",
+    "description":"An evidence-backed migration checklist for Shopify public apps moving from non-expiring offline access tokens to expiring offline access tokens.",
+    "datePublished":"2026-08-10",
+    "dateModified":"2026-08-18",
+    "mainEntityOfPage":"https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["Shopify Admin API","offline access token","expiring offline access tokens","public apps","OAuth","token exchange","January 1 2027"]
+  }
+  </script>
 </head>
-<body><header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="../">API changes</a></div></header>
-<main class="container"><div class="grid"><article class="article"><div class="eyebrow">API change record</div><h1>Shopify public apps must use expiring offline access tokens by 2027</h1><div class="meta"><span>Reviewed August 10, 2026</span><span>Evidence confidence: Official Shopify developer changelog</span><span>Primary domain: Authentication / Admin API access</span></div>
-<div class="notice good"><strong>Current decision</strong>Public Shopify apps that still make Admin API requests with non-expiring offline access tokens should migrate token exchange and storage before January 1, 2027.</div>
-<h2>What changed?</h2><p>Starting <strong>January 1, 2027</strong>, Shopify public apps must use expiring offline access tokens when calling the Admin API. After that date, public apps still using non-expiring tokens will receive authentication errors.</p>
-<h2>Who is affected?</h2><p>Affected apps are public apps making Admin API requests using non-expiring offline access tokens, including apps created before April 1, 2026. Shopify lists custom apps and merchant-created apps in the Dev Dashboard or admin as unaffected by this specific change.</p>
-<h2>What can break?</h2><ul><li>Background jobs, syncs, webhooks, and Admin API calls can fail with authentication errors after the deadline.</li><li>Apps may appear installed but be unable to perform server-side Admin API work.</li><li>Token storage and refresh logic may need changes even if merchants do not reinstall.</li></ul>
-<h2>Smallest safe migration</h2><ol class="steps"><li>Identify whether your app is public and still stores non-expiring offline tokens.</li><li>Implement the expiring offline token exchange path.</li><li>Update token storage so the app can rotate tokens safely.</li><li>Test background Admin API jobs and webhook-triggered flows with the new token model.</li><li>Roll out before January 1, 2027.</li></ol>
-<h2>Official sources</h2><ul class="source-list"><li><a href="https://shopify.dev/changelog/expiring-offline-access-tokens-required-for-all-public-apps-as-of-january-1-2027" rel="nofollow">Shopify developer changelog: expiring offline access tokens required</a></li></ul>
-<p><small>Independent research, not official Shopify support. Verify your app type and OAuth implementation before changing production auth.</small></p></article><aside class="sidebar"><section class="card"><h2>At a glance</h2><p><span class="status">Migrate auth</span></p><p><strong>Deadline:</strong> January 1, 2027</p><p><strong>Risk:</strong> Admin API authentication errors</p></section></aside></div></main><footer class="site-footer"><div class="container">Independent research. Not affiliated with Shopify.</div></footer></body></html>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="../">API changes</a></div></header>
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">API change record</div>
+        <h1>Shopify offline access token expires: public app migration by 2027</h1>
+        <div class="meta"><span>Reviewed August 18, 2026</span><span>Evidence confidence: Official Shopify developer changelog and docs</span><span>Primary domain: Authentication / Admin API access</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>Public Shopify apps that still call the Admin API with non-expiring offline access tokens should migrate token exchange, refresh handling, and token storage before January 1, 2027.</div>
+
+        <h2>What changed?</h2>
+        <p>Starting <strong>January 1, 2027</strong>, Shopify says all public apps must use expiring offline access tokens when calling the Admin API. After that date, public apps still using non-expiring offline tokens can receive authentication errors.</p>
+        <p>This extends the earlier requirement for newly created public apps to older public apps as well. Shopify's offline access token documentation says expiring offline access tokens use refresh handling and token rotation while still supporting background operations without user interaction.</p>
+
+        <h2>Who is affected?</h2>
+        <p>Affected apps are public Shopify apps making Admin API requests using non-expiring offline access tokens, including public apps created before April 1, 2026. Shopify lists custom apps and merchant-created apps in the Dev Dashboard or admin as unaffected by this specific change.</p>
+
+        <h2>What can break?</h2>
+        <ul>
+          <li>Background jobs, scheduled syncs, and webhook-triggered Admin API calls can fail with authentication errors.</li>
+          <li>An app can still look installed while server-side Admin API work fails because stored offline tokens no longer satisfy Shopify's requirement.</li>
+          <li>Token storage, refresh-token handling, and retry logic may need changes even when merchants do not reinstall the app.</li>
+          <li>Apps using older custom auth implementations may need more work than apps using Shopify templates or official libraries.</li>
+        </ul>
+
+        <h2>Smallest safe migration</h2>
+        <ol class="steps">
+          <li><strong>Identify app type.</strong> Confirm whether the app is a public app, custom app, or merchant-created app.</li>
+          <li><strong>Find stored offline tokens.</strong> Check whether the app still stores non-expiring offline access tokens for Admin API calls.</li>
+          <li><strong>Implement token exchange and refresh handling.</strong> Update auth logic so expiring offline tokens can rotate safely.</li>
+          <li><strong>Update token storage.</strong> Store token expiry and refresh-token data in a way that background jobs can use reliably.</li>
+          <li><strong>Test background flows.</strong> Verify scheduled syncs, webhook consumers, bulk operations, and Admin API calls after token rotation.</li>
+          <li><strong>Ship before January 1, 2027.</strong> Do not wait until authentication errors appear in production.</li>
+        </ol>
+
+        <h2>Common searches this page answers</h2>
+        <p>Shopify offline access token expires, Shopify expiring offline access tokens, Shopify public app token migration, Shopify offline access token January 1 2027, and Shopify Admin API authentication errors.</p>
+
+        <h2>Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://shopify.dev/changelog/expiring-offline-access-tokens-required-for-all-public-apps-as-of-january-1-2027" rel="nofollow">Shopify developer changelog: expiring offline access tokens required</a></li>
+          <li><a href="https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens/offline-access-tokens" rel="nofollow">Shopify docs: offline access tokens</a></li>
+        </ul>
+        <p><small>Independent research, not official Shopify support. Verify your app type and OAuth implementation before changing production auth.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Migrate auth</span></p><p><strong>Deadline:</strong> January 1, 2027</p><p><strong>Risk:</strong> Admin API authentication errors</p></section>
+        <section class="card"><h2>Related</h2><p><a href="../">API changes hub</a></p></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Shopify.</div></footer>
+</body>
+</html>
