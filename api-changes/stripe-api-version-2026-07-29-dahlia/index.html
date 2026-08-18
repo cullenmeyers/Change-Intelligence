@@ -1,20 +1,89 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stripe API Version 2026-07-29.dahlia: What to Check</title>
-  <meta name="description" content="Stripe API versioning explained for 2026-07-29.dahlia: major vs monthly releases, SDK-pinned versions, webhook versions, and safe upgrade checks.">
-  <link rel="canonical" href="https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="article"><meta property="og:title" content="Stripe API Version 2026-07-29.dahlia: What to Check"><meta property="og:description" content="Who is affected when upgrading Stripe API versions, what can break, and how to pin API and webhook versions safely."><meta property="og:url" content="https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/">
-  <link rel="stylesheet" href="../../styles.css"><script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Stripe API version 2026-07-29.dahlia: what changed and what to check","datePublished":"2026-08-10","dateModified":"2026-08-10","mainEntityOfPage":"https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/","author":{"@type":"Organization","name":"What Just Changed"},"publisher":{"@type":"Organization","name":"What Just Changed"},"about":["Stripe API","2026-07-29.dahlia","API versioning","webhooks","SDK versions"]}</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stripe API Versioning: What Changes, What Breaks, and How to Upgrade Safely</title>
+  <meta name="description" content="Stripe API versioning explained: major releases, monthly releases, SDK-pinned versions, webhook endpoint versions, Stripe-Version headers, and safe upgrade checks.">
+  <link rel="canonical" href="https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Stripe API Versioning: What Changes, What Breaks, and How to Upgrade Safely">
+  <meta property="og:description" content="How to think about Stripe API versions, SDK-pinned versions, webhook endpoint versions, and safe production upgrades.">
+  <meta property="og:url" content="https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Stripe API versioning: what changes, what breaks, and how to upgrade safely",
+    "description":"An evidence-backed Stripe API versioning checklist for major releases, monthly releases, SDK-pinned versions, webhook endpoint versions, and Stripe-Version headers.",
+    "datePublished":"2026-08-10",
+    "dateModified":"2026-08-18",
+    "mainEntityOfPage":"https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["Stripe API","API versioning","Stripe-Version header","webhook endpoint versions","SDK versions","payment integrations"]
+  }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body><header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="../">API changes</a></div></header>
-<main class="container"><div class="grid"><article class="article"><div class="eyebrow">API change record</div><h1>Stripe API version 2026-07-29.dahlia</h1><div class="meta"><span>Reviewed August 10, 2026</span><span>Evidence confidence: Official Stripe API versioning docs</span><span>Primary domain: Payments API / SDK / webhooks</span></div>
-<div class="notice good"><strong>Current decision</strong>Do not treat a Stripe API version change as just a dashboard setting. Pin request and webhook versions deliberately, then test SDK types, request payloads, response fields, and webhook parsing before upgrading production.</div>
-<h2>What changed?</h2><p>Stripe's API versioning page lists the current version as <strong>2026-07-29.dahlia</strong>. Stripe says major releases can include changes that are not backward-compatible, while monthly releases include only backward-compatible changes and use the same release name as the last major release.</p>
-<h2>Who is affected?</h2><p>This matters for teams changing an account default API version, setting <code>Stripe-Version</code> per request, upgrading Stripe SDKs, or creating webhook endpoints with a specific API version.</p>
-<h2>What can break?</h2><ul><li>SDK types can stop matching the API version an integration actually uses.</li><li>Webhook event payloads can differ from request/response payloads if endpoint versions are not aligned.</li><li>Older SDK versions may use account defaults while newer SDKs may align with the API version current when the SDK was released.</li></ul>
-<h2>Smallest safe migration</h2><ol class="steps"><li>Record your account default API version, SDK version, and webhook endpoint API version.</li><li>Identify whether you are moving across a major release or only to a monthly release.</li><li>Pin or override versions intentionally in code where needed.</li><li>Test request/response handling, webhook event parsing, TypeScript types, refunds, disputes, and Connect flows before production.</li></ol>
-<h2>Official sources</h2><ul class="source-list"><li><a href="https://docs.stripe.com/api/versioning" rel="nofollow">Stripe API versioning</a></li><li><a href="https://docs.stripe.com/changelog" rel="nofollow">Stripe API changelog</a></li></ul>
-<p><small>Independent research, not official Stripe support. Verify your own API version, SDK, and webhook endpoint configuration before changing production payments.</small></p></article><aside class="sidebar"><section class="card"><h2>At a glance</h2><p><span class="status">Pin and test</span></p><p><strong>Current version:</strong> 2026-07-29.dahlia</p><p><strong>Risk:</strong> SDK/webhook/version mismatch</p></section></aside></div></main><footer class="site-footer"><div class="container">Independent research. Not affiliated with Stripe.</div></footer></body></html>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="../">API changes</a></div></header>
+
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">API change record</div>
+        <h1>Stripe API versioning: what changes, what breaks, and how to upgrade safely</h1>
+        <div class="meta"><span>Reviewed August 18, 2026</span><span>Evidence confidence: Official Stripe API versioning docs</span><span>Primary domain: Payments API / SDK / webhooks</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>Do not treat a Stripe API version change as just a dashboard setting. Record your account default, SDK-pinned version, per-request overrides, and webhook endpoint versions before testing or upgrading production.</div>
+
+        <h2>What changed?</h2>
+        <p>This page was reframed from one exact Stripe API version into a broader versioning checklist because the risky operational question is usually not just “what is the current version?” It is: <strong>which Stripe API version is each part of my integration actually using?</strong></p>
+        <p>Stripe separates major releases from monthly releases. Major releases can include changes that are not backward-compatible, while monthly releases are described as backward-compatible and use the same release name as the last major release. Stripe also lets integrations send a <code>Stripe-Version</code> header, use SDK-pinned versions, and configure webhook endpoint API versions.</p>
+
+        <h2>Who is affected?</h2>
+        <p>This matters for teams that maintain Stripe integrations and are changing an account default API version, overriding <code>Stripe-Version</code> per request, upgrading Stripe SDKs, creating webhook endpoints, parsing webhook payloads, or running Connect, refund, dispute, subscription, invoice, checkout, or payment-intent flows.</p>
+
+        <h2>What can break?</h2>
+        <ul>
+          <li><strong>Request and response shape mismatch:</strong> your code can assume one API shape while Stripe returns another.</li>
+          <li><strong>SDK/version mismatch:</strong> newer SDKs can align with the API version current when that SDK version was released, while older integrations may rely on account defaults.</li>
+          <li><strong>Webhook mismatch:</strong> webhook event payloads can use a different API version than the request code that created the underlying object.</li>
+          <li><strong>Hidden production drift:</strong> one service can pin <code>Stripe-Version</code> while another relies on the account default.</li>
+        </ul>
+
+        <h2>Smallest safe migration</h2>
+        <ol class="steps">
+          <li><strong>Inventory every version boundary.</strong> Record the account default API version, SDK version, per-request <code>Stripe-Version</code> headers, webhook endpoint versions, and any connected-account assumptions.</li>
+          <li><strong>Separate monthly from major upgrades.</strong> Monthly releases should be lower-risk, while major release moves deserve deeper testing.</li>
+          <li><strong>Test the real flows.</strong> Exercise checkout, PaymentIntents, subscriptions, invoices, refunds, disputes, Connect transfers, and webhook consumers that matter to your business.</li>
+          <li><strong>Upgrade webhooks deliberately.</strong> Confirm webhook endpoint versions and parser expectations before changing production.</li>
+          <li><strong>Deploy during a low-risk window.</strong> Monitor Stripe logs, application logs, failed webhooks, and customer-visible checkout behavior after release.</li>
+        </ol>
+
+        <h2>Search phrases this page answers</h2>
+        <p>Stripe API versioning, Stripe-Version header, Stripe webhook API version, Stripe SDK pinned API version, Stripe API upgrade checklist, and Stripe major vs monthly releases.</p>
+
+        <h2>Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://docs.stripe.com/api/versioning" rel="nofollow">Stripe API versioning</a></li>
+          <li><a href="https://docs.stripe.com/sdks/versioning" rel="nofollow">Stripe SDK versioning and support policy</a></li>
+          <li><a href="https://docs.stripe.com/changelog" rel="nofollow">Stripe API changelog</a></li>
+        </ul>
+        <p><small>Independent research, not official Stripe support. Verify your own API version, SDK, and webhook endpoint configuration before changing production payments.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Pin and test</span></p><p><strong>Main risk:</strong> request, SDK, and webhook version mismatch</p><p><strong>Best first step:</strong> inventory every version boundary before upgrading</p></section>
+        <section class="card"><h2>Related</h2><p><a href="../">API changes hub</a></p></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Stripe.</div></footer>
+</body>
+</html>
