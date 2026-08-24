@@ -1,20 +1,98 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shopify returnProcess Replaces Legacy Return Refund APIs</title>
-  <meta name="description" content="Shopify introduced returnProcess and deprecated legacy return refund APIs in Admin GraphQL API 2025-07. See who is affected and how to migrate.">
-  <link rel="canonical" href="https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="article"><meta property="og:title" content="Shopify returnProcess Replaces Legacy Return Refund APIs"><meta property="og:description" content="Who is affected by Shopify returnProcess, what breaks in return/refund flows, and the smallest migration path."><meta property="og:url" content="https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/">
-  <link rel="stylesheet" href="../../styles.css"><script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Shopify returnProcess replaces legacy return refund APIs","datePublished":"2026-08-10","dateModified":"2026-08-10","mainEntityOfPage":"https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/","author":{"@type":"Organization","name":"What Just Changed"},"publisher":{"@type":"Organization","name":"What Just Changed"},"about":["Shopify Admin GraphQL API","returnProcess","returnRefund","returnCreate","returns","refunds"]}</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopify Returns API: returnProcess, returnRefund Deprecation, and 2025-07 Migration</title>
+  <meta name="description" content="Shopify Returns API migration guide: returnProcess, returnRefund deprecation, suggestedFinancialOutcome, 2025-07 return processing, refunds, exchanges, and app migration steps.">
+  <link rel="canonical" href="https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Shopify Returns API: returnProcess, returnRefund Deprecation, and 2025-07 Migration">
+  <meta property="og:description" content="Who is affected by Shopify returnProcess, what breaks in return/refund flows, and the smallest migration path for the Shopify Returns API.">
+  <meta property="og:url" content="https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Shopify Returns API: returnProcess, returnRefund deprecation, and 2025-07 migration",
+    "description":"An evidence-backed migration checklist for Shopify Returns API changes in Admin GraphQL API 2025-07, including returnProcess, returnRefund deprecation, suggestedFinancialOutcome, refunds, and exchanges.",
+    "datePublished":"2026-08-10",
+    "dateModified":"2026-08-24",
+    "mainEntityOfPage":"https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["Shopify Returns API","Shopify Admin GraphQL API","returnProcess","returnRefund deprecated","returnCreate","returnApproveRequest","Return.suggestedFinancialOutcome","refunds","exchanges","API version 2025-07"]
+  }
+  </script>
 </head>
-<body><header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="../">API changes</a></div></header>
-<main class="container"><div class="grid"><article class="article"><div class="eyebrow">API change record</div><h1>Shopify returnProcess replaces legacy return refund APIs</h1><div class="meta"><span>Reviewed August 10, 2026</span><span>Evidence confidence: Official Shopify developer changelog</span><span>Primary domain: Returns / refunds / exchanges</span></div>
-<div class="notice good"><strong>Current decision</strong>Apps that create returns, approve return requests, or coordinate refunds and exchanges should migrate to <code>returnProcess</code> and <code>Return.suggestedFinancialOutcome</code> instead of continuing to build on deprecated return-refund APIs.</div>
-<h2>What changed?</h2><p>Shopify introduced return-management changes in Admin GraphQL API version <strong>2025-07</strong>. The <code>returnRefund</code> mutation is deprecated and replaced by <code>returnProcess</code>, and <code>Return.suggestedReturnRefund</code> is deprecated in favor of <code>Return.suggestedFinancialOutcome</code>.</p>
-<h2>Who is affected?</h2><p>This affects apps that create returns with <code>returnCreate</code>, approve return requests with <code>returnApproveRequest</code>, or handle refunds and exchanges using older return/refund mutations and fields.</p>
-<h2>What can break?</h2><ul><li>Return, refund, and exchange flows can drift from Shopify's current return lifecycle model.</li><li>Apps may keep relying on deprecated fields while the platform expects return processing and financial outcomes together.</li><li>Fulfillment and exchange behavior can be inaccurate if exchange line items are not processed through the new flow.</li></ul>
-<h2>Smallest safe migration</h2><ol class="steps"><li>Inventory every return, refund, and exchange mutation your app calls.</li><li>Replace return/refund handling with <code>returnProcess</code> where applicable.</li><li>Replace suggested refund fields with <code>Return.suggestedFinancialOutcome</code>.</li><li>Test return lifecycle paths: requested, approved, refunded, exchanged, partially refunded, and failed.</li></ol>
-<h2>Official sources</h2><ul class="source-list"><li><a href="https://shopify.dev/changelog/deprecation-of-legacy-return-apis-and-improvements-to-return-management" rel="nofollow">Shopify developer changelog: deprecation of legacy return APIs</a></li></ul>
-<p><small>Independent research, not official Shopify support. Test all return and refund flows before changing production app behavior.</small></p></article><aside class="sidebar"><section class="card"><h2>At a glance</h2><p><span class="status">Migrate return flows</span></p><p><strong>API version:</strong> 2025-07</p><p><strong>Risk:</strong> deprecated return/refund operations</p></section></aside></div></main><footer class="site-footer"><div class="container">Independent research. Not affiliated with Shopify.</div></footer></body></html>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../">What Just Changed</a><a class="nav-link" href="../">API changes</a></div></header>
+
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">API change record</div>
+        <h1>Shopify Returns API: returnProcess, returnRefund deprecation, and 2025-07 migration</h1>
+        <div class="meta"><span>Reviewed August 24, 2026</span><span>Evidence confidence: Official Shopify developer changelog and docs</span><span>Primary domain: Returns / refunds / exchanges</span></div>
+
+        <div class="notice good"><strong>Current decision</strong>Apps that create returns, approve return requests, process refunds, manage exchanges, or calculate return financial outcomes should migrate to the Shopify Returns API flow built around <code>returnProcess</code> and <code>Return.suggestedFinancialOutcome</code>.</div>
+
+        <h2>What changed?</h2>
+        <p>Shopify's Admin GraphQL API <strong>2025-07</strong> officially launched return processing APIs. The <code>returnRefund</code> mutation is deprecated and replaced by <code>returnProcess</code>. The <code>Return.suggestedReturnRefund</code> field is deprecated in favor of <code>Return.suggestedFinancialOutcome</code>.</p>
+        <p>The practical change is that returns, refunds, exchanges, item disposition, and financial processing are now intended to move through one explicit return-processing step instead of older separate return-refund flows.</p>
+
+        <h2>Who is affected?</h2>
+        <p>This affects Shopify apps and integrations that use the Admin GraphQL API for return management, including apps that:</p>
+        <ul>
+          <li>Create returns with <code>returnCreate</code>.</li>
+          <li>Approve return requests with <code>returnApproveRequest</code>.</li>
+          <li>Issue return refunds through <code>returnRefund</code> or older refund flows.</li>
+          <li>Use <code>Return.suggestedReturnRefund</code> or <code>Return.suggestedRefund</code> to calculate what should happen financially.</li>
+          <li>Coordinate exchanges, restocking, disposal, refund shipping, refund duties, or return-line-item financial transfers.</li>
+        </ul>
+
+        <h2>What can break?</h2>
+        <ul>
+          <li><strong>Deprecated mutation risk:</strong> apps that keep building around <code>returnRefund</code> are building on a deprecated return-refund path.</li>
+          <li><strong>Financial outcome mismatch:</strong> refund and exchange logic can drift if the app still reads old suggested-refund fields instead of <code>suggestedFinancialOutcome</code>.</li>
+          <li><strong>Exchange handling errors:</strong> fulfillment orders for exchange items depend on the return-processing flow.</li>
+          <li><strong>Partial-return complexity:</strong> refunds, duties, shipping refunds, item disposition, and exchange items may need to be tested together, not as isolated refund calls.</li>
+        </ul>
+
+        <h2>Smallest safe migration</h2>
+        <ol class="steps">
+          <li><strong>Inventory every Shopify Returns API call.</strong> Search your codebase for <code>returnCreate</code>, <code>returnApproveRequest</code>, <code>returnRefund</code>, <code>refundCreate</code>, <code>suggestedReturnRefund</code>, and <code>suggestedRefund</code>.</li>
+          <li><strong>Map old flows to return processing.</strong> Identify which flows should now use <code>returnProcess</code> and <code>Return.suggestedFinancialOutcome</code>.</li>
+          <li><strong>Test refund and exchange cases together.</strong> Include full refund, partial refund, exchange, refund shipping, refund duties, restock, disposal, and failed payment/refund paths.</li>
+          <li><strong>Check scopes and permissions.</strong> Confirm the app has the return and refund permissions needed for the migrated flow.</li>
+          <li><strong>Upgrade by API version deliberately.</strong> Test the migration against the Admin GraphQL API version you intend to use before changing production return handling.</li>
+        </ol>
+
+        <h2>Search phrases this page answers</h2>
+        <p>Shopify returns API, Shopify returnProcess API, Shopify returnRefund deprecated, Shopify return API migration, Shopify 2025-07 returns API, Shopify suggestedFinancialOutcome, and Shopify Admin GraphQL returns processing.</p>
+
+        <h2>Official sources</h2>
+        <ul class="source-list">
+          <li><a href="https://shopify.dev/changelog/returns-processing-api" rel="nofollow">Shopify developer changelog: Returns Processing APIs replaces Return Refund APIs</a></li>
+          <li><a href="https://shopify.dev/changelog/deprecation-of-legacy-return-apis-and-improvements-to-return-management" rel="nofollow">Shopify developer changelog: deprecation of legacy return APIs</a></li>
+          <li><a href="https://shopify.dev/docs/api/admin-graphql/latest/mutations/returnProcess" rel="nofollow">Shopify Admin GraphQL docs: returnProcess</a></li>
+          <li><a href="https://shopify.dev/docs/api/admin-graphql/latest/mutations/returnRefund" rel="nofollow">Shopify Admin GraphQL docs: returnRefund deprecated</a></li>
+          <li><a href="https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/migrate-to-return-processing" rel="nofollow">Shopify docs: migrate to return processing</a></li>
+        </ul>
+        <p><small>Independent research, not official Shopify support. Test all return, refund, exchange, and financial-outcome flows before changing production app behavior.</small></p>
+      </article>
+      <aside class="sidebar">
+        <section class="card"><h2>At a glance</h2><p><span class="status">Migrate return flows</span></p><p><strong>API version:</strong> 2025-07</p><p><strong>Risk:</strong> deprecated return/refund operations and financial-outcome mismatches</p></section>
+        <section class="card"><h2>Related</h2><p><a href="../">API changes hub</a></p></section>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Shopify.</div></footer>
+</body>
+</html>
