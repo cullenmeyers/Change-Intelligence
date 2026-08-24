@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>API Changes Explained — What Just Changed</title>
-  <meta name="description" content="Developer/API breaking changes, deprecations, version deadlines, token changes, SDK versioning, webhook risks, and migration checklists.">
+  <meta name="description" content="Developer/API breaking changes, deprecations, version deadlines, token changes, SDK versioning, webhook risks, returns API changes, and migration checklists.">
   <link rel="canonical" href="https://whatjustchanged.com/api-changes/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
@@ -17,13 +17,13 @@
     "@context":"https://schema.org",
     "@type":"CollectionPage",
     "name":"API Changes Explained",
-    "description":"A focused tracker for API breaking changes, deprecations, version deadlines, token changes, SDK versioning, webhook risks, and migration checklists.",
+    "description":"A focused tracker for API breaking changes, deprecations, version deadlines, token changes, SDK versioning, webhook risks, returns API changes, and migration checklists.",
     "url":"https://whatjustchanged.com/api-changes/",
     "publisher":{"@type":"Organization","name":"What Just Changed"},
     "mainEntity":{"@type":"ItemList","itemListElement":[
-      {"@type":"ListItem","position":1,"url":"https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/","name":"Stripe API versioning upgrade checklist"},
-      {"@type":"ListItem","position":2,"url":"https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/","name":"Shopify offline access token expires: public app migration by 2027"},
-      {"@type":"ListItem","position":3,"url":"https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/","name":"Shopify returnProcess replaces legacy return refund APIs"},
+      {"@type":"ListItem","position":1,"url":"https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/","name":"Shopify Returns API: returnProcess, returnRefund deprecation, and 2025-07 migration"},
+      {"@type":"ListItem","position":2,"url":"https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/","name":"Stripe API versioning upgrade checklist"},
+      {"@type":"ListItem","position":3,"url":"https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/","name":"Shopify offline access token expires: public app migration by 2027"},
       {"@type":"ListItem","position":4,"url":"https://whatjustchanged.com/api-changes/shopify-invalid-metafield-queries-2026-10/","name":"Shopify 2026-10 invalid metafield filters return errors"},
       {"@type":"ListItem","position":5,"url":"https://whatjustchanged.com/api-changes/github-rest-api-2026-03-10-versioning/","name":"GitHub REST API versioning and support window"}
     ]}
@@ -41,15 +41,15 @@
     <div class="grid">
       <article class="article">
         <h2>Current read</h2>
-        <p>The first API pivot week produced new search impressions faster than the fading WooCommerce test. The strongest early signal was the Stripe API versioning page, so the page was broadened from one exact version into a safer versioning and upgrade checklist.</p>
+        <p>The API pivot is getting relevant impressions but still needs stronger rankings. The latest Search Console signal pointed to <strong>Shopify returns API</strong>, so that page has been refined around the actual query family: returnProcess, returnRefund deprecation, 2025-07 return processing, refunds, exchanges, and migration.</p>
         <div class="notice good"><strong>Use this when:</strong> an app, integration, API request, webhook, authentication flow, SDK, or dashboard automation depends on a versioned developer platform.</div>
         <h2 id="records">API change records</h2>
         <table class="decision-table">
           <thead><tr><th>Change</th><th>Who is affected</th><th>First action</th></tr></thead>
           <tbody>
+            <tr><td><a href="./shopify-return-process-api-2025-07/">Shopify Returns API: returnProcess, returnRefund deprecation, and 2025-07 migration</a></td><td>Apps creating returns, approving return requests, or handling refunds/exchanges</td><td>Inventory return/refund mutations and move the migrated flow to returnProcess and suggestedFinancialOutcome</td></tr>
             <tr><td><a href="./stripe-api-version-2026-07-29-dahlia/">Stripe API versioning: what changes, what breaks, and how to upgrade safely</a></td><td>Teams upgrading Stripe account defaults, SDKs, per-request versions, or webhook endpoints</td><td>Inventory every Stripe version boundary before changing production</td></tr>
             <tr><td><a href="./shopify-expiring-offline-access-tokens-2027/">Shopify offline access token expires: public app migration by 2027</a></td><td>Public apps still using non-expiring offline Admin API tokens</td><td>Migrate token exchange, refresh handling, and storage before January 1, 2027</td></tr>
-            <tr><td><a href="./shopify-return-process-api-2025-07/">Shopify returnProcess replaces legacy return refund APIs</a></td><td>Apps creating returns, approving return requests, or handling refunds/exchanges</td><td>Move return/refund flows to returnProcess and suggestedFinancialOutcome</td></tr>
             <tr><td><a href="./shopify-invalid-metafield-queries-2026-10/">Shopify 2026-10 invalid metafield filters return errors</a></td><td>Apps filtering products, orders, or customers by metafields in GraphQL Admin API 2026-10+</td><td>Audit filters and confirm metafield definitions allow filtering before upgrading</td></tr>
             <tr><td><a href="./github-rest-api-2026-03-10-versioning/">GitHub REST API versioning and support window</a></td><td>Integrations specifying or relying on GitHub REST API versions</td><td>Send X-GitHub-Api-Version explicitly and check breaking changes before upgrading</td></tr>
           </tbody>
