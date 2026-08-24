@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://whatjustchanged.com/</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://whatjustchanged.com/api-changes/</loc><lastmod>2026-08-18</lastmod></url>
+  <url><loc>https://whatjustchanged.com/api-changes/</loc><lastmod>2026-08-24</lastmod></url>
+  <url><loc>https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/</loc><lastmod>2026-08-24</lastmod></url>
   <url><loc>https://whatjustchanged.com/api-changes/shopify-invalid-metafield-queries-2026-10/</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://whatjustchanged.com/api-changes/shopify-expiring-offline-access-tokens-2027/</loc><lastmod>2026-08-18</lastmod></url>
-  <url><loc>https://whatjustchanged.com/api-changes/shopify-return-process-api-2025-07/</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://whatjustchanged.com/api-changes/stripe-api-version-2026-07-29-dahlia/</loc><lastmod>2026-08-18</lastmod></url>
   <url><loc>https://whatjustchanged.com/api-changes/github-rest-api-2026-03-10-versioning/</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://whatjustchanged.com/woocommerce-payment-issues/</loc><lastmod>2026-07-27</lastmod></url>
