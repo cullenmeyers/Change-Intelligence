@@ -1,6 +1,6 @@
 # Site Validation
 
-## Current pivot — August 24, 2026
+## Current pivot — August 31, 2026
 
 The passive WooCommerce payment-issue test did not show enough SEO momentum to keep building that wedge as a content engine. The domain remains useful, but the current test is now a developer/API change wedge.
 
@@ -41,7 +41,8 @@ New test:
 - API changes pivot launched: August 10, 2026
 - First API pivot read: August 18, 2026
 - Second API pivot read: August 24, 2026
-- Next API pivot review: September 1, 2026
+- Third API pivot read: August 31 / September 1, 2026
+- Next API pivot review: September 8, 2026
 
 ## First API pivot read — August 18, 2026
 
@@ -76,6 +77,20 @@ Decision from August 24 review:
 - Update the API hub to feature the Shopify returns API page first.
 - Recheck around September 1 before adding, deleting, or changing wedge again.
 
+## Third API pivot read — August 31 / September 1, 2026
+
+Google Search Console data through August 29 showed 630 total impressions and 8 total clicks. The site received one new Google click since the prior review, but the API pivot still had zero recorded clicks.
+
+The API pages had relevant impressions, especially the Shopify Returns API page, but the average position remained too low. The Shopify Returns API page had 77 impressions in the Pages export, and the query `shopify returns api` showed 42 impressions around average position 47.5.
+
+Decision from August 31 / September 1 review:
+
+- Do not add new API pages yet.
+- Do not abandon the API pivot immediately because the Shopify Returns API page is getting meaningful impressions for a relevant query family.
+- Upgrade the Shopify Returns API page from a short change explainer into a deeper developer migration guide.
+- Add a migration map, codebase search checklist, minimal mutation shape, return-processing flow, and test matrix.
+- Recheck around September 8. If the API pivot still has zero clicks after the deeper guide has been reprocessed, decide whether to stop the API wedge or run a different channel test.
+
 ## API pivot decision rules
 
 ### Continue
@@ -93,7 +108,7 @@ Refine titles, summaries, or record format if pages index but queries are too br
 
 ### Stop or pivot again
 
-Stop the API wedge if it gets indexed but remains at near-zero impressions/clicks after the next review cycle.
+Stop the API wedge if it gets indexed but remains at zero API clicks after the next review cycle.
 
 ## What to measure
 
@@ -117,4 +132,4 @@ The WooCommerce payment issue records, hub, and alert page remain live as archiv
 - Do not add 20 API pages immediately.
 - Do not add unsupported summaries without official sources.
 - Do not rely on broad product news or generic changelog summaries.
-- Do not judge the pivot before Google has had time to reprocess the refined API pages.
+- Do not judge the deeper Shopify Returns API guide before Google has had time to reprocess the updated page.
