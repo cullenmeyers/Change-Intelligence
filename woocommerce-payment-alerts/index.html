@@ -3,32 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WooCommerce Payment Issue Alerts — What Just Changed</title>
-  <meta name="description" content="A no-outreach validation page for WooCommerce payment issue alerts: checkout failures, payment-status bugs, amount mismatches, shipping/tax undercollection, and webhook/capture problems.">
+  <title>WooCommerce Revenue Breakage Alerts — What Just Changed</title>
+  <meta name="description" content="Get stack-specific WooCommerce revenue breakage alerts for checkout failures, payment-status bugs, amount mismatches, shipping/tax undercollection, refund issues, webhooks, and reconciliation risk.">
   <link rel="canonical" href="https://whatjustchanged.com/woocommerce-payment-alerts/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WooCommerce Payment Issue Alerts — What Just Changed">
-  <meta property="og:description" content="Get notified about WooCommerce payment, checkout, order-total, shipping, refund, webhook, and reconciliation issues.">
+  <meta property="og:title" content="WooCommerce Revenue Breakage Alerts — What Just Changed">
+  <meta property="og:description" content="Save your WooCommerce payment stack and get notified when a payment, checkout, webhook, refund, total, or reconciliation issue could affect real orders.">
   <meta property="og:url" content="https://whatjustchanged.com/woocommerce-payment-alerts/">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"WebPage",
-    "name":"WooCommerce Payment Issue Alerts",
-    "description":"A proposed alert surface for WooCommerce payment, checkout, capture, order-total, shipping, tax, refund, webhook, and reconciliation issues.",
+    "name":"WooCommerce Revenue Breakage Alerts",
+    "description":"A proposed alert surface for WooCommerce checkout, payment, capture, order-total, shipping, tax, refund, webhook, and reconciliation issues.",
     "url":"https://whatjustchanged.com/woocommerce-payment-alerts/",
     "publisher":{"@type":"Organization","name":"What Just Changed"}
   }
   </script>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    function trackIntent(name, location) {
-      try {
-        window.va('event', { name: name, data: { location: location } });
-      } catch (error) {}
-    }
+    function trackIntent(name, location) { try { window.va('event', { name: name, data: { location: location } }); } catch (error) {} }
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -36,16 +32,16 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="../">What Just Changed</a>
-      <a class="nav-link" href="../woocommerce-payment-issues/">Payment issues hub</a>
+      <a class="nav-link" href="../woocommerce-payment-issues/">Revenue breakage tracker</a>
     </div>
   </header>
 
   <section class="hero">
     <div class="container">
-      <div class="eyebrow">Validation test · No outreach required</div>
-      <h1>WooCommerce payment issue alerts</h1>
-      <p>A lightweight watchlist for checkout failures, stuck payments, order-total mismatches, shipping/tax undercollection, webhook/capture failures, and payment-plugin changes that may affect real revenue.</p>
-      <p><a class="button" href="mailto:cullenmeyers19@gmail.com?subject=WooCommerce%20payment%20issue%20alerts&body=I%20want%20WooCommerce%20payment%20issue%20alerts.%0A%0AMy%20role%20is%3A%20store%20owner%20/%20developer%20/%20agency%20/%20other%0A%0AWhat%20I%20would%20want%20alerts%20for%3A" onclick="trackIntent('AlertSignupClick','alerts_hero')">Request alerts</a></p>
+      <div class="eyebrow">Alert product test</div>
+      <h1>WooCommerce revenue breakage alerts</h1>
+      <p>Save your payment stack and get notified when a Stripe, PayPal, Mollie, WooPayments, checkout, webhook, refund, total, shipping, tax, or reconciliation issue could affect real orders.</p>
+      <p><a class="button" href="mailto:cullenmeyers19@gmail.com?subject=WooCommerce%20revenue%20breakage%20alerts&body=I%20want%20WooCommerce%20revenue%20breakage%20alerts.%0A%0AMy%20role%20is%3A%20store%20owner%20/%20developer%20/%20agency%20/%20other%0A%0AMy%20store%20uses%3A%0A%5B%20%5D%20WooCommerce%0A%5B%20%5D%20Stripe%20for%20WooCommerce%0A%5B%20%5D%20WooPayments%0A%5B%20%5D%20PayPal%20Payments%0A%5B%20%5D%20Mollie%0A%5B%20%5D%20WPML%20/%20multi-currency%0A%0AI%20want%20alerts%20for%3A%0A%5B%20%5D%20checkout%20failures%0A%5B%20%5D%20pending-payment%20orders%0A%5B%20%5D%20amount%20mismatches%0A%5B%20%5D%20shipping%20or%20tax%20undercollection%0A%5B%20%5D%20refund%20issues%0A%5B%20%5D%20webhook%20or%20capture%20failures%0A%5B%20%5D%20reconciliation%20problems" onclick="trackIntent('AlertSignupClick','alerts_hero')">Request stack alerts</a></p>
     </div>
   </section>
 
@@ -59,38 +55,43 @@
             <tr><td>Checkout failure</td><td>Customers cannot complete payment</td><td>Stripe checkout error after plugin update</td></tr>
             <tr><td>Payment stuck pending</td><td>Store may have collected money but not processed the order correctly</td><td>Successful Stripe payment remains Pending Payment</td></tr>
             <tr><td>Amount mismatch</td><td>WooCommerce and the processor may disagree on what was collected</td><td>PayPal discount applied twice or Stripe captures less than order total</td></tr>
-            <tr><td>Shipping or tax undercollection</td><td>Orders may be fulfilled before the full total was captured</td><td>PayPal total missing shipping</td></tr>
+            <tr><td>Shipping or tax undercollection</td><td>Orders may be fulfilled before the full total was captured</td><td>PayPal total missing shipping or Stripe captures less than WooCommerce total</td></tr>
+            <tr><td>Refund issue</td><td>A refund can affect customer support, accounting, inventory, and payout records</td><td>Refund succeeds in one system but not another</td></tr>
             <tr><td>Webhook or capture failure</td><td>Orders can fail silently or customers may be unsure whether they paid</td><td>OrderProcessor.php:109 with webhook verification failures</td></tr>
-            <tr><td>Database/server load from payment flows</td><td>Payment bugs can affect site performance and operations</td><td>Mollie cancelled-payment order-note loop</td></tr>
+            <tr><td>Reconciliation risk</td><td>Payouts, reports, and accounting records may not match order records</td><td>Gateway captured amount, WooCommerce total, and payout report disagree</td></tr>
           </tbody>
         </table>
 
         <h2>Why this page exists</h2>
-        <p>The current SEO data does not prove that What Just Changed should become a broad content site. The strongest signal is narrower: WooCommerce payment and checkout risks. This page tests whether visitors want that narrow tracker as an alert product without requiring manual outreach.</p>
+        <p>The broad passive SEO test did not work. The surviving signal is narrower: people search when a revenue-impacting software issue affects checkout, payments, orders, refunds, or totals. This page tests whether visitors want a narrow stack-specific alert product before a full signup system is built.</p>
 
-        <div class="notice good"><strong>What counts as signal:</strong> clicks on Request alerts, visits to this page from issue records, emails requesting alerts, or repeat visits to the payment issues hub.</div>
+        <div class="notice good"><strong>What counts as signal:</strong> clicks on Request stack alerts, visits from the recovery checklist or issue records, emails requesting alerts, or repeat visits to the revenue breakage tracker.</div>
+
+        <h2>Start with the recovery checklist</h2>
+        <p>If you are already dealing with a live order problem, start by reconciling the payment gateway record, WooCommerce order state, webhook delivery, captured amount, refunds, shipping, tax, and payout/accounting data.</p>
+        <p><a class="button" href="../payment-recovery/" onclick="trackIntent('RecoveryGuideClick','alerts_body')">Open recovery checklist</a></p>
 
         <h2>Interested?</h2>
-        <p>Clicking the button opens an email draft. It is intentionally low-tech for now: the goal is to test whether people want alerts before building a full signup system.</p>
-        <p><a class="button" href="mailto:cullenmeyers19@gmail.com?subject=WooCommerce%20payment%20issue%20alerts&body=I%20want%20WooCommerce%20payment%20issue%20alerts.%0A%0AMy%20role%20is%3A%20store%20owner%20/%20developer%20/%20agency%20/%20other%0A%0AWhat%20I%20would%20want%20alerts%20for%3A" onclick="trackIntent('AlertSignupClick','alerts_body')">Request alerts</a></p>
+        <p>Clicking the button opens an email draft with stack checkboxes. It is intentionally low-tech for now: the goal is to test whether people want alerts before building a real account system.</p>
+        <p><a class="button" href="mailto:cullenmeyers19@gmail.com?subject=WooCommerce%20revenue%20breakage%20alerts&body=I%20want%20WooCommerce%20revenue%20breakage%20alerts.%0A%0AMy%20role%20is%3A%20store%20owner%20/%20developer%20/%20agency%20/%20other%0A%0AMy%20store%20uses%3A%0A%5B%20%5D%20WooCommerce%0A%5B%20%5D%20Stripe%20for%20WooCommerce%0A%5B%20%5D%20WooPayments%0A%5B%20%5D%20PayPal%20Payments%0A%5B%20%5D%20Mollie%0A%5B%20%5D%20WPML%20/%20multi-currency%0A%0AI%20want%20alerts%20for%3A%0A%5B%20%5D%20checkout%20failures%0A%5B%20%5D%20pending-payment%20orders%0A%5B%20%5D%20amount%20mismatches%0A%5B%20%5D%20shipping%20or%20tax%20undercollection%0A%5B%20%5D%20refund%20issues%0A%5B%20%5D%20webhook%20or%20capture%20failures%0A%5B%20%5D%20reconciliation%20problems" onclick="trackIntent('AlertSignupClick','alerts_body')">Request stack alerts</a></p>
 
-        <h2>Report an issue</h2>
-        <p>Use this when a WooCommerce payment plugin update appears to affect checkout, captured funds, order totals, shipping, tax, refunds, webhooks, or order status.</p>
-        <p><a class="button" href="mailto:cullenmeyers19@gmail.com?subject=Report%20WooCommerce%20payment%20issue&body=Issue%20summary%3A%0A%0AAffected%20plugin%20and%20version%3A%0A%0AWhat%20changed%20or%20broke%3A%0A%0AOfficial%20support%20thread%20or%20source%20link%3A" onclick="trackIntent('ReportIssueClick','alerts_body')">Report an issue</a></p>
+        <h2>Report a revenue-impacting issue</h2>
+        <p>Use this when a WooCommerce payment plugin update appears to affect checkout, captured funds, order totals, shipping, tax, refunds, webhooks, payouts, or order status.</p>
+        <p><a class="button" href="mailto:cullenmeyers19@gmail.com?subject=Report%20WooCommerce%20revenue%20breakage&body=Issue%20summary%3A%0A%0AAffected%20plugin%20and%20version%3A%0A%0AWhat%20changed%20or%20broke%3A%0A%0ARevenue%20risk%20%28checkout%20/%20capture%20/%20total%20/%20refund%20/%20webhook%20/%20reconciliation%29%3A%0A%0AOfficial%20support%20thread%20or%20source%20link%3A" onclick="trackIntent('ReportIssueClick','alerts_body')">Report an issue</a></p>
       </article>
 
       <aside class="sidebar">
         <section class="card">
           <h2>Best fit</h2>
-          <p>WooCommerce store owners, developers, and agencies responsible for checkout reliability, payment capture, and order accounting.</p>
+          <p>WooCommerce store owners, developers, and agencies responsible for checkout reliability, payment capture, refunds, and order accounting.</p>
         </section>
         <section class="card">
-          <h2>Not a newsletter yet</h2>
-          <p>This is a validation surface. If enough visitors show intent, the next version can become a real email alert or dashboard.</p>
+          <h2>Not full monitoring yet</h2>
+          <p>This is a validation surface. The first real product would be saved-stack alerts, not a full checkout-monitoring service.</p>
         </section>
         <section class="card">
           <h2>Current tracker</h2>
-          <p><a href="../woocommerce-payment-issues/">View the WooCommerce payment issues hub</a></p>
+          <p><a href="../woocommerce-payment-issues/">View the revenue breakage tracker</a></p>
         </section>
       </aside>
     </div>
