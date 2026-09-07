@@ -1,135 +1,165 @@
 # Site Validation
 
-## Current pivot — August 31, 2026
+## Current pivot — September 7, 2026
 
-The passive WooCommerce payment-issue test did not show enough SEO momentum to keep building that wedge as a content engine. The domain remains useful, but the current test is now a developer/API change wedge.
+What Just Changed is no longer being treated as a broad passive SEO site or a broad API-change site. The current direction is a tighter productized wedge:
 
-Initial API pivot assets:
+> Revenue-stack breakage radar for ecommerce merchants.
 
-- Hub: `/api-changes/`
-- Shopify 2026-10 invalid metafield filter errors
-- Shopify expiring offline access tokens required for public apps by January 1, 2027
-- Shopify Returns API / `returnProcess` migration from deprecated `returnRefund` and legacy return-refund APIs
-- Stripe API versioning and safe upgrade checklist
-- GitHub REST API versioning and `X-GitHub-Api-Version` checklist
+The job to solve:
 
-The current hypothesis is that developers search for official API changes, breaking changes, deprecations, version deadlines, authentication changes, webhook risks, SDK versioning, and migration problems more consistently than store owners search for temporary WooCommerce plugin incidents.
+> A software update or payment-flow issue changed something, and now checkout, captured funds, order status, totals, shipping, tax, refunds, webhooks, payouts, or reconciliation may be wrong. What changed, am I affected, how do I verify it, and what is the safest next action?
 
-## What changed in strategy
+## Why this pivot happened
 
-Previous broad idea:
+Google Search Console through September 5 showed 8 total clicks and 692 total impressions.
 
-- WordPress plugin changes and WooCommerce payment issue records.
+The API pivot got discovered, but it did not get clicks:
 
-Problem found:
+- API pivot pages: 0 clicks, about 188 impressions.
+- Shopify Returns API page: meaningful impressions, but still around position 47 and 0 clicks.
+- Stripe API versioning page: closer average position, but still 0 clicks.
 
-- Google discovered pages, but impressions and clicks did not compound.
-- The site reached 6 Google clicks and 390 impressions by the August 10 review, but there were no new clicks after the early July spike.
-- Hub and alert pages did not get enough passive search exposure to prove demand.
+The only pages that produced real Google clicks were older urgent payment/revenue-risk pages:
 
-New test:
+- WooCommerce Stripe payment status not updating.
+- WooCommerce Stripe 10.8.3 checkout error after update.
+- Stripe charged an order without shipping cost.
 
-- Developer/API change explainers.
-- More evergreen version/deprecation/authentication pages.
-- Official source-based migration checklists.
-- Initial batch locked at one hub plus five records.
+Decision:
+
+- Stop treating broad API changes as the main wedge.
+- Do not delete the API pages; keep them live as a secondary archive.
+- Reposition the homepage and WooCommerce payment hub around revenue-stack breakage.
+- Create one evergreen recovery/checklist page instead of adding many incident pages.
+
+## Current live validation assets
+
+Primary assets:
+
+- Homepage: `/`
+- Recovery guide: `/payment-recovery/`
+- Revenue breakage tracker: `/woocommerce-payment-issues/`
+- Alert product test: `/woocommerce-payment-alerts/`
+
+Existing issue records kept live:
+
+- WooCommerce Stripe 10.8.x payment status not updating.
+- WooCommerce Stripe 10.8.3 checkout error after update.
+- WooCommerce PayPal 4.0.4 discount applied twice / amount mismatch.
+- Stripe shipping cost not charged.
+- Stripe WPML Multi-Currency 1/100 amount.
+- PayPal shipping not included total.
+- PayPal OrderProcessor.php:109 intermittent failures.
+- Mollie cancelled payment order note loop.
+- Mollie Payconiq removed.
+- WooCommerce PayPal Pay with Crypto enabled by default for eligible merchants.
+
+Secondary archive:
+
+- API changes hub and five API records remain live, but they are no longer the main build direction.
+
+## Evidence model
+
+Every revenue-breakage record should use one of these labels:
+
+### Confirmed fix
+
+A vendor changelog, official issue, or official source explicitly identifies the defect and fix.
+
+Use this when the page can safely say a fix exists or a version boundary is confirmed.
+
+### Vendor acknowledged
+
+An official support channel, official GitHub issue, or vendor response recognizes the behavior, but the final fix or complete affected-version range may still be unclear.
+
+Use this when the issue is real but the safest action is to preserve evidence and follow official updates.
+
+### Diagnostic match
+
+Symptoms match a known pattern, but causality is not fully confirmed.
+
+Use this when the page should help users verify their own order/gateway/webhook/amount evidence before taking action.
 
 ## Validation timeline
 
 - WooCommerce payment test start: June 18, 2026
-- WooCommerce payment test paused: August 10, 2026
+- WooCommerce payment test paused as broad content wedge: August 10, 2026
 - API changes pivot launched: August 10, 2026
-- First API pivot read: August 18, 2026
-- Second API pivot read: August 24, 2026
-- Third API pivot read: August 31 / September 1, 2026
-- Next API pivot review: September 8, 2026
+- API pivot judged weak: September 7, 2026
+- Revenue-stack breakage pivot launched: September 7, 2026
+- Next review: September 21, 2026
 
-## First API pivot read — August 18, 2026
+## What changed on September 7
 
-Google Search Console data through August 16 showed 477 total impressions and 6 total clicks. The prior week, August 2-8, had 9 impressions. The first API pivot week, August 9-16, had 87 impressions. There were still no new Google clicks.
+Implemented the first foundation step:
 
-API pages visible in the Pages export:
+- Repositioned homepage from API changes to revenue-stack breakage.
+- Created `/payment-recovery/` as an evergreen WooCommerce payment recovery and reconciliation checklist.
+- Reframed `/woocommerce-payment-issues/` as a revenue breakage tracker.
+- Reframed `/woocommerce-payment-alerts/` as a saved-stack alert product test.
+- Added evidence status labels: Confirmed fix, Vendor acknowledged, Diagnostic match.
+- Updated sitemap lastmod values for the changed pages.
 
-- Shopify returnProcess API: 0 clicks, 8 impressions, average position 50.6
-- Shopify expiring offline access tokens: 0 clicks, 7 impressions, average position 39.4
-- Stripe API version page: 0 clicks, 6 impressions, average position 6.5
-- GitHub REST API versioning: 0 clicks, 5 impressions, average position 46.2
+## Current hypothesis
 
-Decision from August 18 review:
+The best surviving hypothesis is:
 
-- Keep the API pivot alive for one more review cycle because impressions increased from 9 to 87 week-over-week.
-- Do not add new records yet.
-- Refine the pages that already showed impressions.
-- Reframe the Stripe page from a one-version page into a broader Stripe API versioning and safe-upgrade checklist.
-- Add clearer developer-search language to the Shopify expiring offline access token page.
-- Recheck around August 24 before adding pages or changing the wedge again.
+> People searching after a revenue-impacting software change will consume a precise diagnostic/recovery record, save their payment stack, and some will pay to be warned before or immediately after the next damaging change.
 
-## Second API pivot read — August 24, 2026
+This is more product-like than the original content site because the content, lead magnet, alerts, and future scanner all solve the same recurring problem.
 
-Google Search Console data through August 22 showed 545 total impressions and 7 total clicks. The site received one new Google click after the long dry period, but that click appeared to come from an older WooCommerce/Stripe checkout page rather than the API pivot.
+## What to measure next
 
-The API pivot remained weak but alive. API pages were getting discovered, but no API page had generated a Google click yet. The strongest query-level signal was `shopify returns api`, which showed 14 impressions around average position 46.5. The Shopify returns API page had the most API-page impressions in the Pages export but was ranking too low to click.
+For the next review, measure:
 
-Decision from August 24 review:
+- GSC impressions for `/payment-recovery/`.
+- GSC impressions and clicks for `/woocommerce-payment-issues/`.
+- GSC clicks on the three already-proven Stripe/WooCommerce pages.
+- Vercel visits to `/payment-recovery/`.
+- Vercel visits to `/woocommerce-payment-alerts/`.
+- Custom events:
+  - `RecoveryGuideClick`
+  - `PaymentHubClick`
+  - `AlertInterestClick`
+  - `AlertSignupClick`
+  - `ReportIssueClick`
+- Any email asking for stack alerts.
 
-- Do not add new API pages yet.
-- Refine the Shopify returns API page around the observed query family: `Shopify returns API`, `returnProcess`, `returnRefund deprecated`, `return API migration`, and `Shopify 2025-07 returns API`.
-- Update the API hub to feature the Shopify returns API page first.
-- Recheck around September 1 before adding, deleting, or changing wedge again.
-
-## Third API pivot read — August 31 / September 1, 2026
-
-Google Search Console data through August 29 showed 630 total impressions and 8 total clicks. The site received one new Google click since the prior review, but the API pivot still had zero recorded clicks.
-
-The API pages had relevant impressions, especially the Shopify Returns API page, but the average position remained too low. The Shopify Returns API page had 77 impressions in the Pages export, and the query `shopify returns api` showed 42 impressions around average position 47.5.
-
-Decision from August 31 / September 1 review:
-
-- Do not add new API pages yet.
-- Do not abandon the API pivot immediately because the Shopify Returns API page is getting meaningful impressions for a relevant query family.
-- Upgrade the Shopify Returns API page from a short change explainer into a deeper developer migration guide.
-- Add a migration map, codebase search checklist, minimal mutation shape, return-processing flow, and test matrix.
-- Recheck around September 8. If the API pivot still has zero clicks after the deeper guide has been reprocessed, decide whether to stop the API wedge or run a different channel test.
-
-## API pivot decision rules
+## Continue / refine / stop rules
 
 ### Continue
 
-Continue if the API change pages show at least one of:
+Continue if the revenue-breakage direction shows at least one of:
 
-- faster indexing than the WooCommerce pages
-- relevant impressions from API/version/deprecation/authentication/returns queries
-- clicks from developer-intent searches
-- repeat visits or alert/event interest from API pages
+- Recovery guide impressions within 2 weeks.
+- New clicks to recovery, pending-payment, checkout-error, or amount-mismatch pages.
+- Alert page visits from issue/recovery pages.
+- AlertSignupClick or real email interest.
+- Better trailing 28-day organic clicks than the API pivot.
 
 ### Refine
 
-Refine titles, summaries, or record format if pages index but queries are too broad, irrelevant, too low-ranking, or not tied to migration decisions.
+Refine if pages get impressions but no clicks:
 
-### Stop or pivot again
+- Tighten titles around actual queries.
+- Make snippets more symptom-led.
+- Improve recovery sections on pages already getting impressions.
+- Add clearer CTAs to save a payment stack.
 
-Stop the API wedge if it gets indexed but remains at zero API clicks after the next review cycle.
+### Stop or force a channel test
 
-## What to measure
+Stop the passive-only build if the new recovery page and repositioned hub get indexed but produce no clicks, no alert interest, and no visit lift after another review cycle.
 
-For the API pivot, capture by page:
-
-- Google indexing status
-- impressions
-- clicks
-- queries
-- average position
-- whether queries mention API version, breaking change, deprecation, migration, error, webhook, token, OAuth, SDK, returns, refunds, `returnProcess`, or versioning
-- Vercel visits to `/api-changes/` and the five API records
-
-## Previous test kept live
-
-The WooCommerce payment issue records, hub, and alert page remain live as archived validation assets, but they are no longer the main build direction.
+At that point the next honest test is small paid search or a different project, not more passive waiting.
 
 ## Guardrails
 
-- Do not delete the WooCommerce pages yet.
-- Do not add 20 API pages immediately.
-- Do not add unsupported summaries without official sources.
-- Do not rely on broad product news or generic changelog summaries.
-- Do not judge the deeper Shopify Returns API guide before Google has had time to reprocess the updated page.
+- Do not add 20 pages immediately.
+- Do not mass-generate plugin/version pages.
+- Do not delete WooCommerce pages with existing clicks.
+- Do not delete API pages yet; archive them quietly.
+- Do not imply official affiliation with WooCommerce, Stripe, PayPal, Mollie, Automattic, or Shopify.
+- Do not claim a vendor update caused an issue unless the source support is strong.
+- Do not give irreversible payment/accounting advice; always tell users to preserve evidence and verify official gateway records.
+- Do not rely on broad product news, feature hype, or generic changelog summaries.
