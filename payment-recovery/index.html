@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Succeeded but WooCommerce Order Is Pending: Recovery Checklist</title>
+  <meta name="description" content="A 15-minute WooCommerce payment recovery and reconciliation checklist for cases where Stripe, PayPal, Mollie, or WooPayments shows payment activity but the store order status or totals disagree.">
+  <link rel="canonical" href="https://whatjustchanged.com/payment-recovery/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Payment Succeeded but WooCommerce Order Is Pending: Recovery Checklist">
+  <meta property="og:description" content="Check gateway transaction state, WooCommerce order status, webhooks, totals, refunds, shipping, tax, and reconciliation evidence before changing production orders.">
+  <meta property="og:url" content="https://whatjustchanged.com/payment-recovery/">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    function trackIntent(name, location) {
+      try { window.va('event', { name: name, data: { location: location } }); } catch (error) {}
+    }
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Payment Succeeded but WooCommerce Order Is Pending: Recovery Checklist",
+    "description":"A practical recovery and reconciliation checklist for WooCommerce payment-state mismatches, pending orders, webhooks, order totals, shipping, tax, refunds, and gateway captures.",
+    "datePublished":"2026-09-07",
+    "dateModified":"2026-09-07",
+    "mainEntityOfPage":"https://whatjustchanged.com/payment-recovery/",
+    "author":{"@type":"Organization","name":"What Just Changed"},
+    "publisher":{"@type":"Organization","name":"What Just Changed"},
+    "about":["WooCommerce pending payment","Stripe payment succeeded WooCommerce order pending","WooCommerce payment recovery","WooCommerce reconciliation","WooCommerce webhooks","payment status mismatch"]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">What Just Changed</a>
+      <a class="nav-link" href="../woocommerce-payment-issues/">Revenue breakage tracker</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <article class="article">
+        <div class="eyebrow">Payment recovery guide</div>
+        <h1>Payment succeeded but WooCommerce order is pending: recovery checklist</h1>
+        <div class="meta">
+          <span>Reviewed September 7, 2026</span>
+          <span>Evidence confidence: diagnostic guide with official-source links</span>
+          <span>Primary risk: captured money and store order state disagree</span>
+        </div>
+
+        <div class="notice good">
+          <strong>Current decision</strong>
+          Do not manually complete, refund, delete, or re-run payment actions until you verify the gateway transaction, WooCommerce order status, webhook delivery, captured amount, shipping, tax, discounts, refunds, and customer-facing receipt. The goal is to avoid turning one payment-state mismatch into duplicate fulfillment, duplicate refunds, or incorrect accounting.
+        </div>
+
+        <h2>Use this when</h2>
+        <p>Use this checklist when the payment processor shows activity but WooCommerce does not clearly match it. Common examples:</p>
+        <ul>
+          <li>Stripe shows a successful or captured payment, but the WooCommerce order stayed <strong>Pending payment</strong>.</li>
+          <li>PayPal, Mollie, WooPayments, or Stripe shows a different total than the WooCommerce order total.</li>
+          <li>The customer says they paid, but the store did not send the expected order confirmation.</li>
+          <li>Checkout failed or timed out, but the payment gateway still shows an authorization, capture, payment intent, transaction, or refund activity.</li>
+          <li>Shipping, tax, coupon, currency, refund, or payout numbers do not reconcile.</li>
+        </ul>
+
+        <h2>15-minute recovery checklist</h2>
+        <ol class="steps">
+          <li><strong>Freeze the evidence first.</strong> Save the WooCommerce order ID, customer email, checkout time, payment gateway, plugin versions, order notes, gateway transaction ID, error message, and any screenshots before clearing caches or changing plugin settings.</li>
+          <li><strong>Check the payment gateway record.</strong> Open Stripe, PayPal, Mollie, or WooPayments and confirm whether the payment was authorized, captured, failed, refunded, disputed, cancelled, or still pending. Record the exact amount and currency.</li>
+          <li><strong>Check the WooCommerce order state.</strong> Compare order status, order total, payment method, transaction ID, order notes, stock changes, email events, shipping total, tax total, discount total, and refund records.</li>
+          <li><strong>Check webhook or notification delivery.</strong> Payment gateways often update store state through webhooks or server notifications. Look for failed deliveries, missing events, duplicate endpoints, blocked requests, or verification/signature errors.</li>
+          <li><strong>Reconcile money before fulfillment.</strong> Compare gateway captured amount to WooCommerce order total. Check item subtotal, shipping, shipping tax, product tax, coupon, fees, currency, exchange rate, partial refunds, and payouts.</li>
+          <li><strong>Make the smallest safe correction.</strong> Only after the records agree, choose one action: update order status, capture payment, refund, re-send invoice, contact customer, reconfigure webhooks, update plugin, or escalate to gateway/plugin support with evidence.</li>
+          <li><strong>Log the final state.</strong> Record what changed, who changed it, the before/after order status, payment state, amount, refund state, and whether the customer or accountant needs follow-up.</li>
+        </ol>
+
+        <h2>Gateway → store reconciliation map</h2>
+        <table class="decision-table">
+          <thead><tr><th>Compare</th><th>Why it matters</th><th>What to write down</th></tr></thead>
+          <tbody>
+            <tr><td>Gateway transaction state</td><td>The processor is the source for whether money was authorized, captured, failed, refunded, or disputed.</td><td>Transaction/payment ID, status, amount, currency, time, fees, refund/dispute state.</td></tr>
+            <tr><td>WooCommerce order state</td><td>The store controls fulfillment, emails, inventory, and customer support workflow.</td><td>Order ID, status, order notes, transaction ID, email logs, stock notes.</td></tr>
+            <tr><td>Webhook / IPN / notification delivery</td><td>Many order-status mismatches happen when the gateway paid event does not reach or verify on the store.</td><td>Event ID, endpoint URL, HTTP status, delivery attempts, signature/verification errors.</td></tr>
+            <tr><td>Amount breakdown</td><td>Undercollection can hide in shipping, taxes, discounts, fees, currency, or rounding.</td><td>Item subtotal, shipping, tax, discounts, fees, total captured, total expected.</td></tr>
+            <tr><td>Refund and payout records</td><td>A payment can look fixed in the order screen while payout/accounting data remains wrong.</td><td>Refund IDs, payout IDs, balance/report line items, accounting notes.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Search your site records</h2>
+        <p>Look for these terms in order notes, logs, plugin logs, server logs, and support tickets:</p>
+        <pre><code>pending payment
+payment_intent.succeeded
+payment_intent.payment_failed
+checkout error
+webhook verification failed
+OrderProcessor.php
+amount mismatch
+shipping not included
+tax mismatch
+captured amount
+transaction id
+refund failed</code></pre>
+
+        <h2>Known issue records</h2>
+        <table class="decision-table">
+          <thead><tr><th>Symptom</th><th>Record</th><th>First check</th></tr></thead>
+          <tbody>
+            <tr><td>Stripe paid, WooCommerce pending</td><td><a href="../changes/woocommerce-stripe-10-8-payment-status-not-updating/">WooCommerce Stripe payments stuck in Pending Payment</a></td><td>Reconcile successful Stripe payments against WooCommerce order status.</td></tr>
+            <tr><td>Stripe checkout error after update</td><td><a href="../changes/stripe-10-8-3-checkout-error-adaptive-pricing/">WooCommerce Stripe 10.8.3 checkout error</a></td><td>Check cache layers, Stripe.js, Adaptive Pricing, and WooPayments conflicts.</td></tr>
+            <tr><td>Gateway charged less than order total</td><td><a href="../changes/stripe-shipping-cost-not-charged-10-7/">Stripe charged without shipping cost</a></td><td>Compare captured amount against shipping, VAT/tax, discounts, and total.</td></tr>
+            <tr><td>PayPal and WooCommerce totals disagree</td><td><a href="../changes/woocommerce-paypal-4-0-4-amount-mismatch/">WooCommerce PayPal amount mismatch</a></td><td>Audit discounted, gift-card, tax-sensitive, and negative-fee orders.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="notice warn">
+          <strong>Safety note</strong>
+          This is independent research, not official support, accounting advice, tax advice, legal advice, or a replacement for gateway/plugin support. When real money is involved, preserve evidence and verify the official processor record before making irreversible changes.
+        </div>
+
+        <h2>Get future revenue-breakage alerts</h2>
+        <p>The product being tested is simple: save your WooCommerce payment stack and get notified when a plugin, gateway, checkout, webhook, refund, total, or reconciliation issue could affect real orders.</p>
+        <p><a class="button" href="../woocommerce-payment-alerts/" onclick="trackIntent('AlertInterestClick','payment_recovery_body')">Get payment-stack alerts</a></p>
+
+        <h2>Official references</h2>
+        <ul class="source-list">
+          <li><a href="https://woocommerce.com/document/troubleshooting-payment-errors/" rel="nofollow">WooCommerce: Troubleshoot payment errors</a></li>
+          <li><a href="https://woocommerce.com/document/managing-orders/troubleshooting-orders/" rel="nofollow">WooCommerce: Troubleshooting orders</a></li>
+          <li><a href="https://woocommerce.com/document/stripe/setup-and-configuration/stripe-webhooks/" rel="nofollow">WooCommerce Stripe: Setting up webhooks</a></li>
+          <li><a href="https://woocommerce.com/document/stripe/admin-experience/order-statuses/" rel="nofollow">WooCommerce Stripe: Order statuses</a></li>
+          <li><a href="https://docs.stripe.com/payments/payment-intents/verifying-status" rel="nofollow">Stripe: Verify PaymentIntent status</a></li>
+          <li><a href="https://docs.stripe.com/webhooks" rel="nofollow">Stripe: Webhooks</a></li>
+          <li><a href="https://developer.woocommerce.com/2026/08/06/woopayments-reports/" rel="nofollow">WooCommerce Developer Blog: WooPayments reconciliation reports</a></li>
+        </ul>
+      </article>
+
+      <aside class="sidebar">
+        <section class="card">
+          <h2>At a glance</h2>
+          <p><span class="status">Recovery checklist</span></p>
+          <p><strong>Main risk:</strong> money moved but store state did not.</p>
+          <p><strong>First action:</strong> freeze evidence and reconcile gateway vs order state.</p>
+        </section>
+        <section class="card">
+          <h2>Evidence status labels</h2>
+          <ul class="toc">
+            <li><strong>Confirmed fix:</strong> vendor/source explicitly identifies the fix.</li>
+            <li><strong>Vendor acknowledged:</strong> official/support channel recognizes the issue.</li>
+            <li><strong>Diagnostic match:</strong> symptoms match but causality is not confirmed.</li>
+          </ul>
+        </section>
+        <section class="card">
+          <h2>Related</h2>
+          <p><a href="../woocommerce-payment-issues/">Revenue breakage tracker</a></p>
+          <p><a href="../woocommerce-payment-alerts/">Payment-stack alerts</a></p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with WordPress, WooCommerce, Automattic, Stripe, PayPal, Mollie, or WooPayments.</div></footer>
+</body>
+</html>
