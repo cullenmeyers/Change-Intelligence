@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>What Just Changed — API Change Explainers</title>
-  <meta name="description" content="What changed, who is affected, what breaks, and what to do next for API changes, deprecations, breaking changes, and migration deadlines.">
+  <title>What Just Changed — Revenue Stack Breakage Radar</title>
+  <meta name="description" content="Know when a software update can break checkout, payments, refunds, webhooks, order totals, shipping, tax, or reconciliation in your ecommerce revenue stack.">
   <link rel="canonical" href="https://whatjustchanged.com/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="What Just Changed — API Change Explainers">
-  <meta property="og:description" content="Developer/API changes translated into clear action checklists.">
+  <meta property="og:title" content="What Just Changed — Revenue Stack Breakage Radar">
+  <meta property="og:description" content="Evidence-backed recovery guides and alerts for ecommerce checkout, payment, refund, webhook, order-total, and reconciliation breakages.">
   <meta property="og:url" content="https://whatjustchanged.com/">
   <link rel="stylesheet" href="./styles.css">
   <script>
@@ -19,21 +19,67 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-  <header class="site-header"><div class="container header-inner"><a class="brand" href="./">What Just Changed</a><a class="nav-link" href="./api-changes/">API changes</a></div></header>
-  <section class="hero"><div class="container"><div class="eyebrow">New pivot test · Developer/API changes</div><h1>What changed in the API—and what should you do?</h1><p>We translate official changelogs, versioning docs, and migration notices into plain action records: what changed, who is affected, what can break, and the smallest safe next step.</p><p><a class="button" href="./api-changes/" onclick="trackIntent('ApiHubClick','home_hero')">Open API change hub</a></p></div></section>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="./">What Just Changed</a><a class="nav-link" href="./woocommerce-payment-issues/">Revenue breakage tracker</a></div></header>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Current test · Revenue-stack breakage radar</div>
+      <h1>Know when a software update can break checkout, payments, refunds, or order reconciliation.</h1>
+      <p>What Just Changed turns payment-stack failures into practical recovery records: what changed, who is affected, what can break, how to verify it, and the safest next action before real revenue gets mishandled.</p>
+      <p><a class="button" href="./payment-recovery/" onclick="trackIntent('RecoveryGuideClick','home_hero')">Open the recovery checklist</a> <a class="button" href="./woocommerce-payment-issues/" onclick="trackIntent('PaymentHubClick','home_hero')">View tracked breakages</a></p>
+    </div>
+  </section>
   <main class="container">
-    <section aria-label="API change pivot" style="display:grid;gap:24px;margin-bottom:24px">
-      <article class="article home-card"><div class="status">Developer/API change tracker</div><h2>API changes explained</h2><p><strong>Current test:</strong> the old WooCommerce-payment wedge showed weak organic momentum. The new passive SEO test is developer/API changes: breaking changes, deprecations, version boundaries, auth changes, and migration deadlines developers already search for when integrations might break.</p><a class="button" href="./api-changes/">Read the API change records</a></article>
+    <section aria-label="Current direction" style="display:grid;gap:24px;margin-bottom:24px">
+      <article class="article home-card">
+        <div class="status">Best current wedge</div>
+        <h2>Revenue-impacting payment breakages</h2>
+        <p><strong>Current product direction:</strong> the broad API-change test got impressions but no clicks. The only pages that actually earned Google clicks were urgent WooCommerce/Stripe payment and checkout problems. So the site is now focused on ecommerce revenue-stack breakage: checkout failures, pending orders, amount mismatches, shipping/tax undercollection, refunds, webhooks, and reconciliation.</p>
+        <p><a class="button" href="./payment-recovery/">Start with the 15-minute recovery checklist</a></p>
+      </article>
     </section>
-    <section id="records" aria-label="API records" style="display:grid;gap:24px">
-      <article class="article home-card"><div class="status">Breaking API change</div><h2>Shopify 2026-10 invalid metafield filters return errors</h2><p>GraphQL Admin API queries that filter by invalid metafields return errors in 2026-10 instead of silently ignoring bad predicates.</p><a class="button" href="./api-changes/shopify-invalid-metafield-queries-2026-10/">Read the migration record</a></article>
-      <article class="article home-card"><div class="status">Authentication deadline</div><h2>Shopify public apps must use expiring offline tokens by 2027</h2><p>Public apps using non-expiring offline Admin API tokens need to migrate before January 1, 2027 to avoid authentication errors.</p><a class="button" href="./api-changes/shopify-expiring-offline-access-tokens-2027/">Read the auth record</a></article>
-      <article class="article home-card"><div class="status">Returns API migration</div><h2>Shopify returnProcess replaces legacy return refund APIs</h2><p>Return, refund, and exchange flows should move to returnProcess and suggestedFinancialOutcome instead of deprecated return-refund APIs.</p><a class="button" href="./api-changes/shopify-return-process-api-2025-07/">Read the returns record</a></article>
-      <article class="article home-card"><div class="status">API versioning</div><h2>Stripe API version 2026-07-29.dahlia</h2><p>Stripe version changes affect account defaults, per-request versions, SDK-pinned versions, and webhook payloads.</p><a class="button" href="./api-changes/stripe-api-version-2026-07-29-dahlia/">Read the Stripe versioning record</a></article>
-      <article class="article home-card"><div class="status">REST API versioning</div><h2>GitHub REST API 2026-03-10 versioning</h2><p>GitHub REST integrations should set X-GitHub-Api-Version explicitly and check breaking changes before upgrading.</p><a class="button" href="./api-changes/github-rest-api-2026-03-10-versioning/">Read the GitHub API record</a></article>
+
+    <section id="records" aria-label="Revenue breakage records" style="display:grid;gap:24px">
+      <article class="article home-card">
+        <div class="status">Recovery guide</div>
+        <h2>Payment succeeded but WooCommerce order stayed Pending</h2>
+        <p>Freeze evidence, compare gateway transaction state against WooCommerce order status, check webhook delivery, reconcile totals, and avoid duplicate fulfillment or refunds.</p>
+        <a class="button" href="./payment-recovery/">Open the checklist</a>
+      </article>
+      <article class="article home-card">
+        <div class="status">Tracked issue</div>
+        <h2>WooCommerce Stripe 10.8.x payments stuck in Pending Payment</h2>
+        <p>Successful Stripe payments may not move WooCommerce orders correctly. First action: reconcile paid Stripe transactions against store order status before manually changing orders.</p>
+        <a class="button" href="./changes/woocommerce-stripe-10-8-payment-status-not-updating/">Read the issue record</a>
+      </article>
+      <article class="article home-card">
+        <div class="status">Tracked issue</div>
+        <h2>WooCommerce Stripe 10.8.3 checkout error after update</h2>
+        <p>Checkout errors after a plugin update can stop revenue immediately. First action: check cache layers, Stripe.js loading, Adaptive Pricing, and WooPayments conflicts.</p>
+        <a class="button" href="./changes/stripe-10-8-3-checkout-error-adaptive-pricing/">Read the issue record</a>
+      </article>
+      <article class="article home-card">
+        <div class="status">Tracked issue</div>
+        <h2>WooCommerce payment amount mismatches</h2>
+        <p>Gateway totals and WooCommerce totals can disagree because of discounts, shipping, tax, currency, rounding, or refund handling. First action: compare captured amount against every order-total component.</p>
+        <a class="button" href="./changes/woocommerce-paypal-4-0-4-amount-mismatch/">Read the PayPal mismatch record</a>
+      </article>
     </section>
-    <section aria-label="Previous validation" style="display:grid;gap:24px;margin-top:24px"><article class="article home-card"><div class="status">Previous test archived</div><h2>WooCommerce payment issue tracker</h2><p>The WooCommerce payment test remains live for reference, but the current passive SEO test is now API/developer changes.</p><p><a class="button" href="./woocommerce-payment-issues/">Open WooCommerce hub</a> <a class="button" href="./woocommerce-payment-alerts/">Open alerts test</a></p></article></section>
+
+    <section aria-label="Product test" style="display:grid;gap:24px;margin-top:24px">
+      <article class="article home-card">
+        <div class="status">Alert product test</div>
+        <h2>Get warned about the next payment-stack breakage</h2>
+        <p>The product being tested is simple: save your WooCommerce payment stack and get notified when a Stripe, PayPal, Mollie, WooPayments, checkout, webhook, refund, total, or reconciliation issue could affect real orders.</p>
+        <p><a class="button" href="./woocommerce-payment-alerts/" onclick="trackIntent('AlertInterestClick','home_alerts')">Get payment-stack alerts</a></p>
+      </article>
+      <article class="article home-card">
+        <div class="status">Archive</div>
+        <h2>API change records are staying live, but they are not the main direction</h2>
+        <p>The API pivot produced impressions but did not produce clicks. Those records remain available as a secondary archive while the site tests the more urgent revenue-breakage angle.</p>
+        <a class="button" href="./api-changes/">Open API archive</a>
+      </article>
+    </section>
   </main>
-  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Stripe, Shopify, GitHub, WooCommerce, or WordPress.</div></footer>
+  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Stripe, Shopify, GitHub, WooCommerce, WordPress, PayPal, Mollie, or WooPayments.</div></footer>
 </body>
 </html>
