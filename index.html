@@ -25,7 +25,7 @@
       <div class="eyebrow">Current test · Revenue-stack breakage radar</div>
       <h1>Know when a software update can break checkout, payments, refunds, or order reconciliation.</h1>
       <p>What Just Changed turns payment-stack failures into practical recovery records: what changed, who is affected, what can break, how to verify it, and the safest next action before real revenue gets mishandled.</p>
-      <p><a class="button" href="./payment-recovery/" onclick="trackIntent('RecoveryGuideClick','home_hero')">Open the recovery checklist</a> <a class="button" href="./woocommerce-payment-issues/" onclick="trackIntent('PaymentHubClick','home_hero')">View tracked breakages</a></p>
+      <p><a class="button" href="./payment-recovery/" onclick="trackIntent('RecoveryGuideClick','home_hero')">Open the payment pending checklist</a> <a class="button" href="./woocommerce-payment-issues/" onclick="trackIntent('PaymentHubClick','home_hero')">View tracked breakages</a></p>
     </div>
   </section>
   <main class="container">
@@ -34,14 +34,14 @@
         <div class="status">Best current wedge</div>
         <h2>Revenue-impacting payment breakages</h2>
         <p><strong>Current product direction:</strong> the broad API-change test got impressions but no clicks. The only pages that actually earned Google clicks were urgent WooCommerce/Stripe payment and checkout problems. So the site is now focused on ecommerce revenue-stack breakage: checkout failures, pending orders, amount mismatches, shipping/tax undercollection, refunds, webhooks, and reconciliation.</p>
-        <p><a class="button" href="./payment-recovery/">Start with the 15-minute recovery checklist</a></p>
+        <p><a class="button" href="./payment-recovery/">Start with the payment pending checklist</a></p>
       </article>
     </section>
 
     <section id="records" aria-label="Revenue breakage records" style="display:grid;gap:24px">
       <article class="article home-card">
         <div class="status">Recovery guide</div>
-        <h2>Payment succeeded but WooCommerce order stayed Pending</h2>
+        <h2>WooCommerce payment pending after successful Stripe or PayPal payment</h2>
         <p>Freeze evidence, compare gateway transaction state against WooCommerce order status, check webhook delivery, reconcile totals, and avoid duplicate fulfillment or refunds.</p>
         <a class="button" href="./payment-recovery/">Open the checklist</a>
       </article>
