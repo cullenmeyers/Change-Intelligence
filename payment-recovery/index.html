@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Payment Succeeded but WooCommerce Order Is Pending: Recovery Checklist</title>
-  <meta name="description" content="A 15-minute WooCommerce payment recovery and reconciliation checklist for cases where Stripe, PayPal, Mollie, or WooPayments shows payment activity but the store order status or totals disagree.">
+  <title>WooCommerce Payment Pending After Successful Stripe or PayPal Payment: Recovery Checklist</title>
+  <meta name="description" content="A 15-minute WooCommerce payment pending recovery checklist for cases where Stripe, PayPal, Mollie, or WooPayments shows a successful payment but the order status, total, webhook, or reconciliation record disagrees.">
   <link rel="canonical" href="https://whatjustchanged.com/payment-recovery/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Payment Succeeded but WooCommerce Order Is Pending: Recovery Checklist">
-  <meta property="og:description" content="Check gateway transaction state, WooCommerce order status, webhooks, totals, refunds, shipping, tax, and reconciliation evidence before changing production orders.">
+  <meta property="og:title" content="WooCommerce Payment Pending After Successful Stripe or PayPal Payment: Recovery Checklist">
+  <meta property="og:description" content="Check gateway transaction state, WooCommerce pending-payment order status, webhooks, totals, refunds, shipping, tax, and reconciliation evidence before changing production orders.">
   <meta property="og:url" content="https://whatjustchanged.com/payment-recovery/">
   <link rel="stylesheet" href="../styles.css">
   <script>
@@ -23,14 +23,14 @@
   {
     "@context":"https://schema.org",
     "@type":"TechArticle",
-    "headline":"Payment Succeeded but WooCommerce Order Is Pending: Recovery Checklist",
-    "description":"A practical recovery and reconciliation checklist for WooCommerce payment-state mismatches, pending orders, webhooks, order totals, shipping, tax, refunds, and gateway captures.",
+    "headline":"WooCommerce payment pending after successful Stripe or PayPal payment: recovery checklist",
+    "description":"A practical recovery and reconciliation checklist for WooCommerce pending-payment orders, successful gateway payments, webhook failures, order totals, shipping, tax, refunds, and captured payment mismatches.",
     "datePublished":"2026-09-07",
-    "dateModified":"2026-09-07",
+    "dateModified":"2026-09-28",
     "mainEntityOfPage":"https://whatjustchanged.com/payment-recovery/",
     "author":{"@type":"Organization","name":"What Just Changed"},
     "publisher":{"@type":"Organization","name":"What Just Changed"},
-    "about":["WooCommerce pending payment","Stripe payment succeeded WooCommerce order pending","WooCommerce payment recovery","WooCommerce reconciliation","WooCommerce webhooks","payment status mismatch"]
+    "about":["WooCommerce payment pending","WooCommerce pending payment","Stripe payment succeeded WooCommerce order pending","PayPal payment succeeded WooCommerce order pending","WooCommerce payment recovery","WooCommerce reconciliation","WooCommerce webhooks","payment status mismatch"]
   }
   </script>
 </head>
@@ -46,9 +46,9 @@
     <div class="grid">
       <article class="article">
         <div class="eyebrow">Payment recovery guide</div>
-        <h1>Payment succeeded but WooCommerce order is pending: recovery checklist</h1>
+        <h1>WooCommerce payment pending after successful Stripe or PayPal payment: recovery checklist</h1>
         <div class="meta">
-          <span>Reviewed September 7, 2026</span>
+          <span>Reviewed September 28, 2026</span>
           <span>Evidence confidence: diagnostic guide with official-source links</span>
           <span>Primary risk: captured money and store order state disagree</span>
         </div>
@@ -59,10 +59,11 @@
         </div>
 
         <h2>Use this when</h2>
-        <p>Use this checklist when the payment processor shows activity but WooCommerce does not clearly match it. Common examples:</p>
+        <p>Use this checklist when WooCommerce still shows <strong>Pending payment</strong> or another unclear order state, but the payment processor shows activity. Common examples:</p>
         <ul>
           <li>Stripe shows a successful or captured payment, but the WooCommerce order stayed <strong>Pending payment</strong>.</li>
-          <li>PayPal, Mollie, WooPayments, or Stripe shows a different total than the WooCommerce order total.</li>
+          <li>PayPal shows a successful payment, authorization, capture, or transaction, but WooCommerce did not move the order correctly.</li>
+          <li>Mollie, WooPayments, PayPal, or Stripe shows a different total than the WooCommerce order total.</li>
           <li>The customer says they paid, but the store did not send the expected order confirmation.</li>
           <li>Checkout failed or timed out, but the payment gateway still shows an authorization, capture, payment intent, transaction, or refund activity.</li>
           <li>Shipping, tax, coupon, currency, refund, or payout numbers do not reconcile.</li>
@@ -93,7 +94,11 @@
 
         <h2>Search your site records</h2>
         <p>Look for these terms in order notes, logs, plugin logs, server logs, and support tickets:</p>
-        <pre><code>pending payment
+        <pre><code>woocommerce payment pending
+pending payment
+payment succeeded order pending
+stripe payment succeeded woocommerce order pending
+paypal payment succeeded woocommerce order pending
 payment_intent.succeeded
 payment_intent.payment_failed
 checkout error
