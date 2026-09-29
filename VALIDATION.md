@@ -1,6 +1,6 @@
 # Site Validation
 
-## Current pivot — September 7, 2026
+## Current pivot — September 28, 2026
 
 What Just Changed is no longer being treated as a broad passive SEO site or a broad API-change site. The current direction is a tighter productized wedge:
 
@@ -88,7 +88,8 @@ Use this when the page should help users verify their own order/gateway/webhook/
 - API changes pivot launched: August 10, 2026
 - API pivot judged weak: September 7, 2026
 - Revenue-stack breakage pivot launched: September 7, 2026
-- Next review: September 21, 2026
+- Recovery page first indexed with useful position signal: September 28, 2026
+- Next review: mid-October 2026
 
 ## What changed on September 7
 
@@ -100,6 +101,24 @@ Implemented the first foundation step:
 - Reframed `/woocommerce-payment-alerts/` as a saved-stack alert product test.
 - Added evidence status labels: Confirmed fix, Vendor acknowledged, Diagnostic match.
 - Updated sitemap lastmod values for the changed pages.
+
+## September 28 read and refinement
+
+Google Search Console through September 26 showed no new clicks after the September 7 revenue-stack pivot, but `/payment-recovery/` had the best new signal: 17 impressions around average position 7.8.
+
+Decision from the September 28 read:
+
+- Do not add more pages yet.
+- Do not delete the old WooCommerce pages that earned the original clicks.
+- Do not restart the broad API-change direction.
+- Refine only `/payment-recovery/` because it is the new page with the clearest ranking signal.
+
+Implemented September 28 refinement:
+
+- Changed the recovery page title and H1 from a generic payment-succeeded phrasing to: `WooCommerce payment pending after successful Stripe or PayPal payment`.
+- Updated meta description, Open Graph title/description, structured data headline, `about` terms, and the homepage link text to match the pending-payment query family.
+- Added more exact diagnostic search terms: `woocommerce payment pending`, `payment succeeded order pending`, `stripe payment succeeded woocommerce order pending`, and `paypal payment succeeded woocommerce order pending`.
+- Updated sitemap lastmod for `/` and `/payment-recovery/`.
 
 ## Current hypothesis
 
@@ -114,6 +133,8 @@ This is more product-like than the original content site because the content, le
 For the next review, measure:
 
 - GSC impressions for `/payment-recovery/`.
+- Whether `/payment-recovery/` moves from impressions to clicks.
+- Query terms that include `woocommerce payment pending`, `pending payment`, `stripe`, `paypal`, `order pending`, `webhook`, or `reconciliation`.
 - GSC impressions and clicks for `/woocommerce-payment-issues/`.
 - GSC clicks on the three already-proven Stripe/WooCommerce pages.
 - Vercel visits to `/payment-recovery/`.
@@ -132,7 +153,7 @@ For the next review, measure:
 
 Continue if the revenue-breakage direction shows at least one of:
 
-- Recovery guide impressions within 2 weeks.
+- Recovery guide impressions keep growing.
 - New clicks to recovery, pending-payment, checkout-error, or amount-mismatch pages.
 - Alert page visits from issue/recovery pages.
 - AlertSignupClick or real email interest.
@@ -149,7 +170,7 @@ Refine if pages get impressions but no clicks:
 
 ### Stop or force a channel test
 
-Stop the passive-only build if the new recovery page and repositioned hub get indexed but produce no clicks, no alert interest, and no visit lift after another review cycle.
+Stop the passive-only build if the refined recovery page keeps getting impressions but still produces no clicks, no alert interest, and no visit lift after another review cycle.
 
 At that point the next honest test is small paid search or a different project, not more passive waiting.
 
