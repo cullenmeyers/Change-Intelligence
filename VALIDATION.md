@@ -1,6 +1,6 @@
 # Site Validation
 
-## Current pivot — September 28, 2026
+## Current pivot — October 12, 2026
 
 What Just Changed is no longer being treated as a broad passive SEO site or a broad API-change site. The current direction is a tighter productized wedge:
 
@@ -39,8 +39,9 @@ Primary assets:
 
 - Homepage: `/`
 - Recovery guide: `/payment-recovery/`
+- Stack alert validation page: `/stack-alerts/`
 - Revenue breakage tracker: `/woocommerce-payment-issues/`
-- Alert product test: `/woocommerce-payment-alerts/`
+- Legacy alert bridge: `/woocommerce-payment-alerts/`
 
 Existing issue records kept live:
 
@@ -89,7 +90,8 @@ Use this when the page should help users verify their own order/gateway/webhook/
 - API pivot judged weak: September 7, 2026
 - Revenue-stack breakage pivot launched: September 7, 2026
 - Recovery page first indexed with useful position signal: September 28, 2026
-- Next review: mid-October 2026
+- Stack-alerts measurable validation page launched: October 12, 2026
+- Next review: late October 2026
 
 ## What changed on September 7
 
@@ -120,6 +122,26 @@ Implemented September 28 refinement:
 - Added more exact diagnostic search terms: `woocommerce payment pending`, `payment succeeded order pending`, `stripe payment succeeded woocommerce order pending`, and `paypal payment succeeded woocommerce order pending`.
 - Updated sitemap lastmod for `/` and `/payment-recovery/`.
 
+## October 12 read and refinement
+
+Google Search Console showed `/payment-recovery/` is indexed, but the page-filtered export showed only 17 impressions and 0 clicks. Vercel Analytics showed some page visits, including `/payment-recovery/` and `/woocommerce-payment-alerts/`, but custom events are not visible on the current Vercel Hobby plan.
+
+Decision from the October 12 read:
+
+- Do not add more SEO pages yet.
+- Do not upgrade to Vercel Pro just to read custom events.
+- Add a separate, measurable page path for the alert offer.
+- Use `/stack-alerts/` as the free analytics signal: if visitors click from the recovery checklist or issue records to this page, the alert offer is interesting enough to investigate further.
+
+Implemented October 12 refinement:
+
+- Created `/stack-alerts/` as a dedicated stack-alert validation page.
+- Updated homepage alert CTA to point to `/stack-alerts/`.
+- Updated `/payment-recovery/` alert CTA and sidebar link to point to `/stack-alerts/`.
+- Updated `/woocommerce-payment-issues/` alert CTAs to point to `/stack-alerts/`.
+- Converted `/woocommerce-payment-alerts/` into a legacy bridge page that points to `/stack-alerts/`.
+- Added `/stack-alerts/` to sitemap and updated primary page lastmod dates.
+
 ## Current hypothesis
 
 The best surviving hypothesis is:
@@ -138,13 +160,9 @@ For the next review, measure:
 - GSC impressions and clicks for `/woocommerce-payment-issues/`.
 - GSC clicks on the three already-proven Stripe/WooCommerce pages.
 - Vercel visits to `/payment-recovery/`.
-- Vercel visits to `/woocommerce-payment-alerts/`.
-- Custom events:
-  - `RecoveryGuideClick`
-  - `PaymentHubClick`
-  - `AlertInterestClick`
-  - `AlertSignupClick`
-  - `ReportIssueClick`
+- Vercel visits to `/stack-alerts/`.
+- Vercel visits to `/woocommerce-payment-alerts/` as a legacy bridge.
+- Whether visitors move from `/payment-recovery/` or issue pages to `/stack-alerts/`.
 - Any email asking for stack alerts.
 
 ## Continue / refine / stop rules
@@ -155,8 +173,8 @@ Continue if the revenue-breakage direction shows at least one of:
 
 - Recovery guide impressions keep growing.
 - New clicks to recovery, pending-payment, checkout-error, or amount-mismatch pages.
-- Alert page visits from issue/recovery pages.
-- AlertSignupClick or real email interest.
+- Visitors reach `/stack-alerts/` from recovery or issue pages.
+- A real email request includes stack details.
 - Better trailing 28-day organic clicks than the API pivot.
 
 ### Refine
@@ -166,11 +184,11 @@ Refine if pages get impressions but no clicks:
 - Tighten titles around actual queries.
 - Make snippets more symptom-led.
 - Improve recovery sections on pages already getting impressions.
-- Add clearer CTAs to save a payment stack.
+- Improve the stack-alert offer if visitors reach `/stack-alerts/` but do not email.
 
 ### Stop or force a channel test
 
-Stop the passive-only build if the refined recovery page keeps getting impressions but still produces no clicks, no alert interest, and no visit lift after another review cycle.
+Stop the passive-only build if the refined recovery page keeps getting impressions but still produces no clicks, `/stack-alerts/` gets no meaningful visits, and no email interest appears after another review cycle.
 
 At that point the next honest test is small paid search or a different project, not more passive waiting.
 
