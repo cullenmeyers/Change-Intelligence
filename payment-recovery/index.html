@@ -14,9 +14,7 @@
   <link rel="stylesheet" href="../styles.css">
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    function trackIntent(name, location) {
-      try { window.va('event', { name: name, data: { location: location } }); } catch (error) {}
-    }
+    function trackIntent(name, location) { try { window.va('event', { name: name, data: { location: location } }); } catch (error) {} }
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script type="application/ld+json">
@@ -53,10 +51,7 @@
           <span>Primary risk: captured money and store order state disagree</span>
         </div>
 
-        <div class="notice good">
-          <strong>Current decision</strong>
-          Do not manually complete, refund, delete, or re-run payment actions until you verify the gateway transaction, WooCommerce order status, webhook delivery, captured amount, shipping, tax, discounts, refunds, and customer-facing receipt. The goal is to avoid turning one payment-state mismatch into duplicate fulfillment, duplicate refunds, or incorrect accounting.
-        </div>
+        <div class="notice good"><strong>Current decision</strong>Do not manually complete, refund, delete, or re-run payment actions until you verify the gateway transaction, WooCommerce order status, webhook delivery, captured amount, shipping, tax, discounts, refunds, and customer-facing receipt. The goal is to avoid turning one payment-state mismatch into duplicate fulfillment, duplicate refunds, or incorrect accounting.</div>
 
         <h2>Use this when</h2>
         <p>Use this checklist when WooCommerce still shows <strong>Pending payment</strong> or another unclear order state, but the payment processor shows activity. Common examples:</p>
@@ -122,14 +117,11 @@ refund failed</code></pre>
           </tbody>
         </table>
 
-        <div class="notice warn">
-          <strong>Safety note</strong>
-          This is independent research, not official support, accounting advice, tax advice, legal advice, or a replacement for gateway/plugin support. When real money is involved, preserve evidence and verify the official processor record before making irreversible changes.
-        </div>
+        <div class="notice warn"><strong>Safety note</strong>This is independent research, not official support, accounting advice, tax advice, legal advice, or a replacement for gateway/plugin support. When real money is involved, preserve evidence and verify the official processor record before making irreversible changes.</div>
 
         <h2>Get future revenue-breakage alerts</h2>
         <p>The product being tested is simple: save your WooCommerce payment stack and get notified when a plugin, gateway, checkout, webhook, refund, total, or reconciliation issue could affect real orders.</p>
-        <p><a class="button" href="../woocommerce-payment-alerts/" onclick="trackIntent('AlertInterestClick','payment_recovery_body')">Get payment-stack alerts</a></p>
+        <p><a class="button" href="../stack-alerts/" onclick="trackIntent('StackAlertsClick','payment_recovery_body')">Save your stack for alerts</a></p>
 
         <h2>Official references</h2>
         <ul class="source-list">
@@ -161,7 +153,7 @@ refund failed</code></pre>
         <section class="card">
           <h2>Related</h2>
           <p><a href="../woocommerce-payment-issues/">Revenue breakage tracker</a></p>
-          <p><a href="../woocommerce-payment-alerts/">Payment-stack alerts</a></p>
+          <p><a href="../stack-alerts/">Save stack for alerts</a></p>
         </section>
       </aside>
     </div>
