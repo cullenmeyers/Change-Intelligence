@@ -3,83 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>What Just Changed — Revenue Stack Breakage Radar</title>
-  <meta name="description" content="Know when a software update can break checkout, payments, refunds, webhooks, order totals, shipping, tax, or reconciliation in your ecommerce revenue stack.">
+  <title>What Just Changed — When Software Changes, Know What To Do Next</title>
+  <meta name="description" content="Independent decision guides for software pricing, limits, product changes, migrations, and alternatives. Understand what changed and whether to stay, upgrade, or switch.">
   <link rel="canonical" href="https://whatjustchanged.com/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="What Just Changed — Revenue Stack Breakage Radar">
-  <meta property="og:description" content="Evidence-backed recovery guides and alerts for ecommerce checkout, payment, refund, webhook, order-total, and reconciliation breakages.">
+  <meta property="og:title" content="What Just Changed — When Software Changes, Know What To Do Next">
+  <meta property="og:description" content="Practical guides for software changes that force a buying decision: stay, upgrade, or switch.">
   <meta property="og:url" content="https://whatjustchanged.com/">
   <link rel="stylesheet" href="./styles.css">
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    function trackIntent(name, location) { try { window.va('event', { name: name, data: { location: location } }); } catch (error) {} }
-  </script>
+  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-  <header class="site-header"><div class="container header-inner"><a class="brand" href="./">What Just Changed</a><a class="nav-link" href="./woocommerce-payment-issues/">Revenue breakage tracker</a></div></header>
-  <section class="hero">
-    <div class="container">
-      <div class="eyebrow">Current test · Revenue-stack breakage radar</div>
-      <h1>Know when a software update can break checkout, payments, refunds, or order reconciliation.</h1>
-      <p>What Just Changed turns payment-stack failures into practical recovery records: what changed, who is affected, what can break, how to verify it, and the safest next action before real revenue gets mishandled.</p>
-      <p><a class="button" href="./payment-recovery/" onclick="trackIntent('RecoveryGuideClick','home_hero')">Open the payment pending checklist</a> <a class="button" href="./woocommerce-payment-issues/" onclick="trackIntent('PaymentHubClick','home_hero')">View tracked breakages</a></p>
-    </div>
+<header class="site-header"><div class="container header-inner"><a class="brand" href="./">What Just Changed</a><a class="nav-link" href="#current-test">Current test</a></div></header>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Software change → buying decision</div>
+    <h1>When software changes, know whether to stay, upgrade, or switch.</h1>
+    <p>What Just Changed turns pricing changes, new limits, broken workflows, and migration deadlines into practical decision guides: what changed, who is affected, and the smallest sensible next step.</p>
+  </div>
+</section>
+<main class="container">
+  <section id="current-test" aria-label="Current test" style="display:grid;gap:24px;margin-bottom:24px">
+    <article class="article home-card">
+      <div class="status">Current SEO test · CRM switching</div>
+      <h2>HubSpot's 25,000-record limit: clean up, buy capacity, upgrade, or switch?</h2>
+      <p>HubSpot Starter's flexible seats-and-credits pricing includes a 25,000-record capacity. The useful question is not simply “what is the best HubSpot alternative?” It is whether your account should clean up records, buy more capacity, upgrade, or migrate to a different CRM.</p>
+      <p><a class="button" href="./hubspot-25000-record-limit-alternatives/">Open the decision guide</a></p>
+    </article>
   </section>
-  <main class="container">
-    <section aria-label="Current direction" style="display:grid;gap:24px;margin-bottom:24px">
-      <article class="article home-card">
-        <div class="status">Best current wedge</div>
-        <h2>Revenue-impacting payment breakages</h2>
-        <p><strong>Current product direction:</strong> the broad API-change test got impressions but no clicks. The only pages that actually earned Google clicks were urgent WooCommerce/Stripe payment and checkout problems. So the site is now focused on ecommerce revenue-stack breakage: checkout failures, pending orders, amount mismatches, shipping/tax undercollection, refunds, webhooks, and reconciliation.</p>
-        <p><a class="button" href="./payment-recovery/">Start with the payment pending checklist</a></p>
-      </article>
-    </section>
 
-    <section id="records" aria-label="Revenue breakage records" style="display:grid;gap:24px">
-      <article class="article home-card">
-        <div class="status">Recovery guide</div>
-        <h2>WooCommerce payment pending after successful Stripe or PayPal payment</h2>
-        <p>Freeze evidence, compare gateway transaction state against WooCommerce order status, check webhook delivery, reconcile totals, and avoid duplicate fulfillment or refunds.</p>
-        <a class="button" href="./payment-recovery/">Open the checklist</a>
-      </article>
-      <article class="article home-card">
-        <div class="status">Tracked issue</div>
-        <h2>WooCommerce Stripe 10.8.x payments stuck in Pending Payment</h2>
-        <p>Successful Stripe payments may not move WooCommerce orders correctly. First action: reconcile paid Stripe transactions against store order status before manually changing orders.</p>
-        <a class="button" href="./changes/woocommerce-stripe-10-8-payment-status-not-updating/">Read the issue record</a>
-      </article>
-      <article class="article home-card">
-        <div class="status">Tracked issue</div>
-        <h2>WooCommerce Stripe 10.8.3 checkout error after update</h2>
-        <p>Checkout errors after a plugin update can stop revenue immediately. First action: check cache layers, Stripe.js loading, Adaptive Pricing, and WooPayments conflicts.</p>
-        <a class="button" href="./changes/stripe-10-8-3-checkout-error-adaptive-pricing/">Read the issue record</a>
-      </article>
-      <article class="article home-card">
-        <div class="status">Tracked issue</div>
-        <h2>WooCommerce payment amount mismatches</h2>
-        <p>Gateway totals and WooCommerce totals can disagree because of discounts, shipping, tax, currency, rounding, or refund handling. First action: compare captured amount against every order-total component.</p>
-        <a class="button" href="./changes/woocommerce-paypal-4-0-4-amount-mismatch/">Read the PayPal mismatch record</a>
-      </article>
-    </section>
-
-    <section aria-label="Product test" style="display:grid;gap:24px;margin-top:24px">
-      <article class="article home-card">
-        <div class="status">Alert product test</div>
-        <h2>Get warned about the next payment-stack breakage</h2>
-        <p>The product being tested is simple: save your WooCommerce payment stack and get notified when a Stripe, PayPal, Mollie, WooPayments, checkout, webhook, refund, total, or reconciliation issue could affect real orders.</p>
-        <p><a class="button" href="./stack-alerts/" onclick="trackIntent('StackAlertsClick','home_alerts')">Save your stack for alerts</a></p>
-      </article>
-      <article class="article home-card">
-        <div class="status">Archive</div>
-        <h2>API change records are staying live, but they are not the main direction</h2>
-        <p>The API pivot produced impressions but did not produce clicks. Those records remain available as a secondary archive while the site tests the more urgent revenue-breakage angle.</p>
-        <a class="button" href="./api-changes/">Open API archive</a>
-      </article>
-    </section>
-  </main>
-  <footer class="site-footer"><div class="container">Independent research. Not affiliated with Stripe, Shopify, GitHub, WooCommerce, WordPress, PayPal, Mollie, or WooPayments.</div></footer>
+  <section aria-label="What this site covers" style="display:grid;gap:24px">
+    <article class="article home-card">
+      <div class="status">How we choose topics</div>
+      <h2>Specific changes with an expensive decision attached</h2>
+      <p>The focus is narrow: situations where a software change creates a real decision. A new record limit, a pricing jump, a removed integration, a workflow that stops fitting, or a migration deadline. Each guide starts with the constraint and works toward the least disruptive answer.</p>
+    </article>
+    <article class="article home-card">
+      <div class="status">Archive</div>
+      <h2>Previous software-change research remains available</h2>
+      <p>Earlier API-change and ecommerce payment-breakage experiments remain live as an archive while the site tests CRM switching and software-buying decisions.</p>
+      <p><a class="button" href="./api-changes/">API change archive</a> <a class="button" href="./woocommerce-payment-issues/">Payment issue archive</a></p>
+    </article>
+  </section>
+</main>
+<footer class="site-footer"><div class="container">Independent research. Product details can change; verify current vendor terms before buying or migrating.</div></footer>
 </body>
 </html>
